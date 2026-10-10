@@ -12,13 +12,11 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$bpch_business = bpch_theme_placeholder_business();
+$bpch_business = bpch_theme_business();
 
-$bpch_call_label = sprintf(
-	/* translators: %s: phone number. */
-	__( 'Call %s', 'blue-peak-climate' ),
-	$bpch_business['phone']
-);
+// Starting content of the blocks bound to the Site Settings (see bpch_theme_business()).
+$bpch_phone_link = '<a href="' . esc_url( $bpch_business['phone_href'] ) . '">' . esc_html( $bpch_business['phone'] ) . '</a>';
+$bpch_email_link = '<a href="mailto:' . esc_attr( antispambot( $bpch_business['email'] ) ) . '">' . esc_html( antispambot( $bpch_business['email'] ) ) . '</a>';
 
 $bpch_copyright = sprintf(
 	/* translators: 1: current year, 2: site name. */
@@ -99,8 +97,8 @@ $bpch_company_nav  = serialize_block_attributes( array_merge( $bpch_nav_defaults
 
 			<!-- wp:buttons {"className":"bpch-footer__call"} -->
 			<div class="wp-block-buttons bpch-footer__call">
-				<!-- wp:button -->
-				<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="<?php echo esc_url( $bpch_business['phone_href'] ); ?>"><?php echo esc_html( $bpch_call_label ); ?></a></div>
+				<!-- wp:button {"metadata":{"bindings":{"url":{"source":"bpch/site-settings","args":{"key":"phone"}},"text":{"source":"bpch/site-settings","args":{"key":"phone"}}}}} -->
+				<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="<?php echo esc_url( $bpch_business['phone_href'] ); ?>"><?php echo esc_html( $bpch_business['phone'] ); ?></a></div>
 				<!-- /wp:button -->
 			</div>
 			<!-- /wp:buttons -->
@@ -137,20 +135,20 @@ $bpch_company_nav  = serialize_block_attributes( array_merge( $bpch_nav_defaults
 			<h2 class="wp-block-heading bpch-footer__heading has-white-color has-text-color has-x-small-font-size"><?php esc_html_e( 'Reach us', 'blue-peak-climate' ); ?></h2>
 			<!-- /wp:heading -->
 
-			<!-- wp:paragraph {"className":"bpch-footer__item bpch-icon bpch-icon--phone"} -->
-			<p class="bpch-footer__item bpch-icon bpch-icon--phone"><a href="<?php echo esc_url( $bpch_business['phone_href'] ); ?>"><?php echo esc_html( $bpch_business['phone'] ); ?></a></p>
+			<!-- wp:paragraph {"className":"bpch-footer__item bpch-icon bpch-icon--phone","metadata":{"bindings":{"content":{"source":"bpch/site-settings","args":{"key":"phone","format":"link"}}}}} -->
+			<p class="bpch-footer__item bpch-icon bpch-icon--phone"><?php echo wp_kses_post( $bpch_phone_link ); ?></p>
 			<!-- /wp:paragraph -->
 
-			<!-- wp:paragraph {"className":"bpch-footer__item bpch-icon bpch-icon--mail"} -->
-			<p class="bpch-footer__item bpch-icon bpch-icon--mail"><a href="mailto:<?php echo esc_attr( antispambot( $bpch_business['email'] ) ); ?>"><?php echo esc_html( antispambot( $bpch_business['email'] ) ); ?></a></p>
+			<!-- wp:paragraph {"className":"bpch-footer__item bpch-icon bpch-icon--mail","metadata":{"bindings":{"content":{"source":"bpch/site-settings","args":{"key":"email","format":"link"}}}}} -->
+			<p class="bpch-footer__item bpch-icon bpch-icon--mail"><?php echo wp_kses_post( $bpch_email_link ); ?></p>
 			<!-- /wp:paragraph -->
 
-			<!-- wp:paragraph {"className":"bpch-footer__item bpch-icon bpch-icon--clock"} -->
-			<p class="bpch-footer__item bpch-icon bpch-icon--clock"><?php esc_html_e( 'Emergency line open 24/7', 'blue-peak-climate' ); ?></p>
+			<!-- wp:paragraph {"className":"bpch-footer__item bpch-icon bpch-icon--clock","metadata":{"bindings":{"content":{"source":"bpch/site-settings","args":{"key":"hours"}}}}} -->
+			<p class="bpch-footer__item bpch-icon bpch-icon--clock"><?php echo esc_html( $bpch_business['hours'] ); ?></p>
 			<!-- /wp:paragraph -->
 
-			<!-- wp:paragraph {"className":"bpch-footer__item bpch-icon bpch-icon--pin"} -->
-			<p class="bpch-footer__item bpch-icon bpch-icon--pin"><?php esc_html_e( 'Homes across Texas', 'blue-peak-climate' ); ?></p>
+			<!-- wp:paragraph {"className":"bpch-footer__item bpch-icon bpch-icon--pin","metadata":{"bindings":{"content":{"source":"bpch/site-settings","args":{"key":"service_area"}}}}} -->
+			<p class="bpch-footer__item bpch-icon bpch-icon--pin"><?php echo esc_html( $bpch_business['service_area'] ); ?></p>
 			<!-- /wp:paragraph -->
 		</div>
 		<!-- /wp:group -->

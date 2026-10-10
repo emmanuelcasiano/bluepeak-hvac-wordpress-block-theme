@@ -20,6 +20,9 @@ final class Plugin {
 	public function register(): void {
 		add_action( 'init', array( $this, 'load_textdomain' ) );
 		add_action( 'init', array( $this, 'register_blocks' ) );
+
+		( new Settings\SettingsPage() )->register();
+		( new Settings\Bindings() )->register();
 	}
 
 	/**

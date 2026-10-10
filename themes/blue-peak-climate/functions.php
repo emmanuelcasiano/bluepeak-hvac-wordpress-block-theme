@@ -48,18 +48,33 @@ function bpch_theme_register_pattern_category() {
 add_action( 'init', 'bpch_theme_register_pattern_category' );
 
 /**
- * Placeholder business details for the header, footer and 404 patterns.
+ * Business details that patterns print as the starting content of blocks bound to the Site Settings
+ * (source `bpch/site-settings`). On the front end the binding replaces them with the live value, so editing
+ * the settings updates every page, even where an editor has customised the header or footer.
  *
- * TODO: remove once the Site Settings page and Block Bindings supply these values.
+ * The values come from the blue-peak-climate-core plugin. If it is inactive the bindings do not run and the
+ * placeholders below are what visitors see.
  *
- * @return array{phone: string, phone_href: string, email: string}
+ * @return array{phone: string, phone_href: string, email: string, hours: string, service_area: string}
  */
-function bpch_theme_placeholder_business() {
-	return array(
-		'phone'      => '(555) 123-4567',
-		'phone_href' => 'tel:5551234567',
-		'email'      => 'hello@bluepeakclimate.com',
+function bpch_theme_business() {
+	$settings = array(
+		'phone'        => '(555) 123-4567',
+		'email'        => 'hello@bluepeakclimate.com',
+		'hours'        => __( 'Emergency line open 24/7', 'blue-peak-climate' ),
+		'service_area' => __( 'Homes across Texas', 'blue-peak-climate' ),
 	);
+
+	if ( class_exists( '\BluePeakClimate\Core\Settings\Settings' ) ) {
+		foreach ( array_keys( $settings ) as $key ) {
+			$settings[ $key ] = \BluePeakClimate\Core\Settings\Settings::get( $key );
+		}
+		$settings['phone_href'] = \BluePeakClimate\Core\Settings\Settings::phone_href( $settings['phone'] );
+	} else {
+		$settings['phone_href'] = 'tel:5551234567';
+	}
+
+	return $settings;
 }
 
 /**

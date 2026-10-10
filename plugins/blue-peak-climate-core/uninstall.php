@@ -8,8 +8,10 @@
 
 defined( 'WP_UNINSTALL_PLUGIN' ) || exit;
 
+// Site Settings (phone, email, hours, social links, ZIP → office table).
+delete_option( 'bpch_core_settings' );
+
 /*
  * Add cleanup here as features store data, e.g.:
- *   delete_option( 'bpch_core_settings' );
  *   wp_clear_scheduled_hook( 'bpch_core_daily_sync' );
  */

@@ -20,13 +20,7 @@ $bpch_search_attributes = serialize_block_attributes(
 	)
 );
 
-$bpch_business = bpch_theme_placeholder_business();
-
-$bpch_call_label = sprintf(
-	/* translators: %s: phone number. */
-	__( 'Call %s', 'blue-peak-climate' ),
-	$bpch_business['phone']
-);
+$bpch_business = bpch_theme_business();
 ?>
 <!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|5"}},"layout":{"type":"constrained"}} -->
 <div class="wp-block-group">
@@ -50,8 +44,8 @@ $bpch_call_label = sprintf(
 		<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e( 'Back to home', 'blue-peak-climate' ); ?></a></div>
 		<!-- /wp:button -->
 
-		<!-- wp:button {"className":"is-style-outline"} -->
-		<div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button" href="<?php echo esc_url( $bpch_business['phone_href'] ); ?>"><?php echo esc_html( $bpch_call_label ); ?></a></div>
+		<!-- wp:button {"className":"is-style-outline","metadata":{"bindings":{"url":{"source":"bpch/site-settings","args":{"key":"phone"}},"text":{"source":"bpch/site-settings","args":{"key":"phone"}}}}} -->
+		<div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button" href="<?php echo esc_url( $bpch_business['phone_href'] ); ?>"><?php echo esc_html( $bpch_business['phone'] ); ?></a></div>
 		<!-- /wp:button -->
 	</div>
 	<!-- /wp:buttons -->
