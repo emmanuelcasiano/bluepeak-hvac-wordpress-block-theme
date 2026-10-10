@@ -155,7 +155,7 @@
 				"right": "var:preset|spacing|gutter"
 			}
 		},
-		"css": "-webkit-font-smoothing: antialiased;",
+		"css": "body { -webkit-font-smoothing: antialiased; }",
 		"elements": {
 			"heading": {
 				"color": { "text": "var:preset|color|ink" },
