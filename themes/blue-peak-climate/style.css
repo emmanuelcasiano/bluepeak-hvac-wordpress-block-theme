@@ -452,10 +452,11 @@ body .wp-site-blocks > * {
 	margin: 0;
 }
 
-/* A constrained section centres its children; the heading block lines up with the content edge instead. */
+/* A constrained section centres its children; the heading block lines up with the left edge of the content column
+   instead. On a screen wider than the column that edge is half of the spare width in from the section edge. */
 .bpch-section > .bpch-section__head,
 .bpch-page-intro > .bpch-section__head {
-	margin-left: 0 !important;
+	margin-left: max(0px, calc((100% - var(--wp--style--global-content-size, 1120px)) / 2)) !important;
 }
 
 .bpch-page-intro {
@@ -960,6 +961,243 @@ body .wp-site-blocks > * {
 	padding-bottom: var(--wp--preset--spacing--5);
 }
 
+/* ==========================================================================
+   Page patterns (Services, single Service, Gallery, About, Contact)
+   ========================================================================== */
+
+/* More round icons. */
+.bpch-mark--clock {
+	--bpch-icon: url("assets/icons/clock.svg");
+}
+
+.bpch-mark--file {
+	--bpch-icon: url("assets/icons/file-text.svg");
+}
+
+.bpch-mark--pin {
+	--bpch-icon: url("assets/icons/map-pin.svg");
+}
+
+.bpch-mark--mail {
+	--bpch-icon: url("assets/icons/mail.svg");
+}
+
+/* A photo that sits above a stacked caption fills its column instead of growing from a flex basis. */
+.bpch-hero__media > .wp-block-cover.bpch-photo,
+.bpch-gallery__item > .wp-block-cover.bpch-photo {
+	flex: none;
+	width: 100%;
+}
+
+.wp-block-cover.bpch-photo--card {
+	aspect-ratio: 4 / 3;
+}
+
+/* --- Chips: pill links with an icon --- */
+.bpch-chips {
+	gap: var(--wp--preset--spacing--3);
+	margin-top: var(--wp--preset--spacing--6);
+}
+
+.bpch-chip .wp-block-button__link {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--wp--preset--spacing--2);
+	padding: var(--wp--preset--spacing--2) var(--wp--preset--spacing--4);
+	font-size: var(--wp--preset--font-size--small);
+}
+
+.bpch-chip .wp-block-button__link::before {
+	content: "";
+	flex: none;
+	width: 18px;
+	height: 18px;
+	background-color: currentColor;
+	-webkit-mask: var(--bpch-icon) center / contain no-repeat;
+	mask: var(--bpch-icon) center / contain no-repeat;
+}
+
+.bpch-chip--flame {
+	--bpch-icon: url("assets/icons/flame.svg");
+}
+
+.bpch-chip--snowflake {
+	--bpch-icon: url("assets/icons/snowflake.svg");
+}
+
+.bpch-chip--zap {
+	--bpch-icon: url("assets/icons/zap.svg");
+}
+
+.bpch-chip--phone {
+	--bpch-icon: url("assets/icons/phone.svg");
+}
+
+/* --- Services page --- */
+/* The sticky header would cover the top of a section that a chip scrolls to. */
+.bpch-section--services {
+	scroll-margin-top: 9rem;
+}
+
+.bpch-service-card {
+	height: 100%;
+}
+
+.bpch-service-card > *,
+.bpch-service-card .wp-block-post-title,
+.bpch-service-card .wp-block-post-excerpt__excerpt {
+	margin: 0;
+}
+
+.bpch-service-card .wp-block-post-title a {
+	color: var(--wp--preset--color--ink);
+	text-decoration: none;
+}
+
+.bpch-service-card .wp-block-post-title a:hover {
+	color: var(--wp--preset--color--blue);
+	text-decoration: underline;
+}
+
+/* The small label on a service: Repair, Replace, Install... */
+.bpch-tag {
+	align-self: flex-start;
+	margin: 0;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+.bpch-tag a {
+	display: inline-block;
+	padding: var(--wp--preset--spacing--1) var(--wp--preset--spacing--3);
+	border-radius: var(--wp--custom--radius--pill);
+	background: var(--wp--preset--color--blue-soft);
+	color: var(--wp--preset--color--navy);
+	text-decoration: none;
+}
+
+.bpch-service-intro .bpch-eyebrow a {
+	display: inline-block;
+	padding-block: 4px; /* 24px tall at least, the WCAG 2.2 minimum target size */
+	color: inherit;
+	text-decoration: none;
+}
+
+.bpch-service-facts {
+	margin-block: var(--wp--preset--spacing--2);
+}
+
+.bpch-price {
+	margin: 0;
+	color: var(--wp--preset--color--navy);
+	font-family: var(--wp--preset--font-family--display);
+	font-weight: 700;
+}
+
+/* A service with no starting price shows nothing. */
+.bpch-price:empty {
+	display: none;
+}
+
+.bpch-link-back .wp-block-button__link::after {
+	content: none;
+}
+
+.bpch-link-back .wp-block-button__link::before {
+	content: "\2190" / "";
+	margin-right: 0.35em;
+}
+
+/* --- Gallery --- */
+.bpch-gallery__item {
+	flex: 0 0 calc((100% - 2 * var(--wp--preset--spacing--6)) / 3);
+	min-width: 0;
+}
+
+.bpch-gallery__caption > * {
+	margin: 0;
+}
+
+.bpch-gallery__title {
+	font-family: var(--wp--preset--font-family--display);
+	font-weight: 600;
+}
+
+/* --- About --- */
+.bpch-service-list.bpch-expect-list li {
+	align-items: flex-start;
+}
+
+.bpch-expect-list li::before {
+	margin-top: 0.7em;
+}
+
+.bpch-area__copy {
+	flex: 1 1 0;
+	min-width: 0;
+}
+
+.bpch-area__copy > *,
+.bpch-area__title h3 {
+	margin: 0;
+}
+
+.bpch-placeholder-note {
+	box-sizing: border-box;
+	margin: var(--wp--preset--spacing--4) 0 0;
+	padding: var(--wp--preset--spacing--3) var(--wp--preset--spacing--4);
+	border: 1px dashed var(--wp--preset--color--body);
+	border-radius: var(--wp--custom--radius--sm);
+}
+
+/* --- Contact --- */
+.bpch-contact__info {
+	flex: 1 1 0;
+	min-width: 0;
+}
+
+.bpch-contact__form {
+	flex: 1.6 1 0;
+	min-width: 0;
+}
+
+.bpch-contact-card > * {
+	margin: 0;
+}
+
+.bpch-contact-card--urgent {
+	border-color: var(--wp--preset--color--navy);
+}
+
+.bpch-contact-link .wp-block-button__link,
+.bpch-contact-link .wp-block-button__link:hover {
+	padding: 2px 0; /* 24px tall at least, the WCAG 2.2 minimum target size */
+	border: 0;
+	background: none;
+	color: var(--wp--preset--color--ink);
+	font-family: var(--wp--preset--font-family--display);
+	font-size: var(--wp--preset--font-size--x-large);
+	font-weight: 700;
+	overflow-wrap: anywhere;
+	text-decoration: none;
+}
+
+.bpch-contact-link .wp-block-button__link:hover {
+	text-decoration: underline;
+}
+
+.bpch-contact-card--urgent .bpch-contact-link .wp-block-button__link,
+.bpch-contact-card--urgent .bpch-contact-link .wp-block-button__link:hover {
+	color: var(--wp--preset--color--white);
+}
+
+.bpch-contact-value {
+	color: var(--wp--preset--color--ink);
+	font-family: var(--wp--preset--font-family--display);
+	font-weight: 700;
+}
+
 /* --- Tablet and phone: columns stack --- */
 @media (max-width: 1024px) {
 	.bpch-hero__inner,
@@ -967,9 +1205,38 @@ body .wp-site-blocks > * {
 	.bpch-testimonial,
 	.bpch-cards,
 	.bpch-faq,
-	.bpch-band__inner {
+	.bpch-band__inner,
+	.bpch-contact,
+	.bpch-area {
 		flex-direction: column;
 		align-items: stretch;
+	}
+
+	.bpch-gallery__item {
+		flex-basis: calc((100% - var(--wp--preset--spacing--6)) / 2);
+	}
+
+	.bpch-contact {
+		gap: var(--wp--preset--spacing--6);
+	}
+
+	.bpch-area {
+		gap: var(--wp--preset--spacing--5);
+	}
+
+	.bpch-contact__info,
+	.bpch-contact__form,
+	.bpch-area__copy {
+		flex: none;
+	}
+
+	.bpch-service-list.bpch-expect-list {
+		flex-direction: column;
+		flex-wrap: nowrap;
+	}
+
+	.bpch-service-list.bpch-expect-list li {
+		flex: 0 0 auto;
 	}
 
 	.bpch-hero__inner,
@@ -1039,6 +1306,10 @@ body .wp-site-blocks > * {
 
 	.bpch-card {
 		padding: var(--wp--preset--spacing--5);
+	}
+
+	.bpch-gallery__item {
+		flex-basis: 100%;
 	}
 
 	.bpch-service-list {

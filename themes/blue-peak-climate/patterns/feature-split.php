@@ -14,9 +14,7 @@ defined( 'ABSPATH' ) || exit;
 <div class="wp-block-group alignfull bpch-section bpch-section--split has-mist-background-color has-background" style="padding-top:var(--wp--preset--spacing--9);padding-bottom:var(--wp--preset--spacing--9)">
 	<!-- wp:group {"className":"bpch-split","style":{"spacing":{"blockGap":"var:preset|spacing|8"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->
 	<div class="wp-block-group bpch-split">
-		<!-- wp:cover {"overlayColor":"blue-soft","dimRatio":100,"className":"bpch-photo bpch-photo--portrait"} -->
-		<div class="wp-block-cover bpch-photo bpch-photo--portrait"><span aria-hidden="true" class="wp-block-cover__background has-blue-soft-background-color has-background-dim-100 has-background-dim"></span><div class="wp-block-cover__inner-container"></div></div>
-		<!-- /wp:cover -->
+		<?php echo bpch_theme_photo_cover( 'tech-portrait', 'portrait' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Block markup escaped by the helper. ?>
 
 		<!-- wp:group {"className":"bpch-split__copy","style":{"spacing":{"blockGap":"var:preset|spacing|5"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"stretch"}} -->
 		<div class="wp-block-group bpch-split__copy">
@@ -32,9 +30,7 @@ defined( 'ABSPATH' ) || exit;
 			<div class="wp-block-group bpch-reasons">
 				<!-- wp:group {"className":"bpch-reason","style":{"spacing":{"blockGap":"var:preset|spacing|4"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"top"}} -->
 				<div class="wp-block-group bpch-reason">
-					<!-- wp:group {"className":"bpch-mark bpch-mark--soft bpch-mark--truck","lock":{"move":true,"remove":true}} -->
-					<div class="wp-block-group bpch-mark bpch-mark--soft bpch-mark--truck"></div>
-					<!-- /wp:group -->
+					<!-- wp:bpch/icon {"icon":"truck","tone":"light","lock":{"move":true,"remove":true}} /-->
 
 					<!-- wp:group {"className":"bpch-reason__text","style":{"spacing":{"blockGap":"var:preset|spacing|1"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"stretch"}} -->
 					<div class="wp-block-group bpch-reason__text">
@@ -52,9 +48,7 @@ defined( 'ABSPATH' ) || exit;
 
 				<!-- wp:group {"className":"bpch-reason","style":{"spacing":{"blockGap":"var:preset|spacing|4"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"top"}} -->
 				<div class="wp-block-group bpch-reason">
-					<!-- wp:group {"className":"bpch-mark bpch-mark--soft bpch-mark--scale","lock":{"move":true,"remove":true}} -->
-					<div class="wp-block-group bpch-mark bpch-mark--soft bpch-mark--scale"></div>
-					<!-- /wp:group -->
+					<!-- wp:bpch/icon {"icon":"scale","tone":"light","lock":{"move":true,"remove":true}} /-->
 
 					<!-- wp:group {"className":"bpch-reason__text","style":{"spacing":{"blockGap":"var:preset|spacing|1"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"stretch"}} -->
 					<div class="wp-block-group bpch-reason__text">
@@ -72,9 +66,7 @@ defined( 'ABSPATH' ) || exit;
 
 				<!-- wp:group {"className":"bpch-reason","style":{"spacing":{"blockGap":"var:preset|spacing|4"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"top"}} -->
 				<div class="wp-block-group bpch-reason">
-					<!-- wp:group {"className":"bpch-mark bpch-mark--soft bpch-mark--house","lock":{"move":true,"remove":true}} -->
-					<div class="wp-block-group bpch-mark bpch-mark--soft bpch-mark--house"></div>
-					<!-- /wp:group -->
+					<!-- wp:bpch/icon {"icon":"house","tone":"light","lock":{"move":true,"remove":true}} /-->
 
 					<!-- wp:group {"className":"bpch-reason__text","style":{"spacing":{"blockGap":"var:preset|spacing|1"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"stretch"}} -->
 					<div class="wp-block-group bpch-reason__text">

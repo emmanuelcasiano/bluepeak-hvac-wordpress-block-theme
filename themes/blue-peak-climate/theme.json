@@ -276,6 +276,9 @@
 			}
 		}
 	},
+	"customTemplates": [
+		{ "name": "sections", "title": "Page with sections", "postTypes": [ "page" ] }
+	],
 	"templateParts": [
 		{ "name": "header", "title": "Header", "area": "header" },
 		{ "name": "footer", "title": "Footer", "area": "footer" }

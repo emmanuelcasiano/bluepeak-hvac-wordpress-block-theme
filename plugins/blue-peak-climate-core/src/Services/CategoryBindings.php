@@ -19,6 +19,7 @@ defined( 'ABSPATH' ) || exit;
  *   name        - the category name
  *   count       - the number of published services, as a number
  *   count_label - the count with its unit, e.g. "10 services" (translated, singular for 1)
+ *   name_count  - the name and the number for a filter chip, e.g. "Heating · 10"
  *   url         - the Services page, scrolled to the category's section (/services/#heating)
  *
  * If the category or the Services page doesn't exist the block keeps the content saved in the pattern.
@@ -80,6 +81,12 @@ final class CategoryBindings {
 
 			case 'count_label':
 				return self::count_label( (int) $term->count );
+
+			case 'name_count':
+				/* translators: 1: category name, 2: number of services in it. Shown on a chip, e.g. "Heating · 10". */
+				$label = sprintf( __( '%1$s · %2$d', 'blue-peak-climate-core' ), $term->name, (int) $term->count );
+
+				return $is_html ? esc_html( $label ) : $label;
 
 			case 'url':
 				return $this->section_url( $slug );

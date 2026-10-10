@@ -87,9 +87,7 @@ $bpch_electrical_link  = $bpch_link_binding( 'electrical' );
 			<div class="wp-block-group bpch-group-card__top">
 				<!-- wp:group {"className":"bpch-group-card__title","style":{"spacing":{"blockGap":"var:preset|spacing|3"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->
 				<div class="wp-block-group bpch-group-card__title">
-					<!-- wp:group {"className":"bpch-mark bpch-mark--warm bpch-mark--flame","lock":{"move":true,"remove":true}} -->
-					<div class="wp-block-group bpch-mark bpch-mark--warm bpch-mark--flame"></div>
-					<!-- /wp:group -->
+					<!-- wp:bpch/icon {"icon":"flame","tone":"orange","lock":{"move":true,"remove":true}} /-->
 
 					<!-- wp:heading {"level":3} -->
 					<h3 class="wp-block-heading"><?php esc_html_e( 'Heating', 'blue-peak-climate' ); ?></h3>
@@ -143,9 +141,7 @@ $bpch_electrical_link  = $bpch_link_binding( 'electrical' );
 			<div class="wp-block-group bpch-group-card__top">
 				<!-- wp:group {"className":"bpch-group-card__title","style":{"spacing":{"blockGap":"var:preset|spacing|3"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->
 				<div class="wp-block-group bpch-group-card__title">
-					<!-- wp:group {"className":"bpch-mark bpch-mark--cool bpch-mark--snowflake","lock":{"move":true,"remove":true}} -->
-					<div class="wp-block-group bpch-mark bpch-mark--cool bpch-mark--snowflake"></div>
-					<!-- /wp:group -->
+					<!-- wp:bpch/icon {"icon":"snowflake","tone":"blue","lock":{"move":true,"remove":true}} /-->
 
 					<!-- wp:heading {"level":3} -->
 					<h3 class="wp-block-heading"><?php esc_html_e( 'Cooling', 'blue-peak-climate' ); ?></h3>
@@ -199,9 +195,7 @@ $bpch_electrical_link  = $bpch_link_binding( 'electrical' );
 			<div class="wp-block-group bpch-group-card__top">
 				<!-- wp:group {"className":"bpch-group-card__title","style":{"spacing":{"blockGap":"var:preset|spacing|3"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->
 				<div class="wp-block-group bpch-group-card__title">
-					<!-- wp:group {"className":"bpch-mark bpch-mark--navy bpch-mark--zap","lock":{"move":true,"remove":true}} -->
-					<div class="wp-block-group bpch-mark bpch-mark--navy bpch-mark--zap"></div>
-					<!-- /wp:group -->
+					<!-- wp:bpch/icon {"icon":"zap","tone":"navy","lock":{"move":true,"remove":true}} /-->
 
 					<!-- wp:heading {"level":3} -->
 					<h3 class="wp-block-heading"><?php esc_html_e( 'Electrical', 'blue-peak-climate' ); ?></h3>

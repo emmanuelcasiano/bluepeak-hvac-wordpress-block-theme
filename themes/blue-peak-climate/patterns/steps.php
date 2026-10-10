@@ -34,9 +34,7 @@ defined( 'ABSPATH' ) || exit;
 				<p class="bpch-step__number"><?php esc_html_e( '01', 'blue-peak-climate' ); ?></p>
 				<!-- /wp:paragraph -->
 
-				<!-- wp:group {"className":"bpch-mark bpch-mark--soft bpch-mark--phone","lock":{"move":true,"remove":true}} -->
-				<div class="wp-block-group bpch-mark bpch-mark--soft bpch-mark--phone"></div>
-				<!-- /wp:group -->
+				<!-- wp:bpch/icon {"icon":"phone","tone":"light","lock":{"move":true,"remove":true}} /-->
 			</div>
 			<!-- /wp:group -->
 
@@ -58,9 +56,7 @@ defined( 'ABSPATH' ) || exit;
 				<p class="bpch-step__number"><?php esc_html_e( '02', 'blue-peak-climate' ); ?></p>
 				<!-- /wp:paragraph -->
 
-				<!-- wp:group {"className":"bpch-mark bpch-mark--soft bpch-mark--clipboard","lock":{"move":true,"remove":true}} -->
-				<div class="wp-block-group bpch-mark bpch-mark--soft bpch-mark--clipboard"></div>
-				<!-- /wp:group -->
+				<!-- wp:bpch/icon {"icon":"clipboard","tone":"light","lock":{"move":true,"remove":true}} /-->
 			</div>
 			<!-- /wp:group -->
 
@@ -82,9 +78,7 @@ defined( 'ABSPATH' ) || exit;
 				<p class="bpch-step__number"><?php esc_html_e( '03', 'blue-peak-climate' ); ?></p>
 				<!-- /wp:paragraph -->
 
-				<!-- wp:group {"className":"bpch-mark bpch-mark--soft bpch-mark--wrench","lock":{"move":true,"remove":true}} -->
-				<div class="wp-block-group bpch-mark bpch-mark--soft bpch-mark--wrench"></div>
-				<!-- /wp:group -->
+				<!-- wp:bpch/icon {"icon":"wrench","tone":"light","lock":{"move":true,"remove":true}} /-->
 			</div>
 			<!-- /wp:group -->
 
