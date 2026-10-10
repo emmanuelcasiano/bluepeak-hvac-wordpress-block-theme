@@ -408,3 +408,658 @@ body .wp-site-blocks > * {
 	border-radius: var(--wp--custom--radius--pill);
 	font: inherit;
 }
+
+/* ==========================================================================
+   Section patterns (hero, trust badges, service groups, steps, feature split,
+   testimonial, CTA and emergency bands, page intro, FAQ)
+   ========================================================================== */
+
+/* Icons used by the patterns, drawn with the same mask as the header and footer icons. */
+.bpch-icon--shield {
+	--bpch-icon: url("assets/icons/shield-check.svg");
+}
+
+.bpch-icon--file {
+	--bpch-icon: url("assets/icons/file-text.svg");
+}
+
+.bpch-icon--badge {
+	--bpch-icon: url("assets/icons/badge-check.svg");
+}
+
+.bpch-sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: nowrap;
+}
+
+.bpch-eyebrow--light {
+	color: var(--wp--preset--color--orange);
+}
+
+/* A section heading block: label, title, lead. */
+.bpch-section__head {
+	max-width: var(--wp--custom--measure--default);
+	margin-bottom: var(--wp--preset--spacing--7);
+}
+
+.bpch-section__head > * {
+	margin: 0;
+}
+
+/* A constrained section centres its children; the heading block lines up with the content edge instead. */
+.bpch-section > .bpch-section__head,
+.bpch-page-intro > .bpch-section__head {
+	margin-left: 0 !important;
+}
+
+.bpch-page-intro {
+	border-bottom: 1px solid var(--wp--preset--color--line);
+}
+
+.bpch-page-intro .bpch-section__head {
+	margin-bottom: 0;
+}
+
+/* Buttons that sit side by side. */
+.bpch-cta-row {
+	flex-wrap: wrap;
+	gap: var(--wp--preset--spacing--3);
+}
+
+/* A text link with an arrow, made from a Button block so its address can come from a binding. */
+.bpch-link-arrow .wp-block-button__link,
+.bpch-link-arrow .wp-block-button__link:hover {
+	padding: 2px 0; /* 24px tall at least, the WCAG 2.2 minimum target size */
+	border: 0;
+	background: none;
+	color: var(--wp--preset--color--blue);
+	font-weight: 600;
+	text-decoration: none;
+}
+
+.bpch-link-arrow .wp-block-button__link:hover {
+	color: var(--wp--preset--color--navy);
+}
+
+.bpch-link-arrow .wp-block-button__link::after {
+	content: "\2192" / "";
+	margin-left: 0.35em;
+}
+
+/* Photo slots: Cover blocks with a plain colour until a photo is chosen. */
+.wp-block-cover.bpch-photo {
+	flex: 1 1 0;
+	min-width: 0;
+	min-height: 0;
+	padding: 0;
+	border-radius: var(--wp--custom--radius--lg);
+	overflow: hidden;
+}
+
+.wp-block-cover.bpch-photo--hero {
+	flex: none;
+	width: 100%;
+	aspect-ratio: 812 / 720;
+}
+
+.wp-block-cover.bpch-photo--portrait {
+	aspect-ratio: 736 / 854;
+}
+
+.wp-block-cover.bpch-photo--wide {
+	aspect-ratio: 933 / 700;
+}
+
+/* Round icon marks (empty Group blocks that carry an icon). */
+.bpch-mark {
+	display: flex;
+	flex: none;
+	align-items: center;
+	justify-content: center;
+	width: 52px;
+	height: 52px;
+	padding: 0;
+	border-radius: var(--wp--custom--radius--pill);
+}
+
+.bpch-mark::before {
+	content: "";
+	width: 26px;
+	height: 26px;
+	background-color: currentColor;
+	-webkit-mask: var(--bpch-icon) center / contain no-repeat;
+	mask: var(--bpch-icon) center / contain no-repeat;
+}
+
+.bpch-mark--warm {
+	background-color: var(--wp--preset--color--orange);
+	color: var(--wp--preset--color--ink);
+}
+
+.bpch-mark--cool {
+	background-color: var(--wp--preset--color--blue);
+	color: var(--wp--preset--color--white);
+}
+
+.bpch-mark--navy {
+	background-color: var(--wp--preset--color--navy);
+	color: var(--wp--preset--color--white);
+}
+
+.bpch-mark--soft {
+	width: 40px;
+	height: 40px;
+	background-color: var(--wp--preset--color--blue-soft);
+	color: var(--wp--preset--color--navy);
+}
+
+.bpch-mark--soft::before {
+	width: 20px;
+	height: 20px;
+}
+
+.bpch-mark--flame {
+	--bpch-icon: url("assets/icons/flame.svg");
+}
+
+.bpch-mark--snowflake {
+	--bpch-icon: url("assets/icons/snowflake.svg");
+}
+
+.bpch-mark--zap {
+	--bpch-icon: url("assets/icons/zap.svg");
+}
+
+.bpch-mark--phone {
+	--bpch-icon: url("assets/icons/phone.svg");
+}
+
+.bpch-mark--clipboard {
+	--bpch-icon: url("assets/icons/clipboard-list.svg");
+}
+
+.bpch-mark--wrench {
+	--bpch-icon: url("assets/icons/wrench.svg");
+}
+
+.bpch-mark--truck {
+	--bpch-icon: url("assets/icons/truck.svg");
+}
+
+.bpch-mark--scale {
+	--bpch-icon: url("assets/icons/scale.svg");
+}
+
+.bpch-mark--house {
+	--bpch-icon: url("assets/icons/house.svg");
+}
+
+/* --- Hero --- */
+.bpch-hero {
+	background-image: url("assets/images/bg-peaks-airflow.svg");
+	background-position: center bottom;
+	background-repeat: no-repeat;
+	background-size: max(100%, 1100px) auto;
+}
+
+.bpch-hero__copy,
+.bpch-hero__media {
+	flex: 1 1 0;
+	min-width: 0;
+}
+
+/* The short orange bar under the headline. */
+.bpch-hero__title::after {
+	content: "";
+	display: block;
+	width: 56px;
+	height: 4px;
+	margin-top: var(--wp--preset--spacing--5);
+	border-radius: var(--wp--custom--radius--pill);
+	background: var(--wp--preset--color--orange);
+}
+
+.bpch-hero__note {
+	gap: var(--wp--preset--spacing--5);
+	padding: var(--wp--preset--spacing--4) var(--wp--preset--spacing--5);
+	border-radius: var(--wp--custom--radius--md);
+	box-shadow: var(--wp--preset--shadow--card);
+}
+
+.bpch-hero__note > * {
+	margin: 0;
+}
+
+.bpch-hero__figure {
+	color: var(--wp--preset--color--blue);
+	font-family: var(--wp--preset--font-family--display);
+	font-size: var(--wp--preset--font-size--xx-large);
+	font-weight: 700;
+	line-height: 1;
+}
+
+/* --- Trust badges --- */
+.bpch-trust {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--wp--preset--spacing--2);
+	margin: 0;
+	padding: var(--wp--preset--spacing--2) 0 0;
+	list-style: none;
+}
+
+.bpch-trust li {
+	display: flex;
+	align-items: center;
+	gap: var(--wp--preset--spacing--2);
+	margin: 0;
+	padding: var(--wp--preset--spacing--2) var(--wp--preset--spacing--4);
+	border: 1px solid var(--wp--preset--color--line);
+	border-radius: var(--wp--custom--radius--pill);
+	background: var(--wp--preset--color--white);
+	color: var(--wp--preset--color--ink);
+	font-weight: 500;
+}
+
+.bpch-trust li::before {
+	background-color: var(--wp--preset--color--blue);
+}
+
+/* --- Service group cards --- */
+.bpch-section--groups {
+	background-image: url("assets/images/bg-warm-cool.svg");
+	background-position: center bottom;
+	background-repeat: no-repeat;
+	background-size: max(100%, 1100px) auto;
+}
+
+.bpch-cards {
+	align-items: stretch;
+}
+
+.bpch-card {
+	flex: 1 1 0;
+	min-width: 0;
+	padding: var(--wp--preset--spacing--6);
+	border: 1px solid var(--wp--preset--color--line);
+	border-radius: var(--wp--custom--radius--lg);
+}
+
+.bpch-card > * {
+	margin: 0;
+}
+
+.bpch-group-card__title h3 {
+	margin: 0;
+}
+
+.bpch-group-card__count {
+	margin: 0;
+	padding: var(--wp--preset--spacing--1) var(--wp--preset--spacing--3);
+	border-radius: var(--wp--custom--radius--pill);
+	background: var(--wp--preset--color--blue-soft);
+	color: var(--wp--preset--color--navy);
+	font-weight: 700;
+	white-space: nowrap;
+}
+
+.bpch-service-list {
+	display: flex;
+	flex: 1 0 auto;
+	flex-direction: column;
+	gap: var(--wp--preset--spacing--2);
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.bpch-service-list li {
+	display: flex;
+	align-items: center;
+	gap: var(--wp--preset--spacing--3);
+	margin: 0;
+}
+
+.bpch-service-list li::before {
+	content: "";
+	flex: none;
+	width: 6px;
+	height: 6px;
+	border-radius: var(--wp--custom--radius--pill);
+	background: var(--wp--preset--color--orange);
+}
+
+/* --- Steps --- */
+.bpch-steps {
+	align-items: stretch;
+}
+
+.bpch-step {
+	flex: 1 1 0;
+	min-width: 0;
+	padding-top: var(--wp--preset--spacing--5);
+	border-top: 2px solid var(--wp--preset--color--navy);
+}
+
+.bpch-step > *,
+.bpch-step__top > * {
+	margin: 0;
+}
+
+.bpch-step__top {
+	width: 100%;
+}
+
+/* Blue, not the design's orange: orange numerals on white are below 3:1 contrast. */
+.bpch-step__number {
+	color: var(--wp--preset--color--blue);
+	font-family: var(--wp--preset--font-family--display);
+	font-size: var(--wp--preset--font-size--x-large);
+	font-weight: 700;
+	line-height: 1;
+}
+
+/* --- Feature split --- */
+.bpch-split {
+	align-items: center;
+}
+
+.bpch-split__copy {
+	flex: 1 1 0;
+	min-width: 0;
+}
+
+.bpch-split__copy > *,
+.bpch-reason__text > * {
+	margin: 0;
+}
+
+.bpch-reason__text {
+	min-width: 0;
+}
+
+.bpch-reason__title {
+	color: var(--wp--preset--color--ink);
+	font-family: var(--wp--preset--font-family--display);
+	font-size: var(--wp--preset--font-size--medium);
+	font-weight: 600;
+}
+
+/* --- Testimonial band --- */
+.bpch-band--testimonial {
+	background-image: url("assets/images/bg-peaks.svg");
+	background-position: right bottom;
+	background-repeat: no-repeat;
+	background-size: min(820px, 90%) auto;
+}
+
+.bpch-testimonial {
+	align-items: center;
+}
+
+.bpch-testimonial__copy {
+	flex: 1.3 1 0;
+	min-width: 0;
+}
+
+.bpch-testimonial__copy > * {
+	margin: 0;
+}
+
+.bpch-rating {
+	color: var(--wp--preset--color--orange);
+	font-size: var(--wp--preset--font-size--large);
+	letter-spacing: 0.1em;
+	line-height: 1;
+}
+
+.bpch-quote {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+.bpch-quote p {
+	margin: 0;
+	color: var(--wp--preset--color--white);
+	font-family: var(--wp--preset--font-family--display);
+	font-size: var(--wp--preset--font-size--xx-large);
+	font-weight: 500;
+	line-height: 1.3;
+	text-wrap: pretty;
+}
+
+.bpch-quote cite {
+	display: block;
+	margin-top: var(--wp--preset--spacing--4);
+	color: var(--wp--preset--color--white);
+	font-family: var(--wp--preset--font-family--display);
+	font-style: normal;
+	font-weight: 600;
+}
+
+/* --- CTA and emergency bands --- */
+.bpch-band__inner {
+	align-items: center;
+}
+
+.bpch-band__copy {
+	flex: 1 1 auto;
+	max-width: var(--wp--custom--measure--default);
+}
+
+.bpch-band__copy > * {
+	margin: 0;
+}
+
+/* The buttons keep their natural width beside the text instead of wrapping into a column. */
+.bpch-band__inner > .bpch-cta-row {
+	flex: none;
+	flex-wrap: nowrap;
+}
+
+.bpch-band__figure {
+	margin: 0;
+	font-family: var(--wp--preset--font-family--display);
+	font-size: var(--wp--custom--font-size--display);
+	font-weight: 700;
+	letter-spacing: -0.02em;
+	line-height: 1;
+}
+
+.bpch-band--cta {
+	background-image: url("assets/images/bg-rings.svg");
+	background-position: right -180px center;
+	background-repeat: no-repeat;
+	background-size: 600px 600px;
+}
+
+/* On the navy band the outline button keeps a light border and text when hovered. */
+.bpch-band--emergency .is-style-outline .wp-block-button__link:hover {
+	border-color: var(--wp--preset--color--white);
+	background: transparent;
+	color: var(--wp--preset--color--white);
+}
+
+/* --- FAQ --- */
+.bpch-faq {
+	align-items: flex-start;
+}
+
+.bpch-faq__intro {
+	flex: 1 1 0;
+	min-width: 0;
+}
+
+.bpch-faq__intro > * {
+	margin: 0;
+}
+
+.bpch-faq__list {
+	flex: 1.6 1 0;
+	min-width: 0;
+	gap: 0;
+	border-top: 1px solid var(--wp--preset--color--line);
+}
+
+.bpch-faq__item {
+	margin: 0;
+	border-bottom: 1px solid var(--wp--preset--color--line);
+}
+
+.bpch-faq__item summary {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--wp--preset--spacing--4);
+	padding: var(--wp--preset--spacing--5) 0;
+	color: var(--wp--preset--color--ink);
+	font-family: var(--wp--preset--font-family--display);
+	font-size: var(--wp--preset--font-size--large);
+	font-weight: 600;
+	list-style: none;
+	cursor: pointer;
+}
+
+.bpch-faq__item summary::-webkit-details-marker {
+	display: none;
+}
+
+.bpch-faq__item summary:hover {
+	color: var(--wp--preset--color--blue);
+}
+
+.bpch-faq__item summary::after {
+	content: "+";
+	display: flex;
+	flex: none;
+	align-items: center;
+	justify-content: center;
+	width: 32px;
+	height: 32px;
+	border-radius: var(--wp--custom--radius--pill);
+	background: var(--wp--preset--color--blue-soft);
+	color: var(--wp--preset--color--navy);
+	font-size: var(--wp--preset--font-size--large);
+	line-height: 1;
+}
+
+.bpch-faq__item[open] summary::after {
+	content: "\2212";
+}
+
+.bpch-faq__item > :not(summary) {
+	max-width: var(--wp--custom--measure--default);
+	margin: 0;
+	padding-bottom: var(--wp--preset--spacing--5);
+}
+
+/* --- Tablet and phone: columns stack --- */
+@media (max-width: 1024px) {
+	.bpch-hero__inner,
+	.bpch-split,
+	.bpch-testimonial,
+	.bpch-cards,
+	.bpch-faq,
+	.bpch-band__inner {
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+	.bpch-hero__inner,
+	.bpch-split,
+	.bpch-testimonial {
+		gap: var(--wp--preset--spacing--7);
+	}
+
+	.bpch-faq {
+		gap: var(--wp--preset--spacing--5);
+	}
+
+	.bpch-band__inner {
+		gap: var(--wp--preset--spacing--5);
+	}
+
+	/* A flex child that grew by height in a row must not stretch a stacked column. */
+	.bpch-hero__copy,
+	.bpch-hero__media,
+	.bpch-split__copy,
+	.bpch-testimonial__copy,
+	.bpch-faq__intro,
+	.bpch-faq__list,
+	.wp-block-cover.bpch-photo {
+		flex: none;
+	}
+
+	.bpch-service-list {
+		flex-direction: row;
+		flex-wrap: wrap;
+		column-gap: var(--wp--preset--spacing--5);
+	}
+
+	.bpch-service-list li {
+		flex: 0 0 calc((100% - var(--wp--preset--spacing--5)) / 2);
+	}
+
+	.bpch-band--cta {
+		background-position: right -300px center;
+	}
+
+	/* Stacked, the photos are wide instead of tall so they do not fill the whole screen. */
+	.wp-block-cover.bpch-photo--hero,
+	.wp-block-cover.bpch-photo--portrait,
+	.wp-block-cover.bpch-photo--wide {
+		aspect-ratio: 16 / 10;
+	}
+}
+
+@media (max-width: 640px) {
+	.bpch-cta-row {
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+	.bpch-cta-row .wp-block-button,
+	.bpch-cta-row .wp-block-button__link {
+		width: 100%;
+		text-align: center;
+	}
+
+	.bpch-trust li {
+		flex: 1 1 calc((100% - var(--wp--preset--spacing--2)) / 2);
+		padding-inline: var(--wp--preset--spacing--3);
+		font-size: var(--wp--preset--font-size--x-small);
+	}
+
+	.bpch-card {
+		padding: var(--wp--preset--spacing--5);
+	}
+
+	.bpch-service-list {
+		flex-direction: column;
+		flex-wrap: nowrap;
+	}
+
+	.bpch-service-list li {
+		flex: 0 0 auto;
+	}
+
+	.bpch-steps {
+		flex-direction: column;
+		gap: var(--wp--preset--spacing--4);
+	}
+
+	.bpch-quote p {
+		font-size: var(--wp--preset--font-size--x-large);
+	}
+
+	.bpch-faq__item summary {
+		font-size: var(--wp--preset--font-size--medium);
+	}
+}

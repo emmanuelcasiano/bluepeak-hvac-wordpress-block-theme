@@ -26,6 +26,7 @@ final class Plugin {
 		( new Services\PostTypes() )->register();
 		( new Services\Installer() )->register();
 		( new Services\EditScreen() )->register();
+		( new Services\CategoryBindings() )->register();
 	}
 
 	/**

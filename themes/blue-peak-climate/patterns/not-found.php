@@ -20,7 +20,9 @@ $bpch_search_attributes = serialize_block_attributes(
 	)
 );
 
-$bpch_business = bpch_theme_business();
+$bpch_business        = bpch_theme_business();
+$bpch_call_label      = bpch_theme_call_label( $bpch_business['phone'] );
+$bpch_call_attributes = bpch_theme_call_button_attributes( array( 'className' => 'is-style-outline' ) );
 ?>
 <!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|5"}},"layout":{"type":"constrained"}} -->
 <div class="wp-block-group">
@@ -44,8 +46,8 @@ $bpch_business = bpch_theme_business();
 		<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e( 'Back to home', 'blue-peak-climate' ); ?></a></div>
 		<!-- /wp:button -->
 
-		<!-- wp:button {"className":"is-style-outline","metadata":{"bindings":{"url":{"source":"bpch/site-settings","args":{"key":"phone"}},"text":{"source":"bpch/site-settings","args":{"key":"phone"}}}}} -->
-		<div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button" href="<?php echo esc_url( $bpch_business['phone_href'] ); ?>"><?php echo esc_html( $bpch_business['phone'] ); ?></a></div>
+		<!-- wp:button <?php echo $bpch_call_attributes; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Block comment JSON from serialize_block_attributes(). ?> -->
+		<div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button" href="<?php echo esc_url( $bpch_business['phone_href'] ); ?>"><?php echo esc_html( $bpch_call_label ); ?></a></div>
 		<!-- /wp:button -->
 	</div>
 	<!-- /wp:buttons -->

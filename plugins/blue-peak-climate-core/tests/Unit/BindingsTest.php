@@ -69,6 +69,28 @@ final class BindingsTest extends TestCase {
 		);
 	}
 
+	public function test_template_wraps_the_value_so_a_button_can_read_call_and_the_number(): void {
+		$this->assertSame(
+			'Call (214) 555-0100',
+			$this->bindings->get_value( array( 'key' => 'phone', 'template' => 'Call %s' ), null, 'text' )
+		);
+	}
+
+	public function test_template_is_escaped_and_the_value_is_not_escaped_twice(): void {
+		$this->assertSame(
+			'Open &amp; ready: Mon &amp; Tue',
+			$this->bindings->get_value( array( 'key' => 'hours', 'template' => 'Open & ready: %s' ), null, 'content' )
+		);
+	}
+
+	public function test_template_without_a_placeholder_is_ignored(): void {
+		$this->assertSame( '(214) 555-0100', $this->bindings->get_value( array( 'key' => 'phone', 'template' => 'Call us' ), null, 'text' ) );
+	}
+
+	public function test_template_does_not_change_link_targets(): void {
+		$this->assertSame( 'tel:2145550100', $this->bindings->get_value( array( 'key' => 'phone', 'template' => 'Call %s' ), null, 'url' ) );
+	}
+
 	public function test_returns_null_so_the_block_keeps_its_saved_content(): void {
 		$this->assertNull( $this->bindings->get_value( array( 'key' => 'instagram' ), null, 'content' ), 'Empty value.' );
 		$this->assertNull( $this->bindings->get_value( array( 'key' => 'offices' ), null, 'content' ), 'Key not offered to blocks.' );

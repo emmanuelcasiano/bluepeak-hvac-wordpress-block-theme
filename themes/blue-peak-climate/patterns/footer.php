@@ -15,8 +15,10 @@ defined( 'ABSPATH' ) || exit;
 $bpch_business = bpch_theme_business();
 
 // Starting content of the blocks bound to the Site Settings (see bpch_theme_business()).
-$bpch_phone_link = '<a href="' . esc_url( $bpch_business['phone_href'] ) . '">' . esc_html( $bpch_business['phone'] ) . '</a>';
-$bpch_email_link = '<a href="mailto:' . esc_attr( antispambot( $bpch_business['email'] ) ) . '">' . esc_html( antispambot( $bpch_business['email'] ) ) . '</a>';
+$bpch_call_label      = bpch_theme_call_label( $bpch_business['phone'] );
+$bpch_call_attributes = bpch_theme_call_button_attributes();
+$bpch_phone_link      = '<a href="' . esc_url( $bpch_business['phone_href'] ) . '">' . esc_html( $bpch_business['phone'] ) . '</a>';
+$bpch_email_link      = '<a href="mailto:' . esc_attr( antispambot( $bpch_business['email'] ) ) . '">' . esc_html( antispambot( $bpch_business['email'] ) ) . '</a>';
 
 $bpch_copyright = sprintf(
 	/* translators: 1: current year, 2: site name. */
@@ -97,8 +99,8 @@ $bpch_company_nav  = serialize_block_attributes( array_merge( $bpch_nav_defaults
 
 			<!-- wp:buttons {"className":"bpch-footer__call"} -->
 			<div class="wp-block-buttons bpch-footer__call">
-				<!-- wp:button {"metadata":{"bindings":{"url":{"source":"bpch/site-settings","args":{"key":"phone"}},"text":{"source":"bpch/site-settings","args":{"key":"phone"}}}}} -->
-				<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="<?php echo esc_url( $bpch_business['phone_href'] ); ?>"><?php echo esc_html( $bpch_business['phone'] ); ?></a></div>
+				<!-- wp:button <?php echo $bpch_call_attributes; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Block comment JSON from serialize_block_attributes(). ?> -->
+				<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="<?php echo esc_url( $bpch_business['phone_href'] ); ?>"><?php echo esc_html( $bpch_call_label ); ?></a></div>
 				<!-- /wp:button -->
 			</div>
 			<!-- /wp:buttons -->

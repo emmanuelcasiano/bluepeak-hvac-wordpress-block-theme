@@ -78,6 +78,68 @@ function bpch_theme_business() {
 }
 
 /**
+ * Block comment attributes for a button that calls the business: the link is `tel:` and the text is "Call (555)
+ * 123-4567", both read from the Site Settings. The text uses a translated template, so word order can change by language.
+ *
+ * @param array $attributes Other attributes for the button (className, width, ...).
+ * @return string JSON for the block comment, produced by serialize_block_attributes() so it is safely encoded.
+ */
+function bpch_theme_call_button_attributes( array $attributes = array() ) {
+	$attributes['metadata'] = array(
+		'bindings' => array(
+			'url'  => array(
+				'source' => 'bpch/site-settings',
+				'args'   => array( 'key' => 'phone' ),
+			),
+			'text' => array(
+				'source' => 'bpch/site-settings',
+				'args'   => array(
+					'key'      => 'phone',
+					/* translators: %s: phone number. */
+					'template' => __( 'Call %s', 'blue-peak-climate' ),
+				),
+			),
+		),
+	);
+
+	return serialize_block_attributes( $attributes );
+}
+
+/**
+ * The text a call button starts with, before its binding replaces it: "Call (555) 123-4567".
+ *
+ * @param string $phone Phone number as saved in the Site Settings.
+ * @return string
+ */
+function bpch_theme_call_label( $phone ) {
+	/* translators: %s: phone number. */
+	return sprintf( __( 'Call %s', 'blue-peak-climate' ), $phone );
+}
+
+/**
+ * Starting content of a service group card's count and link, before the `bpch/service-category` binding
+ * replaces them with the live values. If the plugin is inactive the design's numbers are used.
+ *
+ * @param string $slug           Category slug: heating, cooling or electrical.
+ * @param int    $fallback_count Count to show when the category can't be read.
+ * @return array{count_label: string, url: string}
+ */
+function bpch_theme_service_group( $slug, $fallback_count ) {
+	$count = (int) $fallback_count;
+	$term  = taxonomy_exists( 'bpch_service_category' ) ? get_term_by( 'slug', $slug, 'bpch_service_category' ) : false;
+
+	if ( $term && ! is_wp_error( $term ) ) {
+		$count = (int) $term->count;
+	}
+
+	return array(
+		/* translators: %d: number of services in a category. */
+		'count_label' => sprintf( _n( '%d service', '%d services', $count, 'blue-peak-climate' ), $count ),
+		'url'         => home_url( '/services/#' . $slug ),
+	);
+}
+
+/**
  * Builds block markup for custom navigation links, so menus live in the theme and not in the database.
  *
  * @param array<int, array{label: string, url: string}> $items Menu items.

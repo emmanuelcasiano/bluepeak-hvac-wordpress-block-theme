@@ -18,6 +18,7 @@ defined( 'ABSPATH' ) || exit;
  *   text - the value itself (default for text attributes such as `content` and `text`)
  *   url  - a link target: tel:/mailto: for phone and email, the URL for social links (default for `url`)
  *   link - a ready-made <a> link, for phone and email inside a paragraph or heading
+ * Optional arg `template` (text format): a translated string with %s for the value, e.g. "Call %s".
  *
  * If the value is empty the block keeps the content saved in the pattern.
  */
@@ -89,11 +90,33 @@ final class Bindings {
 				return $this->link_for( $key, $value );
 
 			case 'text':
-				return in_array( $attribute_name, self::HTML_ATTRIBUTES, true ) ? $this->html_text( $key, $value ) : $value;
+				$is_html = in_array( $attribute_name, self::HTML_ATTRIBUTES, true );
+
+				return self::apply_template( $is_html ? $this->html_text( $key, $value ) : $value, $args, $is_html );
 
 			default:
 				return null;
 		}
+	}
+
+	/**
+	 * Puts the value into an optional `template` arg, so a button can read "Call (555) 123-4567" while the number
+	 * stays editable in one place. The template is a translated string with %s where the value goes. A template
+	 * without %s is ignored.
+	 *
+	 * @param string $text    Value, already escaped when it is going into HTML.
+	 * @param array  $args    Binding args.
+	 * @param bool   $is_html Whether the result is printed as HTML (the template is then escaped too).
+	 * @return string
+	 */
+	public static function apply_template( string $text, array $args, bool $is_html ): string {
+		$template = isset( $args['template'] ) && is_string( $args['template'] ) ? $args['template'] : '';
+
+		if ( false === strpos( $template, '%s' ) ) {
+			return $text;
+		}
+
+		return str_replace( '%s', $text, $is_html ? esc_html( $template ) : $template );
 	}
 
 	/**

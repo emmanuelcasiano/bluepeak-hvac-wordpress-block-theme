@@ -79,7 +79,14 @@ $bpch_overlay_nav_attributes = serialize_block_attributes(
 $bpch_menu_markup = bpch_theme_nav_links_markup( $bpch_menu_items );
 
 // Starting content of the blocks bound to the Site Settings (see bpch_theme_business()).
-$bpch_phone_link = '<a href="' . esc_url( $bpch_business['phone_href'] ) . '">' . esc_html( $bpch_business['phone'] ) . '</a>';
+$bpch_call_label              = bpch_theme_call_label( $bpch_business['phone'] );
+$bpch_overlay_call_attributes = bpch_theme_call_button_attributes(
+	array(
+		'width'     => 100,
+		'className' => 'is-style-outline bpch-nav__call',
+	)
+);
+$bpch_phone_link              = '<a href="' . esc_url( $bpch_business['phone_href'] ) . '">' . esc_html( $bpch_business['phone'] ) . '</a>';
 ?>
 <!-- wp:group {"align":"full","className":"bpch-topbar","backgroundColor":"navy","textColor":"on-navy","fontSize":"x-small","style":{"spacing":{"padding":{"top":"var:preset|spacing|2","bottom":"var:preset|spacing|2"}}},"layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignfull bpch-topbar has-on-navy-color has-navy-background-color has-text-color has-background has-x-small-font-size" style="padding-top:var(--wp--preset--spacing--2);padding-bottom:var(--wp--preset--spacing--2)">
@@ -152,8 +159,8 @@ $bpch_phone_link = '<a href="' . esc_url( $bpch_business['phone_href'] ) . '">' 
 				<div class="wp-block-button has-custom-width wp-block-button__width-100"><a class="wp-block-button__link wp-element-button" href="<?php echo esc_url( $bpch_contact_url ); ?>"><?php esc_html_e( 'Book a service visit', 'blue-peak-climate' ); ?></a></div>
 				<!-- /wp:button -->
 
-				<!-- wp:button {"width":100,"className":"is-style-outline bpch-nav__call","metadata":{"bindings":{"url":{"source":"bpch/site-settings","args":{"key":"phone"}},"text":{"source":"bpch/site-settings","args":{"key":"phone"}}}}} -->
-				<div class="wp-block-button has-custom-width wp-block-button__width-100 is-style-outline bpch-nav__call"><a class="wp-block-button__link wp-element-button" href="<?php echo esc_url( $bpch_business['phone_href'] ); ?>"><?php echo esc_html( $bpch_business['phone'] ); ?></a></div>
+				<!-- wp:button <?php echo $bpch_overlay_call_attributes; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Block comment JSON from serialize_block_attributes(). ?> -->
+				<div class="wp-block-button has-custom-width wp-block-button__width-100 is-style-outline bpch-nav__call"><a class="wp-block-button__link wp-element-button" href="<?php echo esc_url( $bpch_business['phone_href'] ); ?>"><?php echo esc_html( $bpch_call_label ); ?></a></div>
 				<!-- /wp:button -->
 			</div>
 			<!-- /wp:buttons -->
