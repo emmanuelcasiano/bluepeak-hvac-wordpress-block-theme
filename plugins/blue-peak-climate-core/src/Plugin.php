@@ -23,6 +23,9 @@ final class Plugin {
 
 		( new Settings\SettingsPage() )->register();
 		( new Settings\Bindings() )->register();
+		( new Services\PostTypes() )->register();
+		( new Services\Installer() )->register();
+		( new Services\EditScreen() )->register();
 	}
 
 	/**
