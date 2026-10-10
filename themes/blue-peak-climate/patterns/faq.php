@@ -88,8 +88,8 @@ $bpch_questions = array(
 		<!-- wp:group {"className":"bpch-faq__list","layout":{"type":"flex","orientation":"vertical","justifyContent":"stretch"}} -->
 		<div class="wp-block-group bpch-faq__list">
 			<?php foreach ( $bpch_questions as $bpch_index => $bpch_item ) : ?>
-			<!-- wp:details <?php echo 0 === $bpch_index ? '{"showContent":true,"className":"bpch-faq__item"}' : '{"className":"bpch-faq__item"}'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Fixed JSON, no user data. ?> -->
-			<details class="wp-block-details bpch-faq__item"<?php echo 0 === $bpch_index ? ' open' : ''; ?>><summary><?php echo esc_html( $bpch_item[0] ); ?></summary>
+			<!-- wp:details <?php echo 0 === $bpch_index ? '{"name":"bpch-faq","showContent":true,"className":"bpch-faq__item"}' : '{"name":"bpch-faq","className":"bpch-faq__item"}'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Fixed JSON, no user data. ?> -->
+			<details class="wp-block-details bpch-faq__item" name="bpch-faq"<?php echo 0 === $bpch_index ? ' open' : ''; ?>><summary><?php echo esc_html( $bpch_item[0] ); ?></summary>
 				<!-- wp:paragraph -->
 				<p><?php echo esc_html( $bpch_item[1] ); ?></p>
 				<!-- /wp:paragraph --></details>

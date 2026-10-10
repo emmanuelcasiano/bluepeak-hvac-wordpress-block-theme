@@ -937,7 +937,7 @@ body .wp-site-blocks > * {
 }
 
 .bpch-faq__item summary::after {
-	content: "+";
+	content: "+" / "";
 	display: flex;
 	flex: none;
 	align-items: center;
@@ -952,7 +952,7 @@ body .wp-site-blocks > * {
 }
 
 .bpch-faq__item[open] summary::after {
-	content: "\2212";
+	content: "\2212" / "";
 }
 
 .bpch-faq__item > :not(summary) {
