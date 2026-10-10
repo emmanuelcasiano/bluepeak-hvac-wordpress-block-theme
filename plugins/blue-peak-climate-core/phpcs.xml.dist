@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<ruleset name="Blue Peak Climate Core">
+	<description>WordPress Coding Standards for Blue Peak Climate Core.</description>
+
+	<file>.</file>
+	<exclude-pattern>/vendor/*</exclude-pattern>
+	<exclude-pattern>/node_modules/*</exclude-pattern>
+	<exclude-pattern>/build/*</exclude-pattern>
+	<exclude-pattern>/tests/*</exclude-pattern>
+
+	<arg name="extensions" value="php"/>
+	<arg name="colors"/>
+	<arg value="sp"/>
+
+	<!-- Keep code runnable on PHP 7.4 (WordPress minimum) and WP 6.8+. -->
+	<config name="testVersion" value="7.4-"/>
+	<config name="minimum_wp_version" value="6.8"/>
+
+	<rule ref="WordPress"/>
+	<rule ref="PHPCompatibilityWP"/>
+
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain" type="array">
+				<element value="blue-peak-climate-core"/>
+			</property>
+		</properties>
+	</rule>
+
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+		<properties>
+			<property name="prefixes" type="array">
+				<element value="bpc"/>
+				<element value="BluePeakClimate\Core"/>
+			</property>
+		</properties>
+	</rule>
+
+	<!-- src/ uses PSR-4 file names (Plugin.php), not class-plugin.php. -->
+	<rule ref="WordPress.Files.FileName">
+		<exclude-pattern>/src/*</exclude-pattern>
+	</rule>
+</ruleset>

@@ -1,0 +1,33 @@
+# Track only OUR theme and plugin. Ignore everything else in wp-content by default.
+/*
+
+# This file, so a fresh clone has the same rules
+!/.gitignore
+
+# Our custom theme
+!/themes/
+/themes/*
+!/themes/blue-peak-climate/
+
+# Our custom plugin
+!/plugins/
+/plugins/*
+!/plugins/blue-peak-climate-core/
+
+# Not tracked on purpose (stay on this machine): CLAUDE.md, ai/, .claude/, .vscode/,
+# mu-plugins/, prototypes/. To track the mu-plugin later, add: !/mu-plugins/
+
+# Build/dependency output inside our code
+node_modules/
+vendor/
+
+# Never commit logs, local env files or database dumps
+*.log
+.env
+.env.*
+*.sql
+*.sql.gz
+
+# OS/editor noise
+.DS_Store
+Thumbs.db

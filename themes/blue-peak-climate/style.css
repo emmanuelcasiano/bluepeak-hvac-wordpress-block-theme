@@ -1,0 +1,18 @@
+/*
+Theme Name: Blue Peak Climate Theme
+Description: Block theme for Blue Peak Climate. Design tokens live in theme.json; this file holds only CSS theme.json can't express.
+Version: 0.1.0
+Requires at least: 6.8
+Tested up to: 7.1
+Requires PHP: 7.4
+Author: Your Name
+License: GPL-2.0-or-later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: blue-peak-climate
+*/
+
+/* Visible keyboard focus everywhere (WCAG 2.2 AA, 2.4.7 / 2.4.11). */
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+	outline: 2px solid currentColor;
+	outline-offset: 2px;
+}

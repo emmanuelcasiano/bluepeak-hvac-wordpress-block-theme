@@ -1,0 +1,34 @@
+{
+	"name": "blue-peak-climate-core",
+	"version": "0.1.0",
+	"private": true,
+	"description": "Blocks for the Blue Peak Climate Core plugin.",
+	"license": "GPL-2.0-or-later",
+	"files": [
+		"build",
+		"languages",
+		"src",
+		"blue-peak-climate-core.php",
+		"uninstall.php",
+		"readme.txt"
+	],
+	"scripts": {
+		"build": "wp-scripts build --source-path=blocks --webpack-copy-php --blocks-manifest",
+		"start": "wp-scripts start --source-path=blocks --webpack-copy-php --blocks-manifest",
+		"lint:js": "wp-scripts lint-js blocks",
+		"lint:css": "wp-scripts lint-style \"blocks/**/*.{css,scss}\"",
+		"format": "wp-scripts format blocks",
+		"test:unit": "wp-scripts test-unit-js --passWithNoTests",
+		"plugin-zip": "wp-scripts plugin-zip"
+	},
+	"dependencies": {
+		"@wordpress/block-editor": "^18.1.0",
+		"@wordpress/blocks": "^16.2.0",
+		"@wordpress/i18n": "^6.30.0"
+	},
+	"devDependencies": {
+		"@wordpress/scripts": "^36.1.0",
+		"vite": "^8.3.3",
+		"vitest": "^5.0.3"
+	}
+}
