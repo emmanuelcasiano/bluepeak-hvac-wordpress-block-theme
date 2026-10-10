@@ -68,6 +68,11 @@ final class CategoryBindingsTest extends TestCase {
 		$this->assertSame( '10', $this->bindings->get_value( array( 'slug' => 'heating', 'key' => 'count' ), null, 'content' ) );
 	}
 
+	public function test_name_count_joins_the_name_and_the_live_count_for_a_chip(): void {
+		$this->assertSame( 'Heating &amp; Air · 10', $this->bindings->get_value( array( 'slug' => 'heating', 'key' => 'name_count' ), null, 'text' ) );
+		$this->assertSame( 'Heating & Air · 10', $this->bindings->get_value( array( 'slug' => 'heating', 'key' => 'name_count' ), null, 'alt' ) );
+	}
+
 	public function test_url_points_at_the_category_section_of_the_services_page(): void {
 		$this->assertSame( 'http://example.test/services/#heating', $this->bindings->get_value( array( 'slug' => 'heating', 'key' => 'url' ), null, 'url' ) );
 	}

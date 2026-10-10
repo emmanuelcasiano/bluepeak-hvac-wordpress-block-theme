@@ -14,9 +14,7 @@ defined( 'ABSPATH' ) || exit;
 <div class="wp-block-group alignfull bpch-band bpch-band--testimonial has-white-color has-navy-background-color has-text-color has-background" style="padding-top:var(--wp--preset--spacing--9);padding-bottom:var(--wp--preset--spacing--9)">
 	<!-- wp:group {"className":"bpch-testimonial","style":{"spacing":{"blockGap":"var:preset|spacing|8"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->
 	<div class="wp-block-group bpch-testimonial">
-		<!-- wp:cover {"overlayColor":"navy-line","dimRatio":100,"className":"bpch-photo bpch-photo--wide"} -->
-		<div class="wp-block-cover bpch-photo bpch-photo--wide"><span aria-hidden="true" class="wp-block-cover__background has-navy-line-background-color has-background-dim-100 has-background-dim"></span><div class="wp-block-cover__inner-container"></div></div>
-		<!-- /wp:cover -->
+		<?php echo bpch_theme_photo_cover( 'tech-wide', 'wide', 'navy-line' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Block markup escaped by the helper. ?>
 
 		<!-- wp:group {"className":"bpch-testimonial__copy","style":{"spacing":{"blockGap":"var:preset|spacing|5"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"stretch"}} -->
 		<div class="wp-block-group bpch-testimonial__copy">

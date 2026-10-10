@@ -50,9 +50,7 @@ $bpch_call_attributes = bpch_theme_call_button_attributes( array( 'className' =>
 
 		<!-- wp:group {"className":"bpch-hero__media","style":{"spacing":{"blockGap":"var:preset|spacing|4"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"stretch"}} -->
 		<div class="wp-block-group bpch-hero__media">
-			<!-- wp:cover {"overlayColor":"blue-soft","dimRatio":100,"className":"bpch-photo bpch-photo--hero"} -->
-			<div class="wp-block-cover bpch-photo bpch-photo--hero"><span aria-hidden="true" class="wp-block-cover__background has-blue-soft-background-color has-background-dim-100 has-background-dim"></span><div class="wp-block-cover__inner-container"></div></div>
-			<!-- /wp:cover -->
+			<?php echo bpch_theme_photo_cover( 'hero-house', 'hero' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Block markup escaped by the helper. ?>
 
 			<!-- wp:group {"className":"bpch-hero__note","backgroundColor":"white","layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->
 			<div class="wp-block-group bpch-hero__note has-white-background-color has-background">
