@@ -12,7 +12,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$search_attributes = serialize_block_attributes(
+$bpch_search_attributes = serialize_block_attributes(
 	array(
 		'label'      => __( 'Search', 'blue-peak-climate' ),
 		'showLabel'  => false,
@@ -24,4 +24,4 @@ $search_attributes = serialize_block_attributes(
 <p><?php esc_html_e( 'Nothing was found here yet. Try a search or head back to the home page.', 'blue-peak-climate' ); ?></p>
 <!-- /wp:paragraph -->
 
-<!-- wp:search <?php echo $search_attributes; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Block comment JSON from serialize_block_attributes(). ?> /-->
+<!-- wp:search <?php echo $bpch_search_attributes; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Block comment JSON from serialize_block_attributes(). ?> /-->

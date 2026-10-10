@@ -16,10 +16,10 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'BPC_CORE_VERSION', '0.1.0' );
-define( 'BPC_CORE_FILE', __FILE__ );
-define( 'BPC_CORE_DIR', plugin_dir_path( __FILE__ ) );
-define( 'BPC_CORE_URL', plugin_dir_url( __FILE__ ) );
+define( 'BPCH_CORE_VERSION', '0.1.0' );
+define( 'BPCH_CORE_FILE', __FILE__ );
+define( 'BPCH_CORE_DIR', plugin_dir_path( __FILE__ ) );
+define( 'BPCH_CORE_URL', plugin_dir_url( __FILE__ ) );
 
 // PSR-4 autoloader for src/. Composer is only used for dev tools, so the live site never needs vendor/.
 spl_autoload_register(
@@ -28,7 +28,7 @@ spl_autoload_register(
 		if ( 0 !== strpos( $class_name, $prefix ) ) {
 			return;
 		}
-		$file = BPC_CORE_DIR . 'src/' . str_replace( '\\', '/', substr( $class_name, strlen( $prefix ) ) ) . '.php';
+		$file = BPCH_CORE_DIR . 'src/' . str_replace( '\\', '/', substr( $class_name, strlen( $prefix ) ) ) . '.php';
 		if ( is_readable( $file ) ) {
 			require $file;
 		}

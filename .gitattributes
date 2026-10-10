@@ -1,0 +1,7 @@
+# One line-ending style for everyone: LF (WordPress Coding Standards require it).
+* text=auto eol=lf
+
+# Binary files: never touch.
+*.png binary
+*.jpg binary
+*.woff2 binary

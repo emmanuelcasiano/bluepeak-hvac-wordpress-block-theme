@@ -11,12 +11,12 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$bpc_message = $attributes['message'] ?? '';
+$bpch_message = $attributes['message'] ?? '';
 
-if ( '' === $bpc_message ) {
+if ( '' === $bpch_message ) {
 	return;
 }
 ?>
 <p <?php echo get_block_wrapper_attributes(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped by core. ?>>
-	<?php echo wp_kses_post( $bpc_message ); ?>
+	<?php echo wp_kses_post( $bpch_message ); ?>
 </p>

@@ -12,9 +12,9 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$business = bpc_theme_placeholder_business();
+$bpch_business = bpch_theme_placeholder_business();
 
-$menu_items = array(
+$bpch_menu_items = array(
 	array(
 		'label' => __( 'Home', 'blue-peak-climate' ),
 		'url'   => home_url( '/' ),
@@ -37,11 +37,11 @@ $menu_items = array(
 	),
 );
 
-$contact_url = home_url( '/contact/' );
+$bpch_contact_url = home_url( '/contact/' );
 
 // Two menus built from the same links, so keyboard order matches the screen at every width: an inline menu
 // (wider than 1024px) and a menu button with an overlay (1024px and narrower). style.css shows one of them.
-$nav_base = array(
+$bpch_nav_base = array(
 	'ariaLabel' => __( 'Main', 'blue-peak-climate' ),
 	'textColor' => 'ink',
 	'fontSize'  => 'small',
@@ -53,108 +53,108 @@ $nav_base = array(
 	),
 );
 
-$inline_nav_attributes = serialize_block_attributes(
+$bpch_inline_nav_attributes = serialize_block_attributes(
 	array_merge(
-		$nav_base,
+		$bpch_nav_base,
 		array(
 			'overlayMenu' => 'never',
-			'className'   => 'bpc-nav bpc-nav--inline',
+			'className'   => 'bpch-nav bpch-nav--inline',
 		)
 	)
 );
 
-$overlay_nav_attributes = serialize_block_attributes(
+$bpch_overlay_nav_attributes = serialize_block_attributes(
 	array_merge(
-		$nav_base,
+		$bpch_nav_base,
 		array(
 			'overlayMenu'            => 'always',
 			'icon'                   => 'menu',
 			'overlayBackgroundColor' => 'white',
 			'overlayTextColor'       => 'ink',
-			'className'              => 'bpc-nav bpc-nav--overlay',
+			'className'              => 'bpch-nav bpch-nav--overlay',
 		)
 	)
 );
 
-$menu_markup = bpc_theme_nav_links_markup( $menu_items );
+$bpch_menu_markup = bpch_theme_nav_links_markup( $bpch_menu_items );
 
-$call_label = sprintf(
+$bpch_call_label = sprintf(
 	/* translators: %s: phone number. */
 	__( 'Call %s', 'blue-peak-climate' ),
-	$business['phone']
+	$bpch_business['phone']
 );
 
-$emergency_line = sprintf(
+$bpch_emergency_line = sprintf(
 	/* translators: %s: emergency phone number as a link. */
 	esc_html__( '24/7 emergency line: %s', 'blue-peak-climate' ),
-	'<a class="bpc-topbar__link" href="' . esc_url( $business['phone_href'] ) . '">' . esc_html( $business['phone'] ) . '</a>'
+	'<a class="bpch-topbar__link" href="' . esc_url( $bpch_business['phone_href'] ) . '">' . esc_html( $bpch_business['phone'] ) . '</a>'
 );
 ?>
-<!-- wp:group {"align":"full","className":"bpc-topbar","backgroundColor":"navy","textColor":"on-navy","fontSize":"x-small","style":{"spacing":{"padding":{"top":"var:preset|spacing|2","bottom":"var:preset|spacing|2"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull bpc-topbar has-on-navy-color has-navy-background-color has-text-color has-background has-x-small-font-size" style="padding-top:var(--wp--preset--spacing--2);padding-bottom:var(--wp--preset--spacing--2)">
-	<!-- wp:group {"className":"bpc-topbar__row","layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between"}} -->
-	<div class="wp-block-group bpc-topbar__row">
-		<!-- wp:paragraph {"className":"bpc-topbar__note"} -->
-		<p class="bpc-topbar__note"><?php esc_html_e( 'Heating, cooling and electrical service for homes across Texas', 'blue-peak-climate' ); ?></p>
+<!-- wp:group {"align":"full","className":"bpch-topbar","backgroundColor":"navy","textColor":"on-navy","fontSize":"x-small","style":{"spacing":{"padding":{"top":"var:preset|spacing|2","bottom":"var:preset|spacing|2"}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignfull bpch-topbar has-on-navy-color has-navy-background-color has-text-color has-background has-x-small-font-size" style="padding-top:var(--wp--preset--spacing--2);padding-bottom:var(--wp--preset--spacing--2)">
+	<!-- wp:group {"className":"bpch-topbar__row","layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between"}} -->
+	<div class="wp-block-group bpch-topbar__row">
+		<!-- wp:paragraph {"className":"bpch-topbar__note"} -->
+		<p class="bpch-topbar__note"><?php esc_html_e( 'Heating, cooling and electrical service for homes across Texas', 'blue-peak-climate' ); ?></p>
 		<!-- /wp:paragraph -->
 
 		<!-- wp:paragraph -->
-		<p><?php echo wp_kses_post( $emergency_line ); ?></p>
+		<p><?php echo wp_kses_post( $bpch_emergency_line ); ?></p>
 		<!-- /wp:paragraph -->
 	</div>
 	<!-- /wp:group -->
 </div>
 <!-- /wp:group -->
 
-<!-- wp:group {"align":"full","className":"bpc-header","layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull bpc-header">
-	<!-- wp:group {"className":"bpc-header__row","style":{"spacing":{"blockGap":"var:preset|spacing|5"}},"layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between","verticalAlignment":"center"}} -->
-	<div class="wp-block-group bpc-header__row">
-		<!-- wp:image {"sizeSlug":"full","linkDestination":"custom","className":"bpc-logo"} -->
-		<figure class="wp-block-image size-full bpc-logo"><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/logo.png' ) ); ?>" alt="<?php esc_attr_e( 'Blue Peak Climate home', 'blue-peak-climate' ); ?>"/></a></figure>
+<!-- wp:group {"align":"full","className":"bpch-header","layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignfull bpch-header">
+	<!-- wp:group {"className":"bpch-header__row","style":{"spacing":{"blockGap":"var:preset|spacing|5"}},"layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between","verticalAlignment":"center"}} -->
+	<div class="wp-block-group bpch-header__row">
+		<!-- wp:image {"sizeSlug":"full","linkDestination":"custom","className":"bpch-logo"} -->
+		<figure class="wp-block-image size-full bpch-logo"><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/logo.png' ) ); ?>" alt="<?php esc_attr_e( 'Blue Peak Climate home', 'blue-peak-climate' ); ?>"/></a></figure>
 		<!-- /wp:image -->
 
-		<!-- wp:navigation <?php echo $inline_nav_attributes; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Block comment JSON from serialize_block_attributes(). ?> -->
-		<?php echo $menu_markup; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Block markup built by get_comment_delimited_block_content(). ?>
+		<!-- wp:navigation <?php echo $bpch_inline_nav_attributes; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Block comment JSON from serialize_block_attributes(). ?> -->
+		<?php echo $bpch_menu_markup; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Block markup built by get_comment_delimited_block_content(). ?>
 		<!-- /wp:navigation -->
 
-		<!-- wp:group {"className":"bpc-header__actions","style":{"spacing":{"blockGap":"var:preset|spacing|5"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->
-		<div class="wp-block-group bpc-header__actions">
-			<!-- wp:group {"className":"bpc-header__phone","style":{"spacing":{"blockGap":"0"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-			<div class="wp-block-group bpc-header__phone">
-				<!-- wp:paragraph {"className":"bpc-header__phone-label","fontSize":"x-small"} -->
-				<p class="bpc-header__phone-label has-x-small-font-size"><?php esc_html_e( 'Call any hour', 'blue-peak-climate' ); ?></p>
+		<!-- wp:group {"className":"bpch-header__actions","style":{"spacing":{"blockGap":"var:preset|spacing|5"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->
+		<div class="wp-block-group bpch-header__actions">
+			<!-- wp:group {"className":"bpch-header__phone","style":{"spacing":{"blockGap":"0"}},"layout":{"type":"flex","orientation":"vertical"}} -->
+			<div class="wp-block-group bpch-header__phone">
+				<!-- wp:paragraph {"className":"bpch-header__phone-label","fontSize":"x-small"} -->
+				<p class="bpch-header__phone-label has-x-small-font-size"><?php esc_html_e( 'Call any hour', 'blue-peak-climate' ); ?></p>
 				<!-- /wp:paragraph -->
 
-				<!-- wp:paragraph {"className":"bpc-header__phone-number"} -->
-				<p class="bpc-header__phone-number"><a href="<?php echo esc_url( $business['phone_href'] ); ?>"><?php echo esc_html( $business['phone'] ); ?></a></p>
+				<!-- wp:paragraph {"className":"bpch-header__phone-number"} -->
+				<p class="bpch-header__phone-number"><a href="<?php echo esc_url( $bpch_business['phone_href'] ); ?>"><?php echo esc_html( $bpch_business['phone'] ); ?></a></p>
 				<!-- /wp:paragraph -->
 			</div>
 			<!-- /wp:group -->
 
-			<!-- wp:buttons {"className":"bpc-header__buttons"} -->
-			<div class="wp-block-buttons bpc-header__buttons">
-				<!-- wp:button {"className":"bpc-header__book"} -->
-				<div class="wp-block-button bpc-header__book"><a class="wp-block-button__link wp-element-button" href="<?php echo esc_url( $contact_url ); ?>"><?php esc_html_e( 'Book service', 'blue-peak-climate' ); ?></a></div>
+			<!-- wp:buttons {"className":"bpch-header__buttons"} -->
+			<div class="wp-block-buttons bpch-header__buttons">
+				<!-- wp:button {"className":"bpch-header__book"} -->
+				<div class="wp-block-button bpch-header__book"><a class="wp-block-button__link wp-element-button" href="<?php echo esc_url( $bpch_contact_url ); ?>"><?php esc_html_e( 'Book service', 'blue-peak-climate' ); ?></a></div>
 				<!-- /wp:button -->
 
-				<!-- wp:button {"className":"bpc-header__call"} -->
-				<div class="wp-block-button bpc-header__call"><a class="wp-block-button__link wp-element-button" href="<?php echo esc_url( $business['phone_href'] ); ?>"><?php esc_html_e( 'Call now', 'blue-peak-climate' ); ?></a></div>
+				<!-- wp:button {"className":"bpch-header__call"} -->
+				<div class="wp-block-button bpch-header__call"><a class="wp-block-button__link wp-element-button" href="<?php echo esc_url( $bpch_business['phone_href'] ); ?>"><?php esc_html_e( 'Call now', 'blue-peak-climate' ); ?></a></div>
 				<!-- /wp:button -->
 			</div>
 			<!-- /wp:buttons -->
 
-			<!-- wp:navigation <?php echo $overlay_nav_attributes; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Block comment JSON from serialize_block_attributes(). ?> -->
-			<?php echo $menu_markup; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Block markup built by get_comment_delimited_block_content(). ?>
+			<!-- wp:navigation <?php echo $bpch_overlay_nav_attributes; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Block comment JSON from serialize_block_attributes(). ?> -->
+			<?php echo $bpch_menu_markup; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Block markup built by get_comment_delimited_block_content(). ?>
 
-			<!-- wp:buttons {"className":"bpc-nav__extra","layout":{"type":"flex","orientation":"vertical","justifyContent":"stretch"}} -->
-			<div class="wp-block-buttons bpc-nav__extra">
+			<!-- wp:buttons {"className":"bpch-nav__extra","layout":{"type":"flex","orientation":"vertical","justifyContent":"stretch"}} -->
+			<div class="wp-block-buttons bpch-nav__extra">
 				<!-- wp:button {"width":100} -->
-				<div class="wp-block-button has-custom-width wp-block-button__width-100"><a class="wp-block-button__link wp-element-button" href="<?php echo esc_url( $contact_url ); ?>"><?php esc_html_e( 'Book a service visit', 'blue-peak-climate' ); ?></a></div>
+				<div class="wp-block-button has-custom-width wp-block-button__width-100"><a class="wp-block-button__link wp-element-button" href="<?php echo esc_url( $bpch_contact_url ); ?>"><?php esc_html_e( 'Book a service visit', 'blue-peak-climate' ); ?></a></div>
 				<!-- /wp:button -->
 
-				<!-- wp:button {"width":100,"className":"is-style-outline bpc-nav__call"} -->
-				<div class="wp-block-button has-custom-width wp-block-button__width-100 is-style-outline bpc-nav__call"><a class="wp-block-button__link wp-element-button" href="<?php echo esc_url( $business['phone_href'] ); ?>"><?php echo esc_html( $call_label ); ?></a></div>
+				<!-- wp:button {"width":100,"className":"is-style-outline bpch-nav__call"} -->
+				<div class="wp-block-button has-custom-width wp-block-button__width-100 is-style-outline bpch-nav__call"><a class="wp-block-button__link wp-element-button" href="<?php echo esc_url( $bpch_business['phone_href'] ); ?>"><?php echo esc_html( $bpch_call_label ); ?></a></div>
 				<!-- /wp:button -->
 			</div>
 			<!-- /wp:buttons -->

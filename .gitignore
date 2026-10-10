@@ -1,8 +1,9 @@
 # Track only OUR theme and plugin. Ignore everything else in wp-content by default.
 /*
 
-# This file, so a fresh clone has the same rules
+# These files, so a fresh clone has the same rules
 !/.gitignore
+!/.gitattributes
 
 # Our custom theme
 !/themes/
@@ -20,6 +21,7 @@
 # Build/dependency output inside our code
 node_modules/
 vendor/
+.phpunit.result.cache
 
 # Never commit logs, local env files or database dumps
 *.log

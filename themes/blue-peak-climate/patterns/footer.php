@@ -12,22 +12,22 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$business = bpc_theme_placeholder_business();
+$bpch_business = bpch_theme_placeholder_business();
 
-$call_label = sprintf(
+$bpch_call_label = sprintf(
 	/* translators: %s: phone number. */
 	__( 'Call %s', 'blue-peak-climate' ),
-	$business['phone']
+	$bpch_business['phone']
 );
 
-$copyright = sprintf(
+$bpch_copyright = sprintf(
 	/* translators: 1: current year, 2: site name. */
 	__( '© %1$s %2$s. All rights reserved.', 'blue-peak-climate' ),
 	gmdate( 'Y' ),
 	get_bloginfo( 'name' )
 );
 
-$services_items = array(
+$bpch_services_items = array(
 	array(
 		'label' => __( 'Heating', 'blue-peak-climate' ),
 		'url'   => home_url( '/services/#heating' ),
@@ -46,7 +46,7 @@ $services_items = array(
 	),
 );
 
-$company_items = array(
+$bpch_company_items = array(
 	array(
 		'label' => __( 'Home', 'blue-peak-climate' ),
 		'url'   => home_url( '/' ),
@@ -65,10 +65,10 @@ $company_items = array(
 	),
 );
 
-$nav_defaults = array(
+$bpch_nav_defaults = array(
 	'overlayMenu' => 'never',
 	'textColor'   => 'on-navy',
-	'className'   => 'bpc-footer__nav',
+	'className'   => 'bpch-footer__nav',
 	'style'       => array( 'spacing' => array( 'blockGap' => 'var:preset|spacing|2' ) ),
 	'layout'      => array(
 		'type'        => 'flex',
@@ -76,91 +76,91 @@ $nav_defaults = array(
 	),
 );
 
-$services_nav = serialize_block_attributes( array_merge( $nav_defaults, array( 'ariaLabel' => __( 'Footer services', 'blue-peak-climate' ) ) ) );
-$company_nav  = serialize_block_attributes( array_merge( $nav_defaults, array( 'ariaLabel' => __( 'Footer company', 'blue-peak-climate' ) ) ) );
+$bpch_services_nav = serialize_block_attributes( array_merge( $bpch_nav_defaults, array( 'ariaLabel' => __( 'Footer services', 'blue-peak-climate' ) ) ) );
+$bpch_company_nav  = serialize_block_attributes( array_merge( $bpch_nav_defaults, array( 'ariaLabel' => __( 'Footer company', 'blue-peak-climate' ) ) ) );
 ?>
-<!-- wp:group {"align":"full","className":"bpc-footer","backgroundColor":"navy-deep","textColor":"on-navy","fontSize":"small","style":{"spacing":{"padding":{"top":"var:preset|spacing|8","bottom":"var:preset|spacing|6"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull bpc-footer has-on-navy-color has-navy-deep-background-color has-text-color has-background has-small-font-size" style="padding-top:var(--wp--preset--spacing--8);padding-bottom:var(--wp--preset--spacing--6)">
-	<!-- wp:group {"className":"bpc-footer__top","style":{"spacing":{"blockGap":"var:preset|spacing|7"}},"layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between","verticalAlignment":"top"}} -->
-	<div class="wp-block-group bpc-footer__top">
-		<!-- wp:group {"className":"bpc-footer__brand","style":{"spacing":{"blockGap":"var:preset|spacing|4"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"left"}} -->
-		<div class="wp-block-group bpc-footer__brand">
-			<!-- wp:group {"className":"bpc-footer__plate","backgroundColor":"white","style":{"spacing":{"padding":{"top":"var:preset|spacing|3","bottom":"var:preset|spacing|3","left":"var:preset|spacing|4","right":"var:preset|spacing|4"}}},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
-			<div class="wp-block-group bpc-footer__plate has-white-background-color has-background" style="padding-top:var(--wp--preset--spacing--3);padding-right:var(--wp--preset--spacing--4);padding-bottom:var(--wp--preset--spacing--3);padding-left:var(--wp--preset--spacing--4)">
-				<!-- wp:image {"sizeSlug":"full","linkDestination":"custom","className":"bpc-logo bpc-logo--footer"} -->
-				<figure class="wp-block-image size-full bpc-logo bpc-logo--footer"><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/logo.png' ) ); ?>" alt="<?php esc_attr_e( 'Blue Peak Climate home', 'blue-peak-climate' ); ?>"/></a></figure>
+<!-- wp:group {"align":"full","className":"bpch-footer","backgroundColor":"navy-deep","textColor":"on-navy","fontSize":"small","style":{"spacing":{"padding":{"top":"var:preset|spacing|8","bottom":"var:preset|spacing|6"}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignfull bpch-footer has-on-navy-color has-navy-deep-background-color has-text-color has-background has-small-font-size" style="padding-top:var(--wp--preset--spacing--8);padding-bottom:var(--wp--preset--spacing--6)">
+	<!-- wp:group {"className":"bpch-footer__top","style":{"spacing":{"blockGap":"var:preset|spacing|7"}},"layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between","verticalAlignment":"top"}} -->
+	<div class="wp-block-group bpch-footer__top">
+		<!-- wp:group {"className":"bpch-footer__brand","style":{"spacing":{"blockGap":"var:preset|spacing|4"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"left"}} -->
+		<div class="wp-block-group bpch-footer__brand">
+			<!-- wp:group {"className":"bpch-footer__plate","backgroundColor":"white","style":{"spacing":{"padding":{"top":"var:preset|spacing|3","bottom":"var:preset|spacing|3","left":"var:preset|spacing|4","right":"var:preset|spacing|4"}}},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
+			<div class="wp-block-group bpch-footer__plate has-white-background-color has-background" style="padding-top:var(--wp--preset--spacing--3);padding-right:var(--wp--preset--spacing--4);padding-bottom:var(--wp--preset--spacing--3);padding-left:var(--wp--preset--spacing--4)">
+				<!-- wp:image {"sizeSlug":"full","linkDestination":"custom","className":"bpch-logo bpch-logo--footer"} -->
+				<figure class="wp-block-image size-full bpch-logo bpch-logo--footer"><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/logo.png' ) ); ?>" alt="<?php esc_attr_e( 'Blue Peak Climate home', 'blue-peak-climate' ); ?>"/></a></figure>
 				<!-- /wp:image -->
 			</div>
 			<!-- /wp:group -->
 
-			<!-- wp:paragraph {"className":"bpc-footer__text"} -->
-			<p class="bpc-footer__text"><?php esc_html_e( 'Heating, cooling and electrical service for homeowners across Texas. Emergency repairs 24 hours a day, every day of the year.', 'blue-peak-climate' ); ?></p>
+			<!-- wp:paragraph {"className":"bpch-footer__text"} -->
+			<p class="bpch-footer__text"><?php esc_html_e( 'Heating, cooling and electrical service for homeowners across Texas. Emergency repairs 24 hours a day, every day of the year.', 'blue-peak-climate' ); ?></p>
 			<!-- /wp:paragraph -->
 
-			<!-- wp:buttons {"className":"bpc-footer__call"} -->
-			<div class="wp-block-buttons bpc-footer__call">
+			<!-- wp:buttons {"className":"bpch-footer__call"} -->
+			<div class="wp-block-buttons bpch-footer__call">
 				<!-- wp:button -->
-				<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="<?php echo esc_url( $business['phone_href'] ); ?>"><?php echo esc_html( $call_label ); ?></a></div>
+				<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="<?php echo esc_url( $bpch_business['phone_href'] ); ?>"><?php echo esc_html( $bpch_call_label ); ?></a></div>
 				<!-- /wp:button -->
 			</div>
 			<!-- /wp:buttons -->
 		</div>
 		<!-- /wp:group -->
 
-		<!-- wp:group {"className":"bpc-footer__col","style":{"spacing":{"blockGap":"var:preset|spacing|3"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"left"}} -->
-		<div class="wp-block-group bpc-footer__col">
-			<!-- wp:heading {"level":2,"className":"bpc-footer__heading","textColor":"white","fontSize":"x-small"} -->
-			<h2 class="wp-block-heading bpc-footer__heading has-white-color has-text-color has-x-small-font-size"><?php esc_html_e( 'Services', 'blue-peak-climate' ); ?></h2>
+		<!-- wp:group {"className":"bpch-footer__col","style":{"spacing":{"blockGap":"var:preset|spacing|3"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"left"}} -->
+		<div class="wp-block-group bpch-footer__col">
+			<!-- wp:heading {"level":2,"className":"bpch-footer__heading","textColor":"white","fontSize":"x-small"} -->
+			<h2 class="wp-block-heading bpch-footer__heading has-white-color has-text-color has-x-small-font-size"><?php esc_html_e( 'Services', 'blue-peak-climate' ); ?></h2>
 			<!-- /wp:heading -->
 
-			<!-- wp:navigation <?php echo $services_nav; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Block comment JSON from serialize_block_attributes(). ?> -->
-			<?php echo bpc_theme_nav_links_markup( $services_items ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Block markup built by get_comment_delimited_block_content(). ?>
+			<!-- wp:navigation <?php echo $bpch_services_nav; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Block comment JSON from serialize_block_attributes(). ?> -->
+			<?php echo bpch_theme_nav_links_markup( $bpch_services_items ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Block markup built by get_comment_delimited_block_content(). ?>
 			<!-- /wp:navigation -->
 		</div>
 		<!-- /wp:group -->
 
-		<!-- wp:group {"className":"bpc-footer__col","style":{"spacing":{"blockGap":"var:preset|spacing|3"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"left"}} -->
-		<div class="wp-block-group bpc-footer__col">
-			<!-- wp:heading {"level":2,"className":"bpc-footer__heading","textColor":"white","fontSize":"x-small"} -->
-			<h2 class="wp-block-heading bpc-footer__heading has-white-color has-text-color has-x-small-font-size"><?php esc_html_e( 'Company', 'blue-peak-climate' ); ?></h2>
+		<!-- wp:group {"className":"bpch-footer__col","style":{"spacing":{"blockGap":"var:preset|spacing|3"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"left"}} -->
+		<div class="wp-block-group bpch-footer__col">
+			<!-- wp:heading {"level":2,"className":"bpch-footer__heading","textColor":"white","fontSize":"x-small"} -->
+			<h2 class="wp-block-heading bpch-footer__heading has-white-color has-text-color has-x-small-font-size"><?php esc_html_e( 'Company', 'blue-peak-climate' ); ?></h2>
 			<!-- /wp:heading -->
 
-			<!-- wp:navigation <?php echo $company_nav; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Block comment JSON from serialize_block_attributes(). ?> -->
-			<?php echo bpc_theme_nav_links_markup( $company_items ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Block markup built by get_comment_delimited_block_content(). ?>
+			<!-- wp:navigation <?php echo $bpch_company_nav; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Block comment JSON from serialize_block_attributes(). ?> -->
+			<?php echo bpch_theme_nav_links_markup( $bpch_company_items ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Block markup built by get_comment_delimited_block_content(). ?>
 			<!-- /wp:navigation -->
 		</div>
 		<!-- /wp:group -->
 
-		<!-- wp:group {"className":"bpc-footer__col bpc-footer__col--contact","style":{"spacing":{"blockGap":"var:preset|spacing|3"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"left"}} -->
-		<div class="wp-block-group bpc-footer__col bpc-footer__col--contact">
-			<!-- wp:heading {"level":2,"className":"bpc-footer__heading","textColor":"white","fontSize":"x-small"} -->
-			<h2 class="wp-block-heading bpc-footer__heading has-white-color has-text-color has-x-small-font-size"><?php esc_html_e( 'Reach us', 'blue-peak-climate' ); ?></h2>
+		<!-- wp:group {"className":"bpch-footer__col bpch-footer__col--contact","style":{"spacing":{"blockGap":"var:preset|spacing|3"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"left"}} -->
+		<div class="wp-block-group bpch-footer__col bpch-footer__col--contact">
+			<!-- wp:heading {"level":2,"className":"bpch-footer__heading","textColor":"white","fontSize":"x-small"} -->
+			<h2 class="wp-block-heading bpch-footer__heading has-white-color has-text-color has-x-small-font-size"><?php esc_html_e( 'Reach us', 'blue-peak-climate' ); ?></h2>
 			<!-- /wp:heading -->
 
-			<!-- wp:paragraph {"className":"bpc-footer__item bpc-icon bpc-icon--phone"} -->
-			<p class="bpc-footer__item bpc-icon bpc-icon--phone"><a href="<?php echo esc_url( $business['phone_href'] ); ?>"><?php echo esc_html( $business['phone'] ); ?></a></p>
+			<!-- wp:paragraph {"className":"bpch-footer__item bpch-icon bpch-icon--phone"} -->
+			<p class="bpch-footer__item bpch-icon bpch-icon--phone"><a href="<?php echo esc_url( $bpch_business['phone_href'] ); ?>"><?php echo esc_html( $bpch_business['phone'] ); ?></a></p>
 			<!-- /wp:paragraph -->
 
-			<!-- wp:paragraph {"className":"bpc-footer__item bpc-icon bpc-icon--mail"} -->
-			<p class="bpc-footer__item bpc-icon bpc-icon--mail"><a href="mailto:<?php echo esc_attr( antispambot( $business['email'] ) ); ?>"><?php echo esc_html( antispambot( $business['email'] ) ); ?></a></p>
+			<!-- wp:paragraph {"className":"bpch-footer__item bpch-icon bpch-icon--mail"} -->
+			<p class="bpch-footer__item bpch-icon bpch-icon--mail"><a href="mailto:<?php echo esc_attr( antispambot( $bpch_business['email'] ) ); ?>"><?php echo esc_html( antispambot( $bpch_business['email'] ) ); ?></a></p>
 			<!-- /wp:paragraph -->
 
-			<!-- wp:paragraph {"className":"bpc-footer__item bpc-icon bpc-icon--clock"} -->
-			<p class="bpc-footer__item bpc-icon bpc-icon--clock"><?php esc_html_e( 'Emergency line open 24/7', 'blue-peak-climate' ); ?></p>
+			<!-- wp:paragraph {"className":"bpch-footer__item bpch-icon bpch-icon--clock"} -->
+			<p class="bpch-footer__item bpch-icon bpch-icon--clock"><?php esc_html_e( 'Emergency line open 24/7', 'blue-peak-climate' ); ?></p>
 			<!-- /wp:paragraph -->
 
-			<!-- wp:paragraph {"className":"bpc-footer__item bpc-icon bpc-icon--pin"} -->
-			<p class="bpc-footer__item bpc-icon bpc-icon--pin"><?php esc_html_e( 'Homes across Texas', 'blue-peak-climate' ); ?></p>
+			<!-- wp:paragraph {"className":"bpch-footer__item bpch-icon bpch-icon--pin"} -->
+			<p class="bpch-footer__item bpch-icon bpch-icon--pin"><?php esc_html_e( 'Homes across Texas', 'blue-peak-climate' ); ?></p>
 			<!-- /wp:paragraph -->
 		</div>
 		<!-- /wp:group -->
 	</div>
 	<!-- /wp:group -->
 
-	<!-- wp:group {"className":"bpc-footer__bottom","fontSize":"x-small","style":{"spacing":{"padding":{"top":"var:preset|spacing|5"},"margin":{"top":"var:preset|spacing|7"}}},"layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between"}} -->
-	<div class="wp-block-group bpc-footer__bottom has-x-small-font-size" style="margin-top:var(--wp--preset--spacing--7);padding-top:var(--wp--preset--spacing--5)">
+	<!-- wp:group {"className":"bpch-footer__bottom","fontSize":"x-small","style":{"spacing":{"padding":{"top":"var:preset|spacing|5"},"margin":{"top":"var:preset|spacing|7"}}},"layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between"}} -->
+	<div class="wp-block-group bpch-footer__bottom has-x-small-font-size" style="margin-top:var(--wp--preset--spacing--7);padding-top:var(--wp--preset--spacing--5)">
 		<!-- wp:paragraph -->
-		<p><?php echo esc_html( $copyright ); ?></p>
+		<p><?php echo esc_html( $bpch_copyright ); ?></p>
 		<!-- /wp:paragraph -->
 
 		<!-- wp:paragraph -->
