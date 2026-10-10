@@ -10,8 +10,8 @@
 
 defined( 'ABSPATH' ) || exit;
 ?>
-<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"4rem","bottom":"4rem"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull" style="padding-top:4rem;padding-bottom:4rem">
+<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|9","bottom":"var:preset|spacing|9"}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignfull" style="padding-top:var(--wp--preset--spacing--9);padding-bottom:var(--wp--preset--spacing--9)">
 	<!-- wp:heading {"level":1} -->
 	<h1 class="wp-block-heading"><?php esc_html_e( 'A clear headline about what you offer', 'blue-peak-climate' ); ?></h1>
 	<!-- /wp:heading -->

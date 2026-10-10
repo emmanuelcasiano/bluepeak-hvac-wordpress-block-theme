@@ -16,3 +16,395 @@ Text Domain: blue-peak-climate
 	outline: 2px solid currentColor;
 	outline-offset: 2px;
 }
+
+/* ==========================================================================
+   Page frame: header, main and footer sit flush against each other.
+   ========================================================================== */
+body .wp-site-blocks > * {
+	margin-block-start: 0;
+}
+
+/* Short pages keep the footer at the bottom of the window. */
+.wp-site-blocks {
+	display: flex;
+	flex-direction: column;
+	min-height: calc(100vh - var(--wp-admin--admin-bar--height, 0px));
+}
+
+.wp-site-blocks > main {
+	flex: 1 0 auto;
+}
+
+/* The whole header (topbar included) stays on screen while scrolling. */
+.wp-site-blocks > header.wp-block-template-part {
+	position: sticky;
+	top: var(--wp-admin--admin-bar--position-offset, 0px);
+	z-index: 10;
+}
+
+/* ==========================================================================
+   Icons: SVG files in assets/icons drawn with a mask, so they take the text colour.
+   ========================================================================== */
+.bpc-icon::before,
+.bpc-header__phone-number a::before,
+.bpc-header__call .wp-block-button__link::before,
+.bpc-nav__call .wp-block-button__link::before {
+	content: "";
+	display: inline-block;
+	flex: none;
+	width: 18px;
+	height: 18px;
+	background-color: currentColor;
+	-webkit-mask: var(--bpc-icon) center / contain no-repeat;
+	mask: var(--bpc-icon) center / contain no-repeat;
+}
+
+.bpc-icon--phone,
+.bpc-header__phone-number a,
+.bpc-header__call .wp-block-button__link,
+.bpc-nav__call .wp-block-button__link {
+	--bpc-icon: url("assets/icons/phone.svg");
+}
+
+.bpc-icon--mail {
+	--bpc-icon: url("assets/icons/mail.svg");
+}
+
+.bpc-icon--clock {
+	--bpc-icon: url("assets/icons/clock.svg");
+}
+
+.bpc-icon--pin {
+	--bpc-icon: url("assets/icons/map-pin.svg");
+}
+
+/* ==========================================================================
+   Topbar
+   ========================================================================== */
+.bpc-topbar a:where(:not(.wp-element-button)) {
+	color: var(--wp--preset--color--white);
+	font-weight: 700;
+	text-decoration: none;
+}
+
+.bpc-topbar a:where(:not(.wp-element-button)):hover {
+	color: var(--wp--preset--color--orange);
+}
+
+/* ==========================================================================
+   Header
+   ========================================================================== */
+.bpc-header {
+	padding-block: var(--wp--preset--spacing--4);
+	background-color: var(--wp--preset--color--white);
+	border-bottom: 1px solid var(--wp--preset--color--line);
+}
+
+.wp-block-image.bpc-logo {
+	flex-shrink: 0;
+	margin: 0;
+}
+
+/* Fixed height plus aspect ratio reserves the logo's space before it loads.
+   !important because the editor puts style="height:auto" and the file's own width/height on the img,
+   which would otherwise show the logo at full size (440px) while editing. */
+.wp-block-image.bpc-logo img {
+	display: block;
+	height: 44px !important;
+	width: auto !important;
+	max-width: none;
+	aspect-ratio: 22 / 5;
+}
+
+.bpc-header__actions {
+	flex-shrink: 0;
+}
+
+.bpc-header__phone-label {
+	color: var(--wp--preset--color--body);
+	line-height: 1.3;
+}
+
+.bpc-header__phone-number {
+	font-family: var(--wp--preset--font-family--display);
+	font-weight: 700;
+	line-height: 1.3;
+}
+
+.bpc-header__phone-number a:where(:not(.wp-element-button)) {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--wp--preset--spacing--2);
+	color: var(--wp--preset--color--ink);
+	text-decoration: none;
+}
+
+.bpc-header__phone-number a::before {
+	color: var(--wp--preset--color--blue);
+}
+
+.bpc-header__buttons {
+	margin: 0;
+}
+
+/* Only the compact call button shows on mobile. The .bpc-header prefix outranks core's layout display rules. */
+.bpc-header .bpc-header__call {
+	display: none;
+}
+
+.bpc-header__call .wp-block-button__link,
+.bpc-nav__call .wp-block-button__link {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: var(--wp--preset--spacing--2);
+}
+
+/* --- Main menu (desktop, wider than 1024px) --- */
+.bpc-nav .wp-block-navigation-item__content {
+	padding: var(--wp--preset--spacing--2) var(--wp--preset--spacing--4);
+	border-radius: var(--wp--custom--radius--pill);
+	font-weight: 500;
+}
+
+.bpc-nav .wp-block-navigation-item__content:hover {
+	background-color: var(--wp--preset--color--mist);
+	color: var(--wp--preset--color--navy);
+}
+
+.bpc-nav .current-menu-item > .wp-block-navigation-item__content {
+	background-color: var(--wp--preset--color--blue-soft);
+	color: var(--wp--preset--color--navy);
+}
+
+/* --- Menu button --- */
+.bpc-nav .wp-block-navigation__responsive-container-open {
+	align-items: center;
+	justify-content: center;
+	width: 52px;
+	height: 52px;
+	border: 1px solid var(--wp--preset--color--line);
+	border-radius: var(--wp--custom--radius--pill);
+	color: var(--wp--preset--color--navy);
+}
+
+/* --- Menu overlay --- */
+.bpc-nav .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content {
+	width: 100%;
+	max-width: var(--wp--style--global--content-size);
+	margin-inline: auto;
+}
+
+.bpc-nav .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container,
+.bpc-nav .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item {
+	align-items: stretch;
+	width: 100%;
+	gap: 0;
+}
+
+.bpc-nav .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content .wp-block-navigation-item__content {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	padding: var(--wp--preset--spacing--4) 0;
+	border-bottom: 1px solid var(--wp--preset--color--line);
+	border-radius: 0;
+	background: none;
+	font-family: var(--wp--preset--font-family--display);
+	font-size: var(--wp--preset--font-size--x-large);
+	font-weight: 600;
+}
+
+.bpc-nav .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item__content::after {
+	content: "\2192";
+}
+
+.bpc-nav .wp-block-navigation__responsive-container.is-menu-open .current-menu-item > .wp-block-navigation-item__content {
+	color: var(--wp--preset--color--blue);
+}
+
+.bpc-nav .wp-block-navigation__responsive-container.is-menu-open .bpc-nav__extra {
+	display: flex;
+	width: 100%;
+	margin-top: var(--wp--preset--spacing--4);
+}
+
+/* The header holds two menus built from the same links, so keyboard order matches the screen:
+   the inline menu above 1024px, the menu button with its overlay at 1024px and below. */
+@media (max-width: 1024px) {
+	nav.bpc-nav--inline {
+		display: none;
+	}
+}
+
+@media (min-width: 1025px) {
+	nav.bpc-nav--overlay {
+		display: none;
+	}
+}
+
+@media (max-width: 640px) {
+	.bpc-topbar__row {
+		justify-content: center;
+	}
+
+	.bpc-topbar__note {
+		display: none;
+	}
+
+	.bpc-header {
+		padding-block: var(--wp--preset--spacing--3);
+	}
+
+	.bpc-header__row {
+		gap: var(--wp--preset--spacing--3);
+	}
+
+	.bpc-header__actions {
+		gap: var(--wp--preset--spacing--2);
+	}
+
+	.wp-block-image.bpc-logo img {
+		height: 30px !important;
+	}
+
+	.bpc-header .bpc-header__phone,
+	.bpc-header .bpc-header__book {
+		display: none;
+	}
+
+	.bpc-header .bpc-header__call {
+		display: block;
+	}
+
+	.bpc-header__call .wp-block-button__link {
+		min-height: 44px;
+		padding-inline: var(--wp--preset--spacing--4);
+		font-size: var(--wp--preset--font-size--small);
+	}
+
+	.bpc-nav .wp-block-navigation__responsive-container-open {
+		width: 44px;
+		height: 44px;
+	}
+}
+
+/* Smallest phones: the call button keeps only its icon. The text stays in the accessibility tree. */
+@media (max-width: 400px) {
+	.bpc-header__call .wp-block-button__link {
+		width: 44px;
+		padding: 0;
+		gap: 0;
+		font-size: 0;
+		line-height: 0;
+	}
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.bpc-footer a:where(:not(.wp-element-button)) {
+	color: var(--wp--preset--color--on-navy);
+	text-decoration: none;
+}
+
+.bpc-footer a:where(:not(.wp-element-button)):hover {
+	color: var(--wp--preset--color--white);
+}
+
+.bpc-footer__plate {
+	border-radius: var(--wp--custom--radius--md);
+}
+
+.wp-block-image.bpc-logo--footer img {
+	height: 40px !important;
+}
+
+.bpc-footer__text {
+	max-width: var(--wp--custom--measure--narrow);
+}
+
+.bpc-footer__brand {
+	flex: 1.6 1 0;
+}
+
+.bpc-footer__col {
+	flex: 1 1 0;
+}
+
+.bpc-footer__heading {
+	margin: 0;
+	font-weight: 600;
+	letter-spacing: 0.14em;
+	line-height: 1.3;
+	text-transform: uppercase;
+}
+
+.bpc-footer__item {
+	display: flex;
+	align-items: center;
+	gap: var(--wp--preset--spacing--2);
+	margin: 0;
+}
+
+.bpc-footer__item::before {
+	color: var(--wp--preset--color--orange);
+}
+
+.bpc-footer__bottom {
+	border-top: 1px solid var(--wp--preset--color--navy-line);
+}
+
+@media (max-width: 1024px) {
+	.bpc-footer__brand {
+		flex-basis: 100%;
+	}
+}
+
+@media (max-width: 640px) {
+	.bpc-footer__top {
+		column-gap: var(--wp--preset--spacing--5);
+	}
+
+	.bpc-footer__col {
+		flex-basis: calc((100% - var(--wp--preset--spacing--5)) / 2);
+	}
+
+	.bpc-footer__col--contact {
+		flex-basis: 100%;
+	}
+
+	.bpc-footer__call,
+	.bpc-footer__call .wp-block-button,
+	.bpc-footer__call .wp-block-button__link {
+		width: 100%;
+	}
+
+	.bpc-footer__bottom {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+}
+
+/* ==========================================================================
+   Content templates
+   ========================================================================== */
+.bpc-featured-image img {
+	border-radius: var(--wp--custom--radius--lg);
+}
+
+.bpc-eyebrow {
+	margin: 0;
+	color: var(--wp--preset--color--blue);
+	font-weight: 700;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+}
+
+.wp-block-search .wp-block-search__input {
+	min-height: 52px;
+	padding-inline: var(--wp--preset--spacing--5);
+	border: 1px solid var(--wp--preset--color--line);
+	border-radius: var(--wp--custom--radius--pill);
+	font: inherit;
+}

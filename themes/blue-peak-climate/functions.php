@@ -46,3 +46,77 @@ function bpc_theme_register_pattern_category() {
 	);
 }
 add_action( 'init', 'bpc_theme_register_pattern_category' );
+
+/**
+ * Placeholder business details for the header, footer and 404 patterns.
+ *
+ * TODO: remove once the Site Settings page and Block Bindings supply these values.
+ *
+ * @return array{phone: string, phone_href: string, email: string}
+ */
+function bpc_theme_placeholder_business() {
+	return array(
+		'phone'      => '(555) 123-4567',
+		'phone_href' => 'tel:5551234567',
+		'email'      => 'hello@bluepeakclimate.com',
+	);
+}
+
+/**
+ * Builds block markup for custom navigation links, so menus live in the theme and not in the database.
+ *
+ * @param array<int, array{label: string, url: string}> $items Menu items.
+ * @return string Markup to echo inside a core/navigation block.
+ */
+function bpc_theme_nav_links_markup( array $items ) {
+	$markup = '';
+	foreach ( $items as $item ) {
+		$markup .= get_comment_delimited_block_content(
+			'core/navigation-link',
+			array(
+				'label'          => $item['label'],
+				'url'            => $item['url'],
+				'kind'           => 'custom',
+				'isTopLevelLink' => true,
+			),
+			''
+		) . "\n";
+	}
+	return $markup;
+}
+
+/**
+ * Marks the menu link for the current page. Core only does this for links that hold a page ID,
+ * and the theme's links are plain URLs.
+ *
+ * @param string $block_content Rendered navigation link.
+ * @param array  $block         Parsed block.
+ * @return string
+ */
+function bpc_theme_mark_current_nav_link( $block_content, $block ) {
+	global $wp;
+
+	// Links to a section of a page (#heating) are not "the current page".
+	if ( empty( $block['attrs']['url'] ) || false !== strpos( $block['attrs']['url'], '#' ) || false !== strpos( $block_content, 'aria-current' ) ) {
+		return $block_content;
+	}
+
+	$link    = trailingslashit( strtok( $block['attrs']['url'], '?#' ) );
+	$current = trailingslashit( home_url( $wp->request ) );
+	$home    = trailingslashit( home_url() );
+
+	// The home link matches only the front page; other links also match their sub-pages.
+	if ( $link !== $current && ( $link === $home || 0 !== strpos( $current, $link ) ) ) {
+		return $block_content;
+	}
+
+	$tags = new WP_HTML_Tag_Processor( $block_content );
+	if ( $tags->next_tag( 'li' ) ) {
+		$tags->add_class( 'current-menu-item' );
+	}
+	if ( $tags->next_tag( 'a' ) ) {
+		$tags->set_attribute( 'aria-current', 'page' );
+	}
+	return $tags->get_updated_html();
+}
+add_filter( 'render_block_core/navigation-link', 'bpc_theme_mark_current_nav_link', 10, 2 );
