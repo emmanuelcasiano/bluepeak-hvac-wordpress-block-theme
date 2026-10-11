@@ -27,6 +27,19 @@ final class Plugin {
 		( new Services\Installer() )->register();
 		( new Services\EditScreen() )->register();
 		( new Services\CategoryBindings() )->register();
+		( new Reviews\PostTypes() )->register();
+		( new Reviews\EditScreen() )->register();
+		( new Reviews\Rating() )->register();
+		( new Offers\PostTypes() )->register();
+		( new Offers\Expiry() )->register();
+		( new Offers\EditScreen() )->register();
+		( new Offers\Bindings() )->register();
+		( new Support\ListingOnly(
+			array(
+				Reviews\PostTypes::POST_TYPE => '/reviews/',
+				Offers\PostTypes::POST_TYPE  => '/offers/',
+			)
+		) )->register();
 	}
 
 	/**
