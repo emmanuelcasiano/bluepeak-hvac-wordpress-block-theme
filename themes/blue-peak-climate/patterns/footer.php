@@ -60,6 +60,14 @@ $bpch_company_items = array(
 		'url'   => home_url( '/gallery/' ),
 	),
 	array(
+		'label' => __( 'Reviews', 'blue-peak-climate' ),
+		'url'   => home_url( '/reviews/' ),
+	),
+	array(
+		'label' => __( 'Offers', 'blue-peak-climate' ),
+		'url'   => home_url( '/offers/' ),
+	),
+	array(
 		'label' => __( 'Contact', 'blue-peak-climate' ),
 		'url'   => home_url( '/contact/' ),
 	),
