@@ -35,6 +35,7 @@ final class Plugin {
 		( new Offers\EditScreen() )->register();
 		( new Offers\Bindings() )->register();
 		( new Forms\ZipValidation() )->register();
+		( new Forms\OfficeRouting() )->register();
 		( new Support\ListingOnly(
 			array(
 				Reviews\PostTypes::POST_TYPE => '/reviews/',
