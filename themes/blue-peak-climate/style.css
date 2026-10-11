@@ -1394,6 +1394,11 @@ body .wp-site-blocks > * {
 		padding: var(--wp--preset--spacing--5);
 	}
 
+	/* The email address is one long word; at the desktop size it breaks mid-word on a phone. */
+	.bpch-contact-link .wp-block-button__link {
+		font-size: var(--wp--preset--font-size--large);
+	}
+
 	.bpch-gallery__item {
 		flex-basis: 100%;
 	}
@@ -1417,6 +1422,13 @@ body .wp-site-blocks > * {
 	}
 
 	.bpch-faq__item summary {
+		font-size: var(--wp--preset--font-size--medium);
+	}
+}
+
+/* Narrowest phones: the email address still fits on one line. */
+@media (max-width: 340px) {
+	.bpch-contact-link .wp-block-button__link {
 		font-size: var(--wp--preset--font-size--medium);
 	}
 }
