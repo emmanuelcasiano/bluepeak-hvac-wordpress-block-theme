@@ -123,16 +123,31 @@ echo bpch_theme_page_intro( // phpcs:ignore WordPress.Security.EscapeOutput.Outp
 		</div>
 		<!-- /wp:group -->
 
-		<?php // The request form goes in this card (plan item 11, Fluent Forms). Until then it points people to the phone and email. ?>
+		<?php
+		// The request form is a Fluent Forms form (see inc/forms.php). If the plugin is off or the form has not been created
+		// yet, the card points people to the phone and email instead of showing an empty box.
+		$bpch_form_id = bpch_theme_service_request_form_id();
+		?>
 		<!-- wp:group {"className":"bpch-card bpch-contact__form","backgroundColor":"white","style":{"spacing":{"blockGap":"var:preset|spacing|4"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"stretch"}} -->
 		<div class="wp-block-group bpch-card bpch-contact__form has-white-background-color has-background">
 			<!-- wp:heading -->
 			<h2 class="wp-block-heading"><?php esc_html_e( 'Request service', 'blue-peak-climate' ); ?></h2>
 			<!-- /wp:heading -->
+			<?php if ( $bpch_form_id ) : ?>
 
 			<!-- wp:paragraph -->
-			<p><?php esc_html_e( 'The online request form is coming soon. Until then, call or email us and we will set a time.', 'blue-peak-climate' ); ?></p>
+			<p><?php esc_html_e( 'Takes about a minute. Fields marked with an asterisk are required.', 'blue-peak-climate' ); ?></p>
 			<!-- /wp:paragraph -->
+
+			<!-- wp:shortcode -->
+			[fluentform id="<?php echo (int) $bpch_form_id; ?>"]
+			<!-- /wp:shortcode -->
+			<?php else : ?>
+
+			<!-- wp:paragraph -->
+			<p><?php esc_html_e( 'The online request form is not available right now. Call or email us and we will set a time.', 'blue-peak-climate' ); ?></p>
+			<!-- /wp:paragraph -->
+			<?php endif; ?>
 		</div>
 		<!-- /wp:group -->
 	</div>
