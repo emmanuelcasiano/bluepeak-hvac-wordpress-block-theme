@@ -123,6 +123,9 @@
 			]
 		},
 		"custom": {
+			"color": {
+				"error": "#B42318"
+			},
 			"fontSize": {
 				"display": "clamp(3.5rem, 1.5rem + 5vw, 6rem)",
 				"hero": "clamp(2.625rem, 1.125rem + 3.75vw, 4.5rem)"
