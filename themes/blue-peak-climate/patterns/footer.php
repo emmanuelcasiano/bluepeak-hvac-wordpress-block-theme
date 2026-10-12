@@ -27,6 +27,9 @@ $bpch_copyright = sprintf(
 	get_bloginfo( 'name' )
 );
 
+// Cookie Policy link and the "Manage cookies" button; empty when Complianz is off (see inc/consent.php).
+$bpch_cookie_links = bpch_theme_cookie_links_html();
+
 $bpch_services_items = array(
 	array(
 		'label' => __( 'Heating', 'blue-peak-climate' ),
@@ -174,6 +177,12 @@ $bpch_company_nav  = serialize_block_attributes( array_merge( $bpch_nav_defaults
 		<!-- wp:paragraph -->
 		<p><?php echo esc_html( $bpch_copyright ); ?></p>
 		<!-- /wp:paragraph -->
+
+		<?php if ( '' !== $bpch_cookie_links ) : ?>
+		<!-- wp:html -->
+			<?php echo $bpch_cookie_links; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Built and escaped in bpch_theme_cookie_links_html(). ?>
+		<!-- /wp:html -->
+		<?php endif; ?>
 
 		<!-- wp:paragraph -->
 		<p><?php esc_html_e( 'Heating / Cooling / Electrical', 'blue-peak-climate' ); ?></p>

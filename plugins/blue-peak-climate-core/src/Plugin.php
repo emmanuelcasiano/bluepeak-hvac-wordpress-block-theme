@@ -39,6 +39,8 @@ final class Plugin {
 		( new Forms\OfficeRouting() )->register();
 		( new Forms\EmailCredit() )->register();
 		( new Analytics\Tracking() )->register();
+		( new Consent\OptIn() )->register();
+		( new Consent\SiteKitDefaults() )->register();
 		( new Seo\BusinessSchema() )->register();
 		( new Seo\ServiceSchema() )->register();
 		( new Seo\FaqSchema() )->register();
