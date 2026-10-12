@@ -15,7 +15,7 @@
 	"scripts": {
 		"build": "wp-scripts build --source-path=blocks --webpack-copy-php --blocks-manifest --experimental-modules",
 		"start": "wp-scripts start --source-path=blocks --webpack-copy-php --blocks-manifest --experimental-modules",
-		"lint:js": "wp-scripts lint-js blocks",
+		"lint:js": "wp-scripts lint-js blocks assets/front",
 		"lint:css": "wp-scripts lint-style \"blocks/**/*.{css,scss}\"",
 		"format": "wp-scripts format blocks",
 		"test:unit": "wp-scripts test-unit-js --passWithNoTests",
