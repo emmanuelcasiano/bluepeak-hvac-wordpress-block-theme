@@ -1,0 +1,1 @@
+import{getContext as t,store as e}from"@wordpress/interactivity";e("bpch/gallery-filter",{state:{get isChipActive(){const{category:e,active:s}=t();return e===s},get isItemHidden(){const{category:e,active:s}=t();return"all"!==s&&e!==s},get status(){const{active:e,status:s}=t();return s[e]??""}},actions:{select(){const e=t();e.active=e.category}}});

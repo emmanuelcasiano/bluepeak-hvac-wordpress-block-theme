@@ -1,0 +1,350 @@
+/* Symptom picker. Colours, spacing, radii and shadows come from the theme's theme.json tokens. */
+
+.bpch-picker {
+	display: flex;
+	align-items: stretch;
+	gap: var(--wp--preset--spacing--5);
+}
+
+.bpch-picker__tabs {
+	position: relative;
+	display: flex;
+	flex: 1 1 0;
+	flex-direction: column;
+	gap: var(--wp--preset--spacing--2);
+	min-width: 0;
+}
+
+.bpch-picker__tab {
+	display: flex;
+	flex-shrink: 0;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--wp--preset--spacing--3);
+	padding: var(--wp--preset--spacing--4) var(--wp--preset--spacing--5);
+	border: 1px solid var(--wp--preset--color--line);
+	border-radius: var(--wp--custom--radius--md, 14px);
+	background: var(--wp--preset--color--white);
+	color: var(--wp--preset--color--ink);
+	font-family: var(--wp--preset--font-family--display);
+	font-size: var(--wp--preset--font-size--medium);
+	font-weight: 600;
+	text-align: left;
+	white-space: nowrap;
+	cursor: pointer;
+}
+
+.bpch-picker__tab:hover {
+	border-color: var(--wp--preset--color--navy);
+}
+
+.bpch-picker__tab[aria-selected="true"],
+.bpch-picker__tab[aria-selected="true"]:hover {
+	border-color: var(--wp--preset--color--navy);
+	background: var(--wp--preset--color--navy);
+	color: var(--wp--preset--color--white);
+}
+
+.bpch-picker__tab-label {
+	display: flex;
+	align-items: center;
+	gap: var(--wp--preset--spacing--3);
+}
+
+.bpch-picker__tab .bpch-icon-svg {
+	flex: none;
+	width: 22px;
+	height: 22px;
+}
+
+.bpch-picker__tab[aria-selected="true"] .bpch-icon-svg {
+	color: var(--wp--preset--color--orange);
+}
+
+/* The arrow is decorative. Orange on white is only 2.2:1, so it is blue until the tab is selected. */
+.bpch-picker__arrow {
+	color: var(--wp--preset--color--blue);
+	transition: transform 0.15s ease;
+}
+
+.bpch-picker__tab[aria-selected="true"] .bpch-picker__arrow {
+	color: var(--wp--preset--color--orange);
+	transform: translateX(var(--wp--preset--spacing--1));
+}
+
+.bpch-picker__panel {
+	display: flex;
+	flex: 1.8 1 0;
+	flex-direction: column;
+	gap: var(--wp--preset--spacing--5);
+	min-width: 0;
+	padding: var(--wp--preset--spacing--7);
+	border: 1px solid var(--wp--preset--color--line);
+	border-radius: var(--wp--custom--radius--lg, 22px);
+	background: var(--wp--preset--color--white);
+	box-shadow: var(--wp--preset--shadow--card);
+}
+
+/* A panel is a flex box, which would otherwise beat the browser's rule for the hidden attribute. */
+.bpch-picker__panel[hidden] {
+	display: none;
+}
+
+.bpch-picker__panel > * {
+	margin: 0;
+}
+
+.bpch-picker__head {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: var(--wp--preset--spacing--3);
+}
+
+.bpch-picker__badge {
+	padding: var(--wp--preset--spacing--1) var(--wp--preset--spacing--3);
+	border-radius: var(--wp--custom--radius--pill, 999px);
+	background: var(--wp--preset--color--orange);
+	color: var(--wp--preset--color--ink);
+	font-size: var(--wp--preset--font-size--x-small);
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+.bpch-picker__title {
+	margin: 0;
+	color: var(--wp--preset--color--ink);
+	font-family: var(--wp--preset--font-family--display);
+	font-size: var(--wp--preset--font-size--xx-large);
+	font-weight: 700;
+	line-height: 1.15;
+}
+
+.bpch-picker__columns {
+	display: flex;
+	gap: var(--wp--preset--spacing--6);
+}
+
+.bpch-picker__col {
+	display: flex;
+	flex: 1 1 0;
+	flex-direction: column;
+	gap: var(--wp--preset--spacing--3);
+	min-width: 0;
+}
+
+.bpch-picker__col > * {
+	margin: 0;
+}
+
+.bpch-picker__eyebrow {
+	color: var(--wp--preset--color--blue);
+	font-size: var(--wp--preset--font-size--x-small);
+	font-weight: 700;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+}
+
+.bpch-picker__list {
+	display: flex;
+	flex-direction: column;
+	gap: var(--wp--preset--spacing--3);
+	margin: 0;
+	padding: 0;
+	color: var(--wp--preset--color--ink);
+	font-size: var(--wp--preset--font-size--small);
+	list-style: none;
+}
+
+.bpch-picker__list li {
+	display: flex;
+	align-items: flex-start;
+	gap: var(--wp--preset--spacing--3);
+	margin: 0;
+}
+
+.bpch-picker__list li::before {
+	content: "";
+	flex: none;
+	width: 6px;
+	height: 6px;
+	margin-top: 0.55em;
+	border-radius: var(--wp--custom--radius--pill, 999px);
+	background: var(--wp--preset--color--orange);
+}
+
+.bpch-picker__tip {
+	display: flex;
+	align-items: center;
+	gap: var(--wp--preset--spacing--3);
+	padding: var(--wp--preset--spacing--4);
+	border-radius: var(--wp--custom--radius--md, 14px);
+	background: var(--wp--preset--color--mist);
+	color: var(--wp--preset--color--ink);
+	font-size: var(--wp--preset--font-size--small);
+}
+
+.bpch-picker__tip-dot {
+	flex: none;
+	width: 8px;
+	height: 8px;
+	border-radius: var(--wp--custom--radius--pill, 999px);
+	background: var(--wp--preset--color--orange);
+}
+
+.bpch-picker__cta {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--wp--preset--spacing--3);
+}
+
+/* Same look as the theme's buttons (orange, and an outline one), so the block does not depend on core button CSS. */
+.bpch-picker__button {
+	display: inline-block;
+	padding: 0.8125rem var(--wp--preset--spacing--6);
+	border: 2px solid var(--wp--preset--color--orange);
+	border-radius: var(--wp--custom--radius--pill, 999px);
+	background: var(--wp--preset--color--orange);
+	color: var(--wp--preset--color--ink);
+	font-family: var(--wp--preset--font-family--display);
+	font-size: var(--wp--preset--font-size--medium);
+	font-weight: 600;
+	line-height: 1.3;
+	text-align: center;
+	text-decoration: none;
+}
+
+.bpch-picker__button:hover {
+	border-color: var(--wp--preset--color--orange-deep);
+	background: var(--wp--preset--color--orange-deep);
+	color: var(--wp--preset--color--ink);
+}
+
+.bpch-picker__button--outline {
+	border-color: var(--wp--preset--color--navy);
+	background: transparent;
+	color: var(--wp--preset--color--navy);
+}
+
+.bpch-picker__button--outline:hover {
+	border-color: var(--wp--preset--color--navy);
+	background: var(--wp--preset--color--navy);
+	color: var(--wp--preset--color--white);
+}
+
+/* Tablet: tabs become a row of pills above the panel. */
+@media (max-width: 1024px) {
+	.bpch-picker {
+		flex-direction: column;
+	}
+
+	.bpch-picker__tabs {
+		flex: 0 0 auto;
+		flex-direction: row;
+		flex-wrap: wrap;
+	}
+
+	.bpch-picker__tab {
+		padding: var(--wp--preset--spacing--2) var(--wp--preset--spacing--4);
+		border-radius: var(--wp--custom--radius--pill, 999px);
+		font-size: var(--wp--preset--font-size--small);
+	}
+
+	.bpch-picker__arrow {
+		display: none;
+	}
+}
+
+/* Phone: one scrolling row of pills, edge to edge. */
+@media (max-width: 640px) {
+	.bpch-picker__tabs {
+		flex-wrap: nowrap;
+		margin-inline: calc(-1 * var(--wp--preset--spacing--gutter));
+		padding-inline: var(--wp--preset--spacing--gutter);
+		padding-bottom: var(--wp--preset--spacing--1);
+		overflow-x: auto;
+		overscroll-behavior-x: contain;
+		scroll-padding-inline: var(--wp--preset--spacing--gutter);
+		scroll-snap-type: x proximity;
+		scrollbar-width: none;
+	}
+
+	.bpch-picker__tabs::-webkit-scrollbar {
+		display: none;
+	}
+
+	.bpch-picker__tab {
+		scroll-snap-align: start;
+	}
+
+	.bpch-picker__panel {
+		padding: var(--wp--preset--spacing--5);
+	}
+
+	.bpch-picker__columns {
+		flex-direction: column;
+		gap: var(--wp--preset--spacing--4);
+	}
+
+	.bpch-picker__title {
+		font-size: var(--wp--preset--font-size--x-large);
+	}
+
+	.bpch-picker__cta {
+		flex-direction: column;
+		align-items: stretch;
+	}
+}
+
+/* The panel fades in after a visitor picks a tab, never on page load. */
+@media (prefers-reduced-motion: no-preference) {
+	.bpch-picker.is-interacted .bpch-picker__panel > * {
+		animation: bpch-picker-in 0.35s ease backwards;
+	}
+
+	.bpch-picker.is-interacted .bpch-picker__panel > :nth-child(2) {
+		animation-delay: 0.05s;
+	}
+
+	.bpch-picker.is-interacted .bpch-picker__panel > :nth-child(3) {
+		animation-delay: 0.1s;
+	}
+
+	.bpch-picker.is-interacted .bpch-picker__panel > :nth-child(4) {
+		animation-delay: 0.15s;
+	}
+
+	.bpch-picker.is-interacted .bpch-picker__panel > :nth-child(5) {
+		animation-delay: 0.2s;
+	}
+}
+
+@keyframes bpch-picker-in {
+	from {
+		opacity: 0;
+		transform: translateY(8px);
+	}
+}
+
+/* No JavaScript: the tabs would do nothing, so every panel shows, one under the other. */
+@media (scripting: none) {
+	.bpch-picker {
+		flex-direction: column;
+	}
+
+	.bpch-picker__tabs {
+		display: none;
+	}
+
+	.bpch-picker__panel[hidden] {
+		display: flex;
+	}
+}
+
+.bpch-picker__note {
+	margin: 0;
+	padding: 0.5rem 0.75rem;
+	border: 1px dashed currentColor;
+	font-size: 0.8125rem;
+}

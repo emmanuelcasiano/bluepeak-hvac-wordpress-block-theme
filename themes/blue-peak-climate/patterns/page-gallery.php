@@ -12,7 +12,7 @@
 defined( 'ABSPATH' ) || exit;
 
 // Photo slug, category slug, category name, kind of work and caption, in the order the design shows them. The
-// category class on each item is what the gallery filter (plan item 14) will use.
+// category class on each item is what the gallery filter block reads to draw its chips and to hide photos.
 $bpch_gallery = array(
 	array( 'house', 'cooling', __( 'Cooling', 'blue-peak-climate' ), __( 'AC installation', 'blue-peak-climate' ), __( 'New condenser on a fresh concrete pad', 'blue-peak-climate' ) ),
 	array( 'tech-unit', 'crew', __( 'Our crew', 'blue-peak-climate' ), __( 'AC repair', 'blue-peak-climate' ), __( 'Checking the electrical side of a condenser', 'blue-peak-climate' ) ),
@@ -33,6 +33,7 @@ echo bpch_theme_page_intro( // phpcs:ignore WordPress.Security.EscapeOutput.Outp
 
 <!-- wp:group {"align":"full","className":"bpch-section","style":{"spacing":{"padding":{"top":"var:preset|spacing|9","bottom":"var:preset|spacing|9"}}},"layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignfull bpch-section" style="padding-top:var(--wp--preset--spacing--9);padding-bottom:var(--wp--preset--spacing--9)">
+	<!-- wp:bpch/gallery-filter -->
 	<!-- wp:group {"className":"bpch-gallery","style":{"spacing":{"blockGap":"var:preset|spacing|6"}},"layout":{"type":"flex","flexWrap":"wrap","verticalAlignment":"top"}} -->
 	<div class="wp-block-group bpch-gallery">
 		<?php foreach ( $bpch_gallery as $bpch_item ) : ?>
@@ -56,6 +57,7 @@ echo bpch_theme_page_intro( // phpcs:ignore WordPress.Security.EscapeOutput.Outp
 		<?php endforeach; ?>
 	</div>
 	<!-- /wp:group -->
+	<!-- /wp:bpch/gallery-filter -->
 </div>
 <!-- /wp:group -->
 
