@@ -160,7 +160,7 @@ body .wp-site-blocks > * {
 	gap: var(--wp--preset--spacing--2);
 }
 
-/* --- Main menu (desktop, wider than 1024px) --- */
+/* --- Main menu (desktop, wider than 1200px) --- */
 .bpch-nav .wp-block-navigation-item__content {
 	padding: var(--wp--preset--spacing--2) var(--wp--preset--spacing--4);
 	border-radius: var(--wp--custom--radius--pill);
@@ -230,14 +230,15 @@ body .wp-site-blocks > * {
 }
 
 /* The header holds two menus built from the same links, so keyboard order matches the screen:
-   the inline menu above 1024px, the menu button with its overlay at 1024px and below. */
-@media (max-width: 1024px) {
+   the inline menu above 1200px, the menu button with its overlay at 1200px and below. The six links need the full
+   1120px content width; on a narrower header the last link wrapped to a second line (it did at 1025px once Blog was added). */
+@media (max-width: 1200px) {
 	nav.bpch-nav--inline {
 		display: none;
 	}
 }
 
-@media (min-width: 1025px) {
+@media (min-width: 1201px) {
 	nav.bpch-nav--overlay {
 		display: none;
 	}
@@ -1120,6 +1121,154 @@ body .wp-site-blocks > * {
 	margin: 0;
 }
 
+/* --- Blog --- */
+/* One card per post. The card is a size container: wide enough, the photo sits beside the text; narrow (a phone, or a
+   grid chosen in the editor) the photo sits on top. So the same markup works as a list and as a grid. */
+.bpch-card.bpch-post-card {
+	height: 100%;
+	padding: 0;
+	overflow: hidden;
+	container-type: inline-size;
+}
+
+.bpch-post-card__inner {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr);
+	height: 100%;
+}
+
+.bpch-post-card__inner > *,
+.bpch-post-card__body > *,
+.bpch-post-card .wp-block-post-title,
+.bpch-post-card .wp-block-post-excerpt__excerpt,
+.bpch-post-card .wp-block-post-excerpt__more-text {
+	margin: 0;
+}
+
+.bpch-post-card__image img {
+	display: block;
+	width: 100%;
+	border-radius: 0;
+}
+
+.bpch-post-card__body {
+	padding: var(--wp--preset--spacing--6);
+}
+
+.bpch-post-card__meta {
+	align-items: center;
+}
+
+.bpch-post-card__date {
+	margin: 0;
+	color: var(--wp--preset--color--body);
+}
+
+/* The card title is an h2 (nothing sits between it and the page's h1) but looks like the h3 card titles. */
+.bpch-post-card .wp-block-post-title {
+	font-size: var(--wp--preset--font-size--x-large);
+	font-weight: 600;
+	line-height: 1.25;
+	letter-spacing: 0;
+	text-wrap: balance;
+}
+
+.bpch-post-card .wp-block-post-title a {
+	color: var(--wp--preset--color--ink);
+	text-decoration: none;
+}
+
+.bpch-post-card .wp-block-post-title a:hover {
+	color: var(--wp--preset--color--blue);
+	text-decoration: underline;
+}
+
+.bpch-post-card .wp-block-post-excerpt__more-link {
+	display: inline-block;
+	padding-block: 4px; /* 24px tall at least, the WCAG 2.2 minimum target size */
+	font-weight: 700;
+}
+
+@container (min-width: 36rem) {
+	.bpch-post-card__inner:has(.wp-block-post-featured-image) {
+		grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+	}
+
+	.bpch-post-card__body {
+		align-self: center;
+	}
+
+	/* The photo fills its column whatever the height of the text beside it. It is taken out of the flow, so a lazy
+	   image that has not loaded yet can't stretch the row. */
+	.bpch-post-card__image {
+		position: relative;
+		min-height: 14rem;
+	}
+
+	.bpch-post-card__image img {
+		position: absolute;
+		inset: 0;
+		height: 100%;
+		aspect-ratio: auto !important;
+	}
+}
+
+/* Page numbers and the previous/next links are tappable. */
+.bpch-pagination {
+	margin-top: var(--wp--preset--spacing--7);
+	font-weight: 600;
+}
+
+.bpch-pagination a,
+.bpch-pagination .page-numbers {
+	display: inline-block;
+	min-width: 2.75rem;
+	min-height: 2.75rem;
+	padding: var(--wp--preset--spacing--2) var(--wp--preset--spacing--3);
+	box-sizing: border-box;
+	line-height: 1.75rem;
+	text-align: center;
+}
+
+.bpch-pagination .page-numbers.current {
+	border-radius: var(--wp--custom--radius--sm);
+	background: var(--wp--preset--color--blue-soft);
+	color: var(--wp--preset--color--navy);
+}
+
+/* The category above a post title is a link; give it the 24px tall target the WCAG 2.2 minimum asks for. */
+.bpch-post-intro .bpch-eyebrow a {
+	display: inline-block;
+	padding-block: 4px;
+	color: inherit;
+	text-decoration: none;
+}
+
+/* A single post: the text is capped at 720px by its layout; the previous and next links sit under it. */
+.bpch-post-nav {
+	padding-top: var(--wp--preset--spacing--6);
+	border-top: 1px solid var(--wp--preset--color--line);
+}
+
+.bpch-post-nav__link {
+	max-width: 22rem;
+	margin: 0;
+}
+
+.bpch-post-nav__link a {
+	display: inline-block;
+	padding-block: 4px;
+}
+
+.bpch-post-nav__link .post-navigation-link__label {
+	display: block;
+	color: var(--wp--preset--color--body);
+	font-size: var(--wp--preset--font-size--x-small);
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
 /* The small label on a service: Repair, Replace, Install... */
 .bpch-tag {
 	align-self: flex-start;
@@ -1366,6 +1515,10 @@ body .wp-site-blocks > * {
 	}
 
 	.bpch-card {
+		padding: var(--wp--preset--spacing--5);
+	}
+
+	.bpch-post-card__body {
 		padding: var(--wp--preset--spacing--5);
 	}
 
