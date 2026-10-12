@@ -8,6 +8,7 @@
 defined( 'ABSPATH' ) || exit;
 
 require_once get_theme_file_path( 'inc/patterns.php' );
+require_once get_theme_file_path( 'inc/service-photos.php' );
 require_once get_theme_file_path( 'inc/icon-block.php' );
 require_once get_theme_file_path( 'inc/forms.php' );
 require_once get_theme_file_path( 'inc/consent.php' );

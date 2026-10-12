@@ -52,7 +52,9 @@ $bpch_binding = static function ( $key, $class_name ) {
 echo bpch_theme_page_intro( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Block markup escaped by the helper.
 	__( 'Reviews', 'blue-peak-climate' ),
 	__( 'What homeowners say about BluePeak', 'blue-peak-climate' ),
-	__( 'We would rather earn a good review than ask for one. Here is what customers tell us after the work is done.', 'blue-peak-climate' )
+	__( 'We would rather earn a good review than ask for one. Here is what customers tell us after the work is done.', 'blue-peak-climate' ),
+	'',
+	'family-couch'
 );
 ?>
 

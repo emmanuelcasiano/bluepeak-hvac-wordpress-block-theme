@@ -30,6 +30,8 @@ $bpch_price_binding   = serialize_block_attributes(
 ?>
 <!-- wp:group {"align":"full","className":"bpch-page-intro bpch-service-intro","backgroundColor":"mist","style":{"spacing":{"padding":{"top":"var:preset|spacing|8","bottom":"var:preset|spacing|8"}}},"layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignfull bpch-page-intro bpch-service-intro has-mist-background-color has-background" style="padding-top:var(--wp--preset--spacing--8);padding-bottom:var(--wp--preset--spacing--8)">
+	<!-- wp:group {"className":"bpch-intro-split","style":{"spacing":{"blockGap":"var:preset|spacing|7"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->
+	<div class="wp-block-group bpch-intro-split">
 	<!-- wp:group {"className":"bpch-section__head","style":{"spacing":{"blockGap":"var:preset|spacing|4"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"left"}} -->
 	<div class="wp-block-group bpch-section__head">
 		<!-- wp:post-terms {"term":"bpch_service_category","className":"bpch-eyebrow","fontSize":"x-small"} /-->
@@ -59,6 +61,10 @@ $bpch_price_binding   = serialize_block_attributes(
 			<!-- /wp:button -->
 		</div>
 		<!-- /wp:buttons -->
+	</div>
+	<!-- /wp:group -->
+
+	<!-- wp:post-featured-image {"aspectRatio":"4/3","className":"bpch-photo bpch-photo--intro"} /-->
 	</div>
 	<!-- /wp:group -->
 </div>

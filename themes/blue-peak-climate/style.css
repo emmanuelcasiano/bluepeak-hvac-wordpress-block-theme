@@ -529,6 +529,32 @@ body .wp-site-blocks > * {
 	aspect-ratio: 933 / 700;
 }
 
+/* A page opening with its photo beside the text (cover block or the service's featured image). */
+.bpch-intro-split {
+	align-items: center;
+}
+
+.bpch-intro-split__copy {
+	flex: 1 1 0;
+	min-width: 0;
+}
+
+.wp-block-cover.bpch-photo--intro,
+.wp-block-post-featured-image.bpch-photo--intro {
+	flex: 0 0 min(42%, 460px);
+	margin: 0;
+	aspect-ratio: 4 / 3;
+	border-radius: var(--wp--custom--radius--lg);
+	overflow: hidden;
+}
+
+.wp-block-post-featured-image.bpch-photo--intro img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
 /* Round icon marks (empty Group blocks that carry an icon). */
 .bpch-mark {
 	display: flex;
@@ -1491,6 +1517,7 @@ body .wp-site-blocks > * {
 @media (max-width: 1024px) {
 	.bpch-hero__inner,
 	.bpch-split,
+	.bpch-intro-split,
 	.bpch-testimonial,
 	.bpch-cards,
 	.bpch-faq,
@@ -1530,6 +1557,7 @@ body .wp-site-blocks > * {
 
 	.bpch-hero__inner,
 	.bpch-split,
+	.bpch-intro-split,
 	.bpch-testimonial {
 		gap: var(--wp--preset--spacing--7);
 	}
@@ -1546,10 +1574,12 @@ body .wp-site-blocks > * {
 	.bpch-hero__copy,
 	.bpch-hero__media,
 	.bpch-split__copy,
+	.bpch-intro-split__copy,
 	.bpch-testimonial__copy,
 	.bpch-faq__intro,
 	.bpch-faq__list,
-	.wp-block-cover.bpch-photo {
+	.wp-block-cover.bpch-photo,
+	.wp-block-post-featured-image.bpch-photo--intro {
 		flex: none;
 	}
 
@@ -1570,7 +1600,9 @@ body .wp-site-blocks > * {
 	/* Stacked, the photos are wide instead of tall so they do not fill the whole screen. */
 	.wp-block-cover.bpch-photo--hero,
 	.wp-block-cover.bpch-photo--portrait,
-	.wp-block-cover.bpch-photo--wide {
+	.wp-block-cover.bpch-photo--wide,
+	.wp-block-cover.bpch-photo--intro,
+	.wp-block-post-featured-image.bpch-photo--intro {
 		aspect-ratio: 16 / 10;
 	}
 }

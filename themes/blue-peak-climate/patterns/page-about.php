@@ -132,7 +132,7 @@ $bpch_expect = array(
 		</div>
 		<!-- /wp:group -->
 
-		<?php echo bpch_theme_photo_cover( 'family', 'wide' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Block markup escaped by the helper. ?>
+		<?php echo bpch_theme_photo_cover( 'family-home', 'wide' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Block markup escaped by the helper. ?>
 	</div>
 	<!-- /wp:group -->
 </div>

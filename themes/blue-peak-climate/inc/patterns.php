@@ -61,9 +61,11 @@ function bpch_theme_photo( $slug ) {
  * @param string $slug    Photo slug, see bpch_theme_photo().
  * @param string $variant Shape class: hero, portrait, wide or card.
  * @param string $overlay Palette colour for the empty slot.
+ * @param string $caption Text printed next to the photo. When it is the same as the photo's alt text, the alt text is
+ *                        left empty, so a screen reader does not read the same line twice.
  * @return string Block markup.
  */
-function bpch_theme_photo_cover( $slug, $variant, $overlay = 'blue-soft' ) {
+function bpch_theme_photo_cover( $slug, $variant, $overlay = 'blue-soft', $caption = '' ) {
 	$photo     = bpch_theme_photo( $slug );
 	$classname = 'bpch-photo bpch-photo--' . $variant;
 
@@ -81,6 +83,10 @@ function bpch_theme_photo_cover( $slug, $variant, $overlay = 'blue-soft' ) {
 			. '<!-- /wp:cover -->';
 	}
 
+	if ( '' !== $caption && 0 === strcasecmp( trim( $caption ), trim( $photo['alt'] ) ) ) {
+		$photo['alt'] = '';
+	}
+
 	$attributes = serialize_block_attributes(
 		array(
 			'url'       => $photo['url'],
@@ -96,19 +102,20 @@ function bpch_theme_photo_cover( $slug, $variant, $overlay = 'blue-soft' ) {
 }
 
 /**
- * The opening block of an inner page: a small label, the page title and a short lead.
+ * The opening block of an inner page: a small label, the page title and a short lead, with a photo beside them
+ * when one is asked for and imported.
  *
  * @param string $eyebrow Label above the title (already translated).
  * @param string $title   Page title, the page's h1 (already translated).
  * @param string $lead    One or two sentences under the title (already translated).
  * @param string $extra   Block markup placed under the heading, for example a row of chips.
+ * @param string $photo   Photo slug (see bpch_theme_photo()) for a picture beside the text. When empty, or when the
+ *                        photo is not in the Media Library, the page opens with text only.
  * @return string Block markup.
  */
-function bpch_theme_page_intro( $eyebrow, $title, $lead, $extra = '' ) {
+function bpch_theme_page_intro( $eyebrow, $title, $lead, $extra = '', $photo = '' ) {
 	ob_start();
 	?>
-<!-- wp:group {"align":"full","className":"bpch-page-intro","backgroundColor":"mist","style":{"spacing":{"padding":{"top":"var:preset|spacing|8","bottom":"var:preset|spacing|8"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull bpch-page-intro has-mist-background-color has-background" style="padding-top:var(--wp--preset--spacing--8);padding-bottom:var(--wp--preset--spacing--8)">
 	<!-- wp:group {"className":"bpch-section__head","style":{"spacing":{"blockGap":"var:preset|spacing|4"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"left"}} -->
 	<div class="wp-block-group bpch-section__head">
 		<!-- wp:paragraph {"className":"bpch-eyebrow","fontSize":"x-small"} -->
@@ -124,11 +131,30 @@ function bpch_theme_page_intro( $eyebrow, $title, $lead, $extra = '' ) {
 		<!-- /wp:paragraph -->
 	</div>
 	<!-- /wp:group -->
-	<?php echo $extra; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Block markup built by this theme's helpers. ?>
-</div>
-<!-- /wp:group -->
 	<?php
-	return (string) ob_get_clean();
+	$head = (string) ob_get_clean();
+
+	if ( '' !== $photo && null !== bpch_theme_photo( $photo ) ) {
+		// The heading, its extras and the photo sit in one row; the row stacks on tablets and phones.
+		$inner = '<!-- wp:group {"className":"bpch-intro-split","style":{"spacing":{"blockGap":"var:preset|spacing|7"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->' . "\n"
+			. '<div class="wp-block-group bpch-intro-split">' . "\n"
+			. '<!-- wp:group {"className":"bpch-intro-split__copy","style":{"spacing":{"blockGap":"var:preset|spacing|6"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"stretch"}} -->' . "\n"
+			. '<div class="wp-block-group bpch-intro-split__copy">' . "\n"
+			. $head . "\n" . $extra . "\n"
+			. '</div>' . "\n"
+			. '<!-- /wp:group -->' . "\n\n"
+			. bpch_theme_photo_cover( $photo, 'intro' ) . "\n"
+			. '</div>' . "\n"
+			. '<!-- /wp:group -->';
+	} else {
+		$inner = $head . "\n" . $extra;
+	}
+
+	return '<!-- wp:group {"align":"full","className":"bpch-page-intro","backgroundColor":"mist","style":{"spacing":{"padding":{"top":"var:preset|spacing|8","bottom":"var:preset|spacing|8"}}},"layout":{"type":"constrained"}} -->' . "\n"
+		. '<div class="wp-block-group alignfull bpch-page-intro has-mist-background-color has-background" style="padding-top:var(--wp--preset--spacing--8);padding-bottom:var(--wp--preset--spacing--8)">' . "\n"
+		. $inner . "\n"
+		. '</div>' . "\n"
+		. '<!-- /wp:group -->';
 }
 
 /**
