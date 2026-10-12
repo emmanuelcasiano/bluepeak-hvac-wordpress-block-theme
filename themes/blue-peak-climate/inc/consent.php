@@ -20,6 +20,17 @@ function bpch_theme_consent_active() {
 }
 
 /**
+ * Address of the Cookie Policy page that Complianz generated.
+ *
+ * @return string The URL, or an empty string when Complianz is inactive or has no policy page.
+ */
+function bpch_theme_cookie_policy_url() {
+	$url = function_exists( 'cmplz_get_document_url' ) ? cmplz_get_document_url( 'cookie-statement', 'us' ) : '#';
+
+	return is_string( $url ) && '#' !== $url ? $url : '';
+}
+
+/**
  * Footer links for the cookie choice: the Cookie Policy page and a button that opens the banner again.
  *
  * The button uses the `cmplz-manage-consent` class, which Complianz's script listens for on the whole document, so a
@@ -34,8 +45,8 @@ function bpch_theme_cookie_links_html() {
 
 	$html = '<div class="bpch-footer__cookies">';
 
-	$policy_url = function_exists( 'cmplz_get_document_url' ) ? cmplz_get_document_url( 'cookie-statement', 'us' ) : '#';
-	if ( '#' !== $policy_url ) {
+	$policy_url = bpch_theme_cookie_policy_url();
+	if ( '' !== $policy_url ) {
 		$html .= '<a href="' . esc_url( $policy_url ) . '">' . esc_html__( 'Cookie Policy', 'blue-peak-climate' ) . '</a>';
 	}
 

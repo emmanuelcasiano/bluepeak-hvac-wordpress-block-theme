@@ -93,6 +93,33 @@ $bpch_nav_defaults = array(
 
 $bpch_services_nav = serialize_block_attributes( array_merge( $bpch_nav_defaults, array( 'ariaLabel' => __( 'Footer services', 'blue-peak-climate' ) ) ) );
 $bpch_company_nav  = serialize_block_attributes( array_merge( $bpch_nav_defaults, array( 'ariaLabel' => __( 'Footer company', 'blue-peak-climate' ) ) ) );
+
+// Privacy Policy and Terms sit in the bottom bar, in a row. They do not depend on Complianz, unlike the cookie links.
+$bpch_legal_items = array(
+	array(
+		'label' => __( 'Privacy Policy', 'blue-peak-climate' ),
+		'url'   => home_url( '/privacy-policy/' ),
+	),
+	array(
+		'label' => __( 'Terms', 'blue-peak-climate' ),
+		'url'   => home_url( '/terms/' ),
+	),
+);
+
+$bpch_legal_nav = serialize_block_attributes(
+	array(
+		'overlayMenu' => 'never',
+		'textColor'   => 'on-navy',
+		'ariaLabel'   => __( 'Footer legal', 'blue-peak-climate' ),
+		'className'   => 'bpch-footer__nav bpch-footer__nav--legal',
+		'style'       => array( 'spacing' => array( 'blockGap' => 'var:preset|spacing|5' ) ),
+		'layout'      => array(
+			'type'           => 'flex',
+			'flexWrap'       => 'wrap',
+			'justifyContent' => 'left',
+		),
+	)
+);
 ?>
 <!-- wp:group {"align":"full","className":"bpch-footer","backgroundColor":"navy-deep","textColor":"on-navy","fontSize":"small","style":{"spacing":{"padding":{"top":"var:preset|spacing|8","bottom":"var:preset|spacing|6"}}},"layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignfull bpch-footer has-on-navy-color has-navy-deep-background-color has-text-color has-background has-small-font-size" style="padding-top:var(--wp--preset--spacing--8);padding-bottom:var(--wp--preset--spacing--6)">
@@ -178,11 +205,19 @@ $bpch_company_nav  = serialize_block_attributes( array_merge( $bpch_nav_defaults
 		<p><?php echo esc_html( $bpch_copyright ); ?></p>
 		<!-- /wp:paragraph -->
 
-		<?php if ( '' !== $bpch_cookie_links ) : ?>
-		<!-- wp:html -->
-			<?php echo $bpch_cookie_links; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Built and escaped in bpch_theme_cookie_links_html(). ?>
-		<!-- /wp:html -->
-		<?php endif; ?>
+		<!-- wp:group {"className":"bpch-footer__legal","layout":{"type":"flex","flexWrap":"wrap"}} -->
+		<div class="wp-block-group bpch-footer__legal">
+			<!-- wp:navigation <?php echo $bpch_legal_nav; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Block comment JSON from serialize_block_attributes(). ?> -->
+			<?php echo bpch_theme_nav_links_markup( $bpch_legal_items ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Block markup built by get_comment_delimited_block_content(). ?>
+			<!-- /wp:navigation -->
+
+			<?php if ( '' !== $bpch_cookie_links ) : ?>
+			<!-- wp:html -->
+				<?php echo $bpch_cookie_links; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Built and escaped in bpch_theme_cookie_links_html(). ?>
+			<!-- /wp:html -->
+			<?php endif; ?>
+		</div>
+		<!-- /wp:group -->
 
 		<!-- wp:paragraph -->
 		<p><?php esc_html_e( 'Heating / Cooling / Electrical', 'blue-peak-climate' ); ?></p>

@@ -51,5 +51,25 @@ $bpch_call_attributes = bpch_theme_call_button_attributes( array( 'className' =>
 		<!-- /wp:button -->
 	</div>
 	<!-- /wp:buttons -->
+
+	<!-- wp:heading {"level":2,"fontSize":"large"} -->
+	<h2 class="wp-block-heading has-large-font-size"><?php esc_html_e( 'Popular pages', 'blue-peak-climate' ); ?></h2>
+	<!-- /wp:heading -->
+
+	<!-- wp:list {"className":"bpch-notfound__links"} -->
+	<ul class="wp-block-list bpch-notfound__links">
+		<!-- wp:list-item -->
+		<li><a href="<?php echo esc_url( home_url( '/services/' ) ); ?>"><?php esc_html_e( 'Our heating, cooling and electrical services', 'blue-peak-climate' ); ?></a></li>
+		<!-- /wp:list-item -->
+
+		<!-- wp:list-item -->
+		<li><a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>"><?php esc_html_e( 'Contact us and request a visit', 'blue-peak-climate' ); ?></a></li>
+		<!-- /wp:list-item -->
+
+		<!-- wp:list-item -->
+		<li><a href="<?php echo esc_url( home_url( '/blog/' ) ); ?>"><?php esc_html_e( 'Seasonal tips on the blog', 'blue-peak-climate' ); ?></a></li>
+		<!-- /wp:list-item -->
+	</ul>
+	<!-- /wp:list -->
 </div>
 <!-- /wp:group -->

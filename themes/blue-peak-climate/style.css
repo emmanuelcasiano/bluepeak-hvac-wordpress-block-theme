@@ -356,6 +356,17 @@ body .wp-site-blocks > * {
 	border-top: 1px solid var(--wp--preset--color--navy-line);
 }
 
+/* Privacy Policy, Terms, Cookie Policy and Manage cookies share one wrapping row. */
+.bpch-footer__legal {
+	gap: var(--wp--preset--spacing--2) var(--wp--preset--spacing--5);
+}
+
+.bpch-footer__nav--legal .wp-block-navigation-item__content {
+	display: inline-flex;
+	align-items: center;
+	min-height: 24px;
+}
+
 @media (max-width: 1024px) {
 	.bpch-footer__brand {
 		flex-basis: 100%;
@@ -1359,6 +1370,74 @@ body .wp-site-blocks > * {
 	padding: var(--wp--preset--spacing--3) var(--wp--preset--spacing--4);
 	border: 1px dashed var(--wp--preset--color--body);
 	border-radius: var(--wp--custom--radius--sm);
+}
+
+/* --- 404 page --- */
+.bpch-notfound__links li + li {
+	margin-block-start: var(--wp--preset--spacing--2);
+}
+
+.bpch-notfound__links a {
+	display: inline-block;
+	min-height: 24px;
+}
+
+/* --- Legal pages (Privacy Policy, Terms) --- */
+.bpch-legal > :where(p, ul, ol) {
+	margin-block-end: 0;
+}
+
+.bpch-legal > h2 {
+	margin-block-start: var(--wp--preset--spacing--7);
+	/* Clears the sticky header (topbar included, 122px) when a table of contents link scrolls to the heading. */
+	scroll-margin-top: 9rem;
+}
+
+.bpch-legal > h3 {
+	margin-block-start: var(--wp--preset--spacing--5);
+}
+
+.bpch-legal > :where(ul, ol) {
+	padding-inline-start: var(--wp--preset--spacing--6);
+}
+
+.bpch-legal li + li {
+	margin-block-start: var(--wp--preset--spacing--2);
+}
+
+/* The table of contents links are on their own line, so each is at least 24px tall (WCAG 2.5.8). */
+.bpch-legal__toc a {
+	display: inline-block;
+	min-height: 24px;
+}
+
+.bpch-legal__toc-label {
+	margin-block-start: var(--wp--preset--spacing--5);
+}
+
+.bpch-legal__name {
+	margin: 0;
+	font-weight: 700;
+}
+
+.bpch-legal__contact > p {
+	margin: 0;
+}
+
+.bpch-legal__contact .bpch-icon {
+	display: flex;
+	align-items: center;
+	gap: var(--wp--preset--spacing--2);
+}
+
+.bpch-legal__contact .bpch-icon::before {
+	color: var(--wp--preset--color--blue);
+}
+
+.bpch-legal__contact .bpch-icon a {
+	display: inline-flex;
+	align-items: center;
+	min-height: 24px;
 }
 
 /* --- Contact --- */
