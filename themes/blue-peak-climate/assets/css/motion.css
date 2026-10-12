@@ -1,0 +1,191 @@
+/**
+ * Scroll animations. Front end only (the editor never loads this file).
+ *
+ * Three rules keep it safe:
+ * 1. Nothing is hidden until assets/js/motion.js sets data-bpch-motion on a section that starts below the fold, so
+ *    without JavaScript every block is visible.
+ * 2. Every animation sits inside `prefers-reduced-motion: no-preference`. A visitor who asks for less motion gets none.
+ * 3. Reveals are CSS animations that end on the element's natural style (no `forwards` fill), so hover effects and
+ *    transitions on the same element keep working afterwards.
+ *
+ * Timing comes from the tokens in theme.json (settings.custom.motion).
+ */
+
+/* ==========================================================================
+   Sticky header: a shadow and a smaller logo once the page has scrolled.
+   The state change is for everyone; only its transition is a motion.
+   ========================================================================== */
+html.bpch-scrolled .bpch-header {
+	padding-block: var(--wp--preset--spacing--2);
+	box-shadow: var(--wp--preset--shadow--header);
+}
+
+/* !important like the base rule, which beats the editor's inline size. */
+html.bpch-scrolled .bpch-header .wp-block-image.bpch-logo img {
+	height: 36px !important;
+}
+
+@media (max-width: 640px) {
+	html.bpch-scrolled .bpch-header .wp-block-image.bpch-logo img {
+		height: 26px !important;
+	}
+}
+
+@media (prefers-reduced-motion: no-preference) {
+
+	@keyframes bpch-rise {
+		from {
+			opacity: 0;
+			transform: translateY(var(--wp--custom--motion--shift));
+		}
+	}
+
+	@keyframes bpch-fade {
+		from {
+			opacity: 0;
+		}
+	}
+
+	@keyframes bpch-draw {
+		from {
+			transform: scaleX(0);
+		}
+	}
+
+	@keyframes bpch-photo-open {
+		from {
+			clip-path: inset(0 50% 0 50% round var(--wp--custom--radius--lg));
+		}
+
+		to {
+			clip-path: inset(0 0 0 0 round var(--wp--custom--radius--lg));
+		}
+	}
+
+	@keyframes bpch-peaks-rise {
+		from {
+			background-position: center calc(100% + var(--wp--custom--motion--peaks-rise));
+		}
+	}
+
+	/* --- Header --- */
+	.bpch-header,
+	.bpch-header .wp-block-image.bpch-logo img {
+		transition:
+			padding var(--wp--custom--motion--fast) var(--wp--custom--motion--ease),
+			box-shadow var(--wp--custom--motion--fast) var(--wp--custom--motion--ease),
+			height var(--wp--custom--motion--fast) var(--wp--custom--motion--ease);
+	}
+
+	/* --- Reveal: a section rises into place --- */
+	[data-bpch-motion="reveal"]:not(.is-visible) {
+		opacity: 0;
+		transform: translateY(var(--wp--custom--motion--shift));
+	}
+
+	[data-bpch-motion="reveal"].is-visible {
+		animation: bpch-rise var(--wp--custom--motion--slow) var(--wp--custom--motion--ease) backwards;
+	}
+
+	/* A photo beside the copy opens from the middle when its section appears. */
+	[data-bpch-motion="reveal"]:not(.is-visible) > .bpch-photo {
+		clip-path: inset(0 50% 0 50% round var(--wp--custom--radius--lg));
+	}
+
+	[data-bpch-motion="reveal"].is-visible > .bpch-photo {
+		animation: bpch-photo-open var(--wp--custom--motion--draw) var(--wp--custom--motion--ease) backwards;
+	}
+
+	/* --- Stagger: the children rise one after another (motion.js sets --i on each child) --- */
+	[data-bpch-motion="stagger"]:not(.is-visible) > * {
+		opacity: 0;
+		transform: translateY(var(--wp--custom--motion--shift));
+	}
+
+	[data-bpch-motion="stagger"].is-visible > * {
+		animation: bpch-rise var(--wp--custom--motion--slow) var(--wp--custom--motion--ease) backwards;
+		animation-delay: calc(var(--i, 0) * var(--wp--custom--motion--step));
+	}
+
+	/* --- Draw: each step's top line is drawn left to right, then its number fades in.
+	   The 2px border stays (transparent) so nothing moves when the line appears. --- */
+	[data-bpch-motion="draw"] > .bpch-step {
+		position: relative;
+		border-top-color: transparent;
+	}
+
+	[data-bpch-motion="draw"] > .bpch-step::before {
+		content: "";
+		position: absolute;
+		inset: -2px 0 auto;
+		height: 2px;
+		background: var(--wp--preset--color--navy);
+		transform-origin: left center;
+	}
+
+	[data-bpch-motion="draw"]:not(.is-visible) > .bpch-step::before {
+		transform: scaleX(0);
+	}
+
+	[data-bpch-motion="draw"]:not(.is-visible) .bpch-step__number {
+		opacity: 0;
+	}
+
+	[data-bpch-motion="draw"].is-visible > .bpch-step::before {
+		animation: bpch-draw var(--wp--custom--motion--draw) var(--wp--custom--motion--ease) backwards;
+		animation-delay: calc(var(--i, 0) * var(--wp--custom--motion--step) * 2);
+	}
+
+	[data-bpch-motion="draw"].is-visible .bpch-step__number {
+		animation: bpch-fade var(--wp--custom--motion--slow) var(--wp--custom--motion--ease) backwards;
+		animation-delay: calc(var(--i, 0) * var(--wp--custom--motion--step) * 2 + var(--wp--custom--motion--draw));
+	}
+
+	/* --- Background shapes ---
+	   The hero shapes rise once on load. Both bands also drift a little while scrolling (motion.js sets the shifts). */
+	.bpch-hero {
+		background-position: center calc(100% + var(--bpch-hero-shift, 0px));
+		animation: bpch-peaks-rise var(--wp--custom--motion--rise) var(--wp--custom--motion--ease) backwards;
+	}
+
+	.bpch-band--testimonial {
+		background-position: 100% calc(100% + var(--bpch-band-shift, 0px));
+	}
+
+	/* --- Hover: cards lift, buttons ease between colours. Hover only, so a tap on a phone does not leave a card raised. --- */
+	.bpch-card,
+	.wp-element-button {
+		transition:
+			transform var(--wp--custom--motion--fast) var(--wp--custom--motion--ease),
+			box-shadow var(--wp--custom--motion--fast) var(--wp--custom--motion--ease),
+			background-color var(--wp--custom--motion--fast) var(--wp--custom--motion--ease),
+			border-color var(--wp--custom--motion--fast) var(--wp--custom--motion--ease),
+			color var(--wp--custom--motion--fast) var(--wp--custom--motion--ease);
+	}
+
+	@media (hover: hover) {
+
+		/* The contact card holds the form, which should not move under the pointer. */
+		.bpch-card:not(.bpch-contact-card):hover {
+			transform: translateY(-4px);
+			box-shadow: var(--wp--preset--shadow--lift);
+		}
+	}
+}
+
+/* A printed page shows everything. */
+@media print {
+
+	[data-bpch-motion],
+	[data-bpch-motion] > *,
+	[data-bpch-motion] .bpch-step__number {
+		opacity: 1 !important;
+		transform: none !important;
+		clip-path: none !important;
+		animation: none !important;
+	}
+
+	[data-bpch-motion] > .bpch-step::before {
+		transform: none !important;
+	}
+}
