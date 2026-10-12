@@ -49,6 +49,7 @@ final class Settings {
 			'email'            => 'hello@bluepeakclimate.com',
 			'hours'            => __( 'Emergency line open 24/7', 'blue-peak-climate-core' ),
 			'service_area'     => __( 'Homes across Texas', 'blue-peak-climate-core' ),
+			'area_served'      => __( 'Texas', 'blue-peak-climate-core' ),
 			'emergency_banner' => false,
 			'facebook'         => '',
 			'instagram'        => '',
@@ -140,6 +141,7 @@ final class Settings {
 		$clean['legal_name']   = self::text( $input, 'legal_name' );
 		$clean['hours']        = self::text( $input, 'hours' );
 		$clean['service_area'] = self::text( $input, 'service_area' );
+		$clean['area_served']  = self::text( $input, 'area_served' );
 
 		// Letters never belong in a phone number, so drop them rather than store something that can't be dialed.
 		$phone = isset( $input['phone'] ) && is_string( $input['phone'] ) ? trim( preg_replace( '/[^0-9 ()+.\-]/', '', $input['phone'] ) ) : '';

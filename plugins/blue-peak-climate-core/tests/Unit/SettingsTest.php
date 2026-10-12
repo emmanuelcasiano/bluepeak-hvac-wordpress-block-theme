@@ -52,6 +52,12 @@ final class SettingsTest extends TestCase {
 		$this->assertSame( 'hello@bluepeakclimate.com', Settings::get( 'email' ) );
 	}
 
+	public function test_area_served_defaults_to_texas_until_saved(): void {
+		$this->saved( array( 'phone' => '(214) 555-0100' ) );
+
+		$this->assertSame( 'Texas', Settings::get( 'area_served' ) );
+	}
+
 	public function test_a_broken_option_falls_back_to_defaults(): void {
 		$this->saved( 'not an array' );
 
@@ -106,6 +112,7 @@ final class SettingsTest extends TestCase {
 				'email'            => 'office@example.com',
 				'hours'            => 'Mon-Fri 8-5',
 				'service_area'     => 'North Texas',
+				'area_served'      => ' Texas ',
 				'emergency_banner' => '1',
 				'facebook'         => 'https://facebook.com/bluepeak',
 				'instagram'        => 'javascript:alert(1)',
@@ -119,6 +126,7 @@ final class SettingsTest extends TestCase {
 
 		$this->assertSame( 'Blue Peak Climate LLC', $clean['legal_name'] );
 		$this->assertSame( '(214) 555-0100 .', $clean['phone'] );
+		$this->assertSame( 'Texas', $clean['area_served'] );
 		$this->assertTrue( $clean['emergency_banner'] );
 		$this->assertSame( 'https://facebook.com/bluepeak', $clean['facebook'] );
 		$this->assertSame( '', $clean['instagram'], 'A non-http link is dropped.' );

@@ -77,6 +77,7 @@ final class SettingsPage {
 		$this->add_section( 'availability', __( 'Hours and service area', 'blue-peak-climate-core' ) );
 		$this->add_field( 'availability', 'hours', __( 'Hours', 'blue-peak-climate-core' ), 'text', __( 'One short line, for example "Emergency line open 24/7".', 'blue-peak-climate-core' ) );
 		$this->add_field( 'availability', 'service_area', __( 'Service area', 'blue-peak-climate-core' ), 'text', __( 'One short line, for example "Homes across Texas".', 'blue-peak-climate-core' ) );
+		$this->add_field( 'availability', 'area_served', __( 'Area served (for search engines)', 'blue-peak-climate-core' ), 'text', __( 'The state, region or city name only, for example "Texas". It goes into the business and service markup that Google reads.', 'blue-peak-climate-core' ) );
 
 		$this->add_section( 'emergency', __( 'Emergency banner', 'blue-peak-climate-core' ) );
 		$this->add_field( 'emergency', 'emergency_banner', __( 'Show the emergency banner', 'blue-peak-climate-core' ), 'checkbox', __( 'Turn on during a heat wave or cold snap.', 'blue-peak-climate-core' ) );

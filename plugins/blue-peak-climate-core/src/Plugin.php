@@ -38,6 +38,10 @@ final class Plugin {
 		( new Forms\ZipValidation() )->register();
 		( new Forms\OfficeRouting() )->register();
 		( new Forms\EmailCredit() )->register();
+		( new Seo\BusinessSchema() )->register();
+		( new Seo\ServiceSchema() )->register();
+		( new Seo\FaqSchema() )->register();
+		( new Seo\ArticleSchema() )->register();
 		( new Support\ListingOnly(
 			array(
 				Reviews\PostTypes::POST_TYPE => '/reviews/',
