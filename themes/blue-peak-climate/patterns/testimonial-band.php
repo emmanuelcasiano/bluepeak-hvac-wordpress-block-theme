@@ -3,7 +3,7 @@
  * Title: Testimonial band
  * Slug: blue-peak-climate/testimonial-band
  * Categories: blue-peak-climate
- * Description: Navy band with a photo, five stars and one customer quote. The review carousel replaces the single quote later.
+ * Description: Navy band with a photo and the review carousel, which shows the newest published reviews one at a time.
  *
  * @package BluePeakClimate_Theme
  */
@@ -22,22 +22,7 @@ defined( 'ABSPATH' ) || exit;
 			<p class="bpch-eyebrow bpch-eyebrow--light has-x-small-font-size"><?php esc_html_e( 'From our customers', 'blue-peak-climate' ); ?></p>
 			<!-- /wp:paragraph -->
 
-			<!-- wp:paragraph {"className":"bpch-rating"} -->
-			<p class="bpch-rating"><span aria-hidden="true">★★★★★</span><span class="bpch-sr-only"><?php esc_html_e( '5 out of 5 stars', 'blue-peak-climate' ); ?></span></p>
-			<!-- /wp:paragraph -->
-
-			<!-- wp:quote {"className":"bpch-quote"} -->
-			<blockquote class="wp-block-quote bpch-quote">
-				<!-- wp:paragraph -->
-				<p><?php esc_html_e( 'Our AC quit on a Saturday in July with a newborn in the house. BluePeak had a technician here by early afternoon. He showed us the burned-out capacitor, replaced it, and the bill matched what he quoted. The house was cool again by three.', 'blue-peak-climate' ); ?></p>
-				<!-- /wp:paragraph -->
-				<cite><?php esc_html_e( 'Homeowner, Texas', 'blue-peak-climate' ); ?></cite>
-			</blockquote>
-			<!-- /wp:quote -->
-
-			<!-- wp:paragraph {"textColor":"on-navy","fontSize":"small"} -->
-			<p class="has-on-navy-color has-text-color has-small-font-size"><?php esc_html_e( 'Emergency AC repair', 'blue-peak-climate' ); ?></p>
-			<!-- /wp:paragraph -->
+			<!-- wp:bpch/review-carousel /-->
 		</div>
 		<!-- /wp:group -->
 	</div>

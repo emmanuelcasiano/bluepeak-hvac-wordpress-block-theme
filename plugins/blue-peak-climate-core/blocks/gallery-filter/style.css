@@ -1,0 +1,93 @@
+/* Gallery filter. Colours, spacing and radii come from the theme's theme.json tokens. */
+
+.bpch-filter__chips {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--wp--preset--spacing--2);
+	margin-bottom: var(--wp--preset--spacing--6);
+}
+
+.bpch-filter__chip {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--wp--preset--spacing--2);
+	min-height: 2.75rem;
+	padding: var(--wp--preset--spacing--2) var(--wp--preset--spacing--4);
+	border: 1px solid var(--wp--preset--color--line);
+	border-radius: var(--wp--custom--radius--pill, 999px);
+	background: var(--wp--preset--color--white);
+	color: var(--wp--preset--color--ink);
+	font-family: inherit;
+	font-size: var(--wp--preset--font-size--small);
+	font-weight: 500;
+	line-height: 1.2;
+	white-space: nowrap;
+	cursor: pointer;
+}
+
+.bpch-filter__chip:hover {
+	border-color: var(--wp--preset--color--navy);
+}
+
+.bpch-filter__chip[aria-pressed="true"] {
+	border-color: var(--wp--preset--color--navy);
+	background: var(--wp--preset--color--navy);
+	color: var(--wp--preset--color--white);
+}
+
+.bpch-filter__chip .bpch-icon-svg {
+	flex: none;
+	width: 18px;
+	height: 18px;
+}
+
+.bpch-filter__chip[aria-pressed="true"] .bpch-icon-svg {
+	color: var(--wp--preset--color--orange);
+}
+
+/* Read by screen readers only: "Showing 2 Cooling photos". */
+.bpch-filter__status {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: nowrap;
+}
+
+/* A photo is a flex Group, which would otherwise beat the browser's rule for the hidden attribute. */
+.bpch-filter [hidden] {
+	display: none;
+}
+
+/* Phones: one scrolling row, edge to edge, instead of wrapping onto three lines. */
+@media (max-width: 640px) {
+	.bpch-filter__chips {
+		flex-wrap: nowrap;
+		margin-inline: calc(-1 * var(--wp--preset--spacing--gutter));
+		padding-inline: var(--wp--preset--spacing--gutter);
+		padding-bottom: var(--wp--preset--spacing--1);
+		overflow-x: auto;
+		scrollbar-width: none;
+	}
+
+	.bpch-filter__chips::-webkit-scrollbar {
+		display: none;
+	}
+}
+
+/* No JavaScript: the chips would do nothing, so they are not drawn and every photo shows. */
+@media (scripting: none) {
+	.bpch-filter__chips {
+		display: none;
+	}
+}
+
+.bpch-filter__note {
+	margin: 0 0 1rem;
+	padding: 0.5rem 0.75rem;
+	border: 1px dashed currentColor;
+	font-size: 0.8125rem;
+}

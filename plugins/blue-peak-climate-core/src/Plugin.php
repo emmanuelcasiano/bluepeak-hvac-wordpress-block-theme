@@ -27,6 +27,7 @@ final class Plugin {
 		( new Services\Installer() )->register();
 		( new Services\EditScreen() )->register();
 		( new Services\CategoryBindings() )->register();
+		( new Services\TypeBadge() )->register();
 		( new Reviews\PostTypes() )->register();
 		( new Reviews\EditScreen() )->register();
 		( new Reviews\Rating() )->register();

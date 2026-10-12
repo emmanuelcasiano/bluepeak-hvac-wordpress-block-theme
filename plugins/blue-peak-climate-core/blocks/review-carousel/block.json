@@ -1,0 +1,21 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "bpch/review-carousel",
+	"version": "0.1.0",
+	"title": "Review carousel",
+	"category": "design",
+	"icon": "format-quote",
+	"description": "Shows the newest published reviews one at a time, with dots, arrows and an automatic rotation that can be paused. Made for a dark band.",
+	"keywords": [ "reviews", "testimonials", "slider" ],
+	"supports": {
+		"html": false,
+		"interactivity": true,
+		"customClassName": false
+	},
+	"textdomain": "blue-peak-climate-core",
+	"editorScript": "file:./index.js",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php",
+	"viewScriptModule": "file:./view.js"
+}

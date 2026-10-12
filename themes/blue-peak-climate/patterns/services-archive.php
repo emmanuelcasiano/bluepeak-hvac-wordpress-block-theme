@@ -122,7 +122,7 @@ $bpch_category_section = static function ( $query_id, $slug, $title, $lead, $mar
 		<!-- wp:post-template {"style":{"spacing":{"blockGap":"var:preset|spacing|5"}},"layout":{"type":"grid","minimumColumnWidth":"18rem"}} -->
 			<!-- wp:group {"className":"bpch-card bpch-service-card","backgroundColor":"white","style":{"spacing":{"blockGap":"var:preset|spacing|3"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"stretch"}} -->
 			<div class="wp-block-group bpch-card bpch-service-card has-white-background-color has-background">
-				<!-- wp:post-terms {"term":"bpch_service_type","className":"bpch-tag","fontSize":"x-small"} /-->
+				<!-- wp:bpch/service-type /-->
 
 				<!-- wp:post-title {"level":3,"isLink":true} /-->
 

@@ -1,0 +1,21 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "bpch/gallery-filter",
+	"version": "0.1.0",
+	"title": "Gallery filter",
+	"category": "design",
+	"icon": "images-alt2",
+	"description": "Filter chips for the photos inside it. Each photo needs the class bpch-gallery__item and bpch-gallery__item--cooling (or heating, crew, comfort).",
+	"keywords": [ "gallery", "filter", "photos" ],
+	"supports": {
+		"html": false,
+		"interactivity": true,
+		"customClassName": false
+	},
+	"textdomain": "blue-peak-climate-core",
+	"editorScript": "file:./index.js",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php",
+	"viewScriptModule": "file:./view.js"
+}
