@@ -12,6 +12,7 @@ require_once get_theme_file_path( 'inc/icon-block.php' );
 require_once get_theme_file_path( 'inc/forms.php' );
 require_once get_theme_file_path( 'inc/consent.php' );
 require_once get_theme_file_path( 'inc/legal.php' );
+require_once get_theme_file_path( 'inc/motion.php' );
 
 /**
  * Loads style.css inside the editor iframe so the editor matches the front end.
