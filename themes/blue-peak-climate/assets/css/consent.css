@@ -1,0 +1,66 @@
+/*
+ * Cookie banner (Complianz) and the footer cookie links.
+ * Loaded only on pages where Complianz prints its banner stylesheet, after it (see inc/consent.php).
+ * Colors, radius and font size of the banner itself are set in Complianz and come from the theme's design tokens,
+ * see ai/scripts/configure-complianz.php. This file only fixes what those settings cannot reach.
+ */
+
+/* The policy link under the buttons was 21px tall; WCAG 2.2 asks for at least 24px. */
+.cmplz-cookiebanner .cmplz-links .cmplz-link {
+	display: inline-flex;
+	align-items: center;
+	min-height: 24px;
+}
+
+/*
+ * The close button is 20px by default and holds the first focus when the banner opens. Complianz decides whether it is
+ * shown at all (the Close button setting), so only its size is set here.
+ */
+.cmplz-cookiebanner .cmplz-close {
+	width: 24px;
+	height: 24px;
+}
+
+.cmplz-cookiebanner .cmplz-close svg {
+	margin: 2px;
+}
+
+.cmplz-cookiebanner .cmplz-close:focus-visible,
+.cmplz-cookiebanner .cmplz-category-toggle:focus-visible,
+.cmplz-cookiebanner .cmplz-link:focus-visible,
+.cmplz-cookiebanner .cmplz-btn:focus-visible {
+	outline: 2px solid var(--wp--preset--color--navy);
+	outline-offset: 2px;
+}
+
+/* Footer: Cookie Policy link and the button that reopens the banner. */
+.bpch-footer__cookies {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: var(--wp--preset--spacing--2) var(--wp--preset--spacing--5);
+	font-size: var(--wp--preset--font-size--x-small);
+}
+
+.bpch-footer__cookies a,
+.bpch-footer__cookie-button {
+	display: inline-flex;
+	align-items: center;
+	min-height: 24px;
+}
+
+/* The button looks like the footer links next to it. */
+.bpch-footer__cookie-button {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background: none;
+	color: var(--wp--preset--color--on-navy);
+	font: inherit;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.bpch-footer__cookie-button:hover {
+	color: var(--wp--preset--color--white);
+}
