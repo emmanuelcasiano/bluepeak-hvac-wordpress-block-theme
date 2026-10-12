@@ -61,7 +61,9 @@ $bpch_area_attributes = serialize_block_attributes(
 echo bpch_theme_page_intro( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Block markup escaped by the helper.
 	__( 'Contact', 'blue-peak-climate' ),
 	__( 'Book a visit or ask a question', 'blue-peak-climate' ),
-	__( "Call for anything urgent. For everything else, send a request and we'll call you back to set a time.", 'blue-peak-climate' )
+	__( "Call for anything urgent. For everything else, send a request and we'll call you back to set a time.", 'blue-peak-climate' ),
+	'',
+	'family-home'
 );
 ?>
 

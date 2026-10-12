@@ -66,7 +66,9 @@ $bpch_terms = serialize_block_attributes(
 echo bpch_theme_page_intro( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Block markup escaped by the helper.
 	__( 'Offers', 'blue-peak-climate' ),
 	__( 'Current offers', 'blue-peak-climate' ),
-	__( 'Seasonal savings on heating, cooling, and electrical work. Each offer ends on the date shown, so book while it lasts.', 'blue-peak-climate' )
+	__( 'Seasonal savings on heating, cooling, and electrical work. Each offer ends on the date shown, so book while it lasts.', 'blue-peak-climate' ),
+	'',
+	'service-heating'
 );
 ?>
 

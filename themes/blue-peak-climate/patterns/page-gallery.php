@@ -16,12 +16,12 @@ defined( 'ABSPATH' ) || exit;
 $bpch_gallery = array(
 	array( 'house', 'cooling', __( 'Cooling', 'blue-peak-climate' ), __( 'AC installation', 'blue-peak-climate' ), __( 'New condenser on a fresh concrete pad', 'blue-peak-climate' ) ),
 	array( 'tech-unit', 'crew', __( 'Our crew', 'blue-peak-climate' ), __( 'AC repair', 'blue-peak-climate' ), __( 'Checking the electrical side of a condenser', 'blue-peak-climate' ) ),
-	array( 'minisplit', 'cooling', __( 'Cooling', 'blue-peak-climate' ), __( 'Ductless installation', 'blue-peak-climate' ), __( 'Wall-mounted ductless unit in a living room', 'blue-peak-climate' ) ),
-	array( 'heatpump', 'heating', __( 'Heating', 'blue-peak-climate' ), __( 'Heat pump installation', 'blue-peak-climate' ), __( 'Heat pump outdoor unit, ready for winter', 'blue-peak-climate' ) ),
+	array( 'service-heating', 'cooling', __( 'Cooling', 'blue-peak-climate' ), __( 'Ductless installation', 'blue-peak-climate' ), __( 'Wall-mounted ductless unit in a living room', 'blue-peak-climate' ) ),
+	array( 'heat-pump-room', 'heating', __( 'Heating', 'blue-peak-climate' ), __( 'Heat pump installation', 'blue-peak-climate' ), __( 'Heat pump in a utility room, ready for winter', 'blue-peak-climate' ) ),
 	array( 'tech-wide', 'crew', __( 'Our crew', 'blue-peak-climate' ), __( 'AC maintenance', 'blue-peak-climate' ), __( 'Coil cleaning during a spring tune-up', 'blue-peak-climate' ) ),
-	array( 'thermostat', 'heating', __( 'Heating', 'blue-peak-climate' ), __( 'Controls', 'blue-peak-climate' ), __( 'Programmable thermostat set to 72°', 'blue-peak-climate' ) ),
-	array( 'family', 'comfort', __( 'Comfort at home', 'blue-peak-climate' ), __( 'Air quality', 'blue-peak-climate' ), __( 'Even temperatures from room to room', 'blue-peak-climate' ) ),
-	array( 'tech-tile', 'crew', __( 'Our crew', 'blue-peak-climate' ), __( 'Maintenance', 'blue-peak-climate' ), __( 'Pre-summer inspection on a Texas home', 'blue-peak-climate' ) ),
+	array( 'wall-control', 'heating', __( 'Heating', 'blue-peak-climate' ), __( 'Controls', 'blue-peak-climate' ), __( 'Wall control for a ductless system', 'blue-peak-climate' ) ),
+	array( 'family-home', 'comfort', __( 'Comfort at home', 'blue-peak-climate' ), __( 'Air quality', 'blue-peak-climate' ), __( 'Even temperatures from room to room', 'blue-peak-climate' ) ),
+	array( 'coil-check', 'crew', __( 'Our crew', 'blue-peak-climate' ), __( 'Maintenance', 'blue-peak-climate' ), __( 'Checking a condenser coil with a leak detector', 'blue-peak-climate' ) ),
 );
 
 echo bpch_theme_page_intro( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Block markup escaped by the helper.
@@ -39,7 +39,7 @@ echo bpch_theme_page_intro( // phpcs:ignore WordPress.Security.EscapeOutput.Outp
 		<?php foreach ( $bpch_gallery as $bpch_item ) : ?>
 		<!-- wp:group {"className":"bpch-gallery__item bpch-gallery__item--<?php echo esc_attr( $bpch_item[1] ); ?>","style":{"spacing":{"blockGap":"var:preset|spacing|3"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"stretch"}} -->
 		<div class="wp-block-group bpch-gallery__item bpch-gallery__item--<?php echo esc_attr( $bpch_item[1] ); ?>">
-			<?php echo bpch_theme_photo_cover( $bpch_item[0], 'card' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Block markup escaped by the helper. ?>
+			<?php echo bpch_theme_photo_cover( $bpch_item[0], 'card', 'blue-soft', $bpch_item[4] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Block markup escaped by the helper. ?>
 
 			<!-- wp:group {"className":"bpch-gallery__caption","style":{"spacing":{"blockGap":"var:preset|spacing|1"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"stretch"}} -->
 			<div class="wp-block-group bpch-gallery__caption">

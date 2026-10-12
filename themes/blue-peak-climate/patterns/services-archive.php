@@ -152,7 +152,8 @@ echo bpch_theme_page_intro( // phpcs:ignore WordPress.Security.EscapeOutput.Outp
 	__( 'Services', 'blue-peak-climate' ),
 	__( 'Heating, cooling, and electrical work for your home', 'blue-peak-climate' ),
 	__( "Twenty-two services from one crew. Pick the one you need, or call and describe the problem. We'll figure out the rest.", 'blue-peak-climate' ),
-	$bpch_chips_markup
+	$bpch_chips_markup,
+	'service-technician'
 );
 
 // phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped -- Block markup escaped by the section builder.
