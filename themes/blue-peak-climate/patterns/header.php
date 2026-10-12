@@ -32,6 +32,10 @@ $bpch_menu_items = array(
 		'url'   => home_url( '/about/' ),
 	),
 	array(
+		'label' => __( 'Blog', 'blue-peak-climate' ),
+		'url'   => home_url( '/blog/' ),
+	),
+	array(
 		'label' => __( 'Contact', 'blue-peak-climate' ),
 		'url'   => home_url( '/contact/' ),
 	),
@@ -40,7 +44,7 @@ $bpch_menu_items = array(
 $bpch_contact_url = home_url( '/contact/' );
 
 // Two menus built from the same links, so keyboard order matches the screen at every width: an inline menu
-// (wider than 1024px) and a menu button with an overlay (1024px and narrower). style.css shows one of them.
+// (wider than 1200px) and a menu button with an overlay (1200px and narrower). style.css shows one of them.
 $bpch_nav_base = array(
 	'ariaLabel' => __( 'Main', 'blue-peak-climate' ),
 	'textColor' => 'ink',
