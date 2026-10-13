@@ -42,6 +42,24 @@ body .wp-site-blocks > * {
 	z-index: 10;
 }
 
+/* WCAG 2.4.11: a focused element, a chip target or a table of contents anchor must never end up behind the
+   sticky header (topbar included, up to about 130px), so scrolling into view leaves that much room. */
+html {
+	scroll-padding-top: 9rem;
+}
+
+/* On a short screen (400% zoom, a phone held sideways) the sticky header would take a third to a half of the
+   view, so it scrolls away with the page instead and nothing needs clearing. */
+@media (max-height: 500px) {
+	.wp-site-blocks > header.wp-block-template-part {
+		position: static;
+	}
+
+	html {
+		scroll-padding-top: 0;
+	}
+}
+
 /* ==========================================================================
    Icons: SVG files in assets/icons drawn with a mask, so they take the text colour.
    ========================================================================== */
@@ -82,6 +100,10 @@ body .wp-site-blocks > * {
    Topbar
    ========================================================================== */
 .bpch-topbar a:where(:not(.wp-element-button)) {
+	display: inline-flex;
+	align-items: center;
+	/* WCAG 2.5.8: a tap target is at least 24px tall (the text alone is 17px). */
+	min-height: 24px;
 	color: var(--wp--preset--color--white);
 	font-weight: 700;
 	text-decoration: none;
@@ -135,6 +157,7 @@ body .wp-site-blocks > * {
 	display: inline-flex;
 	align-items: center;
 	gap: var(--wp--preset--spacing--2);
+	min-height: 24px;
 	color: var(--wp--preset--color--ink);
 	text-decoration: none;
 }
@@ -1047,11 +1070,6 @@ body .wp-site-blocks > * {
 }
 
 /* --- Services page --- */
-/* The sticky header would cover the top of a section that a chip scrolls to. */
-.bpch-section--services {
-	scroll-margin-top: 9rem;
-}
-
 .bpch-service-card {
 	height: 100%;
 }
@@ -1415,8 +1433,6 @@ body .wp-site-blocks > * {
 
 .bpch-legal > h2 {
 	margin-block-start: var(--wp--preset--spacing--7);
-	/* Clears the sticky header (topbar included, 122px) when a table of contents link scrolls to the heading. */
-	scroll-margin-top: 9rem;
 }
 
 .bpch-legal > h3 {
