@@ -64,3 +64,56 @@
 .bpch-footer__cookie-button:hover {
 	color: var(--wp--preset--color--white);
 }
+
+/*
+ * Short screens (a phone held sideways, or a browser zoomed to 400%): Complianz shrinks the whole banner with
+ * `zoom: 0.6` and the buttons with `zoom: 0.5`, which leaves the text at about 9px and cuts the message off.
+ * Keep the normal sizes instead and let the banner scroll inside itself; the buttons sit side by side to save height.
+ * Same selectors as Complianz's own rules, and this file loads after it.
+ */
+@media (max-height: 400px) {
+	.cmplz-cookiebanner {
+		display: grid;
+		height: auto;
+		gap: 10px;
+		overflow-y: auto;
+		padding: 15px 20px !important;
+		zoom: 1;
+	}
+
+	.cmplz-cookiebanner .cmplz-body {
+		flex: none;
+		max-height: none;
+		margin-top: 0 !important;
+		overflow-y: visible;
+	}
+
+	.cmplz-cookiebanner .cmplz-header {
+		max-height: none;
+		margin-bottom: 0 !important;
+	}
+
+	.cmplz-close {
+		zoom: 1 !important;
+	}
+
+	.cmplz-cookiebanner .cmplz-buttons {
+		flex-flow: row wrap;
+		gap: 10px !important;
+	}
+
+	.cmplz-cookiebanner .cmplz-buttons .cmplz-btn {
+		flex: 1 1 auto;
+		height: 45px !important;
+		min-height: 45px !important;
+		padding: 10px !important;
+		font-size: 0.9375rem !important;
+		line-height: 20px !important;
+		zoom: 1 !important;
+	}
+
+	.cmplz-cookiebanner .cmplz-documents,
+	.cmplz-cookiebanner .cmplz-information {
+		zoom: 1 !important;
+	}
+}

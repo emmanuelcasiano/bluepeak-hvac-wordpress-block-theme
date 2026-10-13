@@ -42,7 +42,7 @@ $bpch_price_binding   = serialize_block_attributes(
 
 		<!-- wp:group {"className":"bpch-service-facts","style":{"spacing":{"blockGap":"var:preset|spacing|4"}},"layout":{"type":"flex","flexWrap":"wrap","verticalAlignment":"center"}} -->
 		<div class="wp-block-group bpch-service-facts">
-			<!-- wp:post-terms {"term":"bpch_service_type","className":"bpch-tag","fontSize":"x-small"} /-->
+			<!-- wp:bpch/service-type /-->
 
 			<!-- wp:paragraph <?php echo $bpch_price_binding; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Block comment JSON from serialize_block_attributes(). ?> -->
 			<p class="bpch-price has-large-font-size"></p>
