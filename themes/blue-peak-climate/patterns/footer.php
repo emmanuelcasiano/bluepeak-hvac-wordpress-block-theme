@@ -130,7 +130,7 @@ $bpch_legal_nav = serialize_block_attributes(
 			<!-- wp:group {"className":"bpch-footer__plate","backgroundColor":"white","style":{"spacing":{"padding":{"top":"var:preset|spacing|3","bottom":"var:preset|spacing|3","left":"var:preset|spacing|4","right":"var:preset|spacing|4"}}},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
 			<div class="wp-block-group bpch-footer__plate has-white-background-color has-background" style="padding-top:var(--wp--preset--spacing--3);padding-right:var(--wp--preset--spacing--4);padding-bottom:var(--wp--preset--spacing--3);padding-left:var(--wp--preset--spacing--4)">
 				<!-- wp:image {"sizeSlug":"full","linkDestination":"custom","className":"bpch-logo bpch-logo--footer"} -->
-				<figure class="wp-block-image size-full bpch-logo bpch-logo--footer"><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/logo.png' ) ); ?>" alt="<?php esc_attr_e( 'Blue Peak Climate home', 'blue-peak-climate' ); ?>"/></a></figure>
+				<figure class="wp-block-image size-full bpch-logo bpch-logo--footer"><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/logo.webp' ) ); ?>" alt="<?php esc_attr_e( 'Blue Peak Climate home', 'blue-peak-climate' ); ?>"/></a></figure>
 				<!-- /wp:image -->
 			</div>
 			<!-- /wp:group -->

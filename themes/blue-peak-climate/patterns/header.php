@@ -121,7 +121,7 @@ $bpch_phone_link              = '<a href="' . esc_url( $bpch_business['phone_hre
 	<!-- wp:group {"className":"bpch-header__row","style":{"spacing":{"blockGap":"var:preset|spacing|5"}},"layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between","verticalAlignment":"center"}} -->
 	<div class="wp-block-group bpch-header__row">
 		<!-- wp:image {"sizeSlug":"full","linkDestination":"custom","className":"bpch-logo"} -->
-		<figure class="wp-block-image size-full bpch-logo"><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/logo.png' ) ); ?>" alt="<?php esc_attr_e( 'Blue Peak Climate home', 'blue-peak-climate' ); ?>"/></a></figure>
+		<figure class="wp-block-image size-full bpch-logo"><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/logo.webp' ) ); ?>" alt="<?php esc_attr_e( 'Blue Peak Climate home', 'blue-peak-climate' ); ?>"/></a></figure>
 		<!-- /wp:image -->
 
 		<!-- wp:navigation <?php echo $bpch_inline_nav_attributes; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Block comment JSON from serialize_block_attributes(). ?> -->
