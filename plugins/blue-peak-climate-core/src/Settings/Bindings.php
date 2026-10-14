@@ -27,7 +27,7 @@ final class Bindings {
 	/**
 	 * Settings that blocks may read. The ZIP table and the banner toggle are for PHP code, not for blocks.
 	 */
-	private const KEYS = array( 'legal_name', 'phone', 'email', 'hours', 'service_area', 'facebook', 'instagram', 'youtube', 'google_business' );
+	private const KEYS = array( 'legal_name', 'phone', 'email', 'hours', 'service_area', 'demo_notice', 'facebook', 'instagram', 'youtube', 'google_business' );
 
 	/**
 	 * Attributes that hold HTML, so text printed there must be escaped. Other attributes (alt, title) are

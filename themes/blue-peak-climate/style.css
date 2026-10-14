@@ -2,10 +2,10 @@
 Theme Name: Blue Peak Climate Theme
 Description: Block theme for Blue Peak Climate. Design tokens live in theme.json; this file holds only CSS theme.json can't express.
 Version: 0.1.0
-Requires at least: 6.8
+Requires at least: 7.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Author: Your Name
+Author: EC
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: blue-peak-climate
@@ -377,6 +377,23 @@ html {
 
 .bpch-footer__bottom {
 	border-top: 1px solid var(--wp--preset--color--navy-line);
+}
+
+/* One-line notice from Site Settings (portfolio or staging copy); empty on a client site, so it takes no space. */
+.bpch-footer__demo {
+	margin: var(--wp--preset--spacing--4) 0 0;
+	padding-top: var(--wp--preset--spacing--3);
+	border-top: 1px solid var(--wp--preset--color--navy-line);
+	text-align: left;
+}
+
+.bpch-footer__demo:empty {
+	display: none;
+}
+
+/* The footer's own bottom padding (set inline) is wide; trim it only while the notice is showing. */
+.bpch-footer:has(.bpch-footer__demo:not(:empty)) {
+	padding-bottom: var(--wp--preset--spacing--4) !important;
 }
 
 /* Privacy Policy, Terms, Cookie Policy and Manage cookies share one wrapping row. */

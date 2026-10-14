@@ -58,6 +58,25 @@ final class SettingsTest extends TestCase {
 		$this->assertSame( 'Texas', Settings::get( 'area_served' ) );
 	}
 
+	public function test_demo_notice_is_blank_until_saved(): void {
+		$this->saved( array( 'phone' => '(214) 555-0100' ) );
+
+		$this->assertSame( '', Settings::get( 'demo_notice' ) );
+	}
+
+	public function test_demo_notice_is_saved_as_plain_text_and_can_be_cleared(): void {
+		$base = array(
+			'phone' => '(214) 555-0100',
+			'email' => 'a@example.com',
+		);
+
+		$clean = Settings::sanitize( array_merge( $base, array( 'demo_notice' => ' Portfolio demo. ' ) ) );
+		$this->assertSame( 'Portfolio demo.', $clean['demo_notice'] );
+
+		$clean = Settings::sanitize( $base, array( 'demo_notice' => 'Portfolio demo.' ) );
+		$this->assertSame( '', $clean['demo_notice'], 'Saving the form without the field clears the notice.' );
+	}
+
 	public function test_a_broken_option_falls_back_to_defaults(): void {
 		$this->saved( 'not an array' );
 

@@ -82,6 +82,9 @@ final class SettingsPage {
 		$this->add_section( 'emergency', __( 'Emergency banner', 'blue-peak-climate-core' ) );
 		$this->add_field( 'emergency', 'emergency_banner', __( 'Show the emergency banner', 'blue-peak-climate-core' ), 'checkbox', __( 'Turn on during a heat wave or cold snap.', 'blue-peak-climate-core' ) );
 
+		$this->add_section( 'demo', __( 'Demo notice', 'blue-peak-climate-core' ) );
+		$this->add_field( 'demo', 'demo_notice', __( 'Footer notice', 'blue-peak-climate-core' ), 'text', __( 'One line shown at the bottom of every page, for a portfolio or staging copy. Leave blank on a real client site to hide it.', 'blue-peak-climate-core' ) );
+
 		$this->add_section( 'social', __( 'Social links', 'blue-peak-climate-core' ), __( 'Full addresses starting with https://. Leave blank to hide a link.', 'blue-peak-climate-core' ) );
 		$this->add_field( 'social', 'facebook', __( 'Facebook', 'blue-peak-climate-core' ), 'url' );
 		$this->add_field( 'social', 'instagram', __( 'Instagram', 'blue-peak-climate-core' ), 'url' );

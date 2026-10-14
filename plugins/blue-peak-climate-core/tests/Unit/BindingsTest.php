@@ -28,11 +28,12 @@ final class BindingsTest extends TestCase {
 		Functions\when( 'antispambot' )->returnArg();
 		Functions\when( 'get_option' )->justReturn(
 			array(
-				'phone'     => '(214) 555-0100',
-				'email'     => 'office@example.com',
-				'hours'     => 'Mon & Tue',
-				'facebook'  => 'https://facebook.com/bluepeak',
-				'instagram' => '',
+				'phone'       => '(214) 555-0100',
+				'email'       => 'office@example.com',
+				'hours'       => 'Mon & Tue',
+				'demo_notice' => 'Sample site & portfolio piece',
+				'facebook'    => 'https://facebook.com/bluepeak',
+				'instagram'   => '',
 			)
 		);
 		$this->bindings = new Bindings();
@@ -46,6 +47,10 @@ final class BindingsTest extends TestCase {
 	public function test_text_in_html_attributes_is_escaped(): void {
 		$this->assertSame( 'Mon &amp; Tue', $this->bindings->get_value( array( 'key' => 'hours' ), null, 'content' ) );
 		$this->assertSame( '(214) 555-0100', $this->bindings->get_value( array( 'key' => 'phone' ), null, 'text' ) );
+	}
+
+	public function test_demo_notice_can_be_read_by_a_block(): void {
+		$this->assertSame( 'Sample site &amp; portfolio piece', $this->bindings->get_value( array( 'key' => 'demo_notice' ), null, 'content' ) );
 	}
 
 	public function test_text_in_plain_attributes_is_left_for_wordpress_to_escape(): void {
