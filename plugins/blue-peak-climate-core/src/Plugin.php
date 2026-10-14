@@ -43,6 +43,7 @@ final class Plugin {
 		( new Consent\OptIn() )->register();
 		( new Consent\SiteKitDefaults() )->register();
 		( new Cache\Flush() )->register();
+		( new Security\Hardening() )->register();
 		( new Seo\BusinessSchema() )->register();
 		( new Seo\ServiceSchema() )->register();
 		( new Seo\FaqSchema() )->register();
