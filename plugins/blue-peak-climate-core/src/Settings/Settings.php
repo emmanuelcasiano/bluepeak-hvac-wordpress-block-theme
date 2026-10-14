@@ -51,6 +51,7 @@ final class Settings {
 			'service_area'     => __( 'Homes across Texas', 'blue-peak-climate-core' ),
 			'area_served'      => __( 'Texas', 'blue-peak-climate-core' ),
 			'emergency_banner' => false,
+			'demo_notice'      => '',
 			'facebook'         => '',
 			'instagram'        => '',
 			'youtube'          => '',
@@ -142,6 +143,7 @@ final class Settings {
 		$clean['hours']        = self::text( $input, 'hours' );
 		$clean['service_area'] = self::text( $input, 'service_area' );
 		$clean['area_served']  = self::text( $input, 'area_served' );
+		$clean['demo_notice']  = self::text( $input, 'demo_notice' );
 
 		// Letters never belong in a phone number, so drop them rather than store something that can't be dialed.
 		$phone = isset( $input['phone'] ) && is_string( $input['phone'] ) ? trim( preg_replace( '/[^0-9 ()+.\-]/', '', $input['phone'] ) ) : '';

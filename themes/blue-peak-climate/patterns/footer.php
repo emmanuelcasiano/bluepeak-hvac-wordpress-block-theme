@@ -224,5 +224,9 @@ $bpch_legal_nav = serialize_block_attributes(
 		<!-- /wp:paragraph -->
 	</div>
 	<!-- /wp:group -->
+
+	<!-- wp:paragraph {"className":"bpch-footer__demo","fontSize":"x-small","metadata":{"bindings":{"content":{"source":"bpch/site-settings","args":{"key":"demo_notice"}}}}} -->
+	<p class="bpch-footer__demo has-x-small-font-size"></p>
+	<!-- /wp:paragraph -->
 </div>
 <!-- /wp:group -->

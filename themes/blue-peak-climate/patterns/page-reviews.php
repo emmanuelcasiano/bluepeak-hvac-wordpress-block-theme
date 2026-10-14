@@ -91,10 +91,6 @@ echo bpch_theme_page_intro( // phpcs:ignore WordPress.Security.EscapeOutput.Outp
 		<!-- /wp:query-no-results -->
 	</div>
 	<!-- /wp:query -->
-
-	<!-- wp:paragraph {"className":"bpch-placeholder-note","fontSize":"small"} -->
-	<p class="bpch-placeholder-note has-small-font-size"><?php esc_html_e( '[Placeholder] These sample reviews are written for the demo, not from real customers. Replace them under Reviews in WP Admin before launch.', 'blue-peak-climate' ); ?></p>
-	<!-- /wp:paragraph -->
 </div>
 <!-- /wp:group -->
 

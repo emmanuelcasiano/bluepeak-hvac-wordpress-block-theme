@@ -14,8 +14,8 @@ defined( 'ABSPATH' ) || exit;
  * Lets WordPress print the theme's small stylesheets inside the page instead of as separate files. Each file is a
  * request the browser must finish before it can show anything, which on a phone costs more than the extra bytes. The
  * page cache keeps the larger HTML cheap to serve. WordPress rewrites the relative url() paths when it inlines a file,
- * and only inlines while the total stays under the limit (40 KB by default), smallest files first. The block styles a page
- * uses and ours come to about 100 KB uncompressed (about 20 KB sent), so the limit is raised below to fit them all.
+ * and only inlines while the total stays under the limit, smallest files first. The block styles a page uses and ours
+ * came to about 165 KB uncompressed (about 47 KB sent) when measured, so the limit is raised below to fit them all.
  *
  * @param string $handle Stylesheet handle.
  * @param string $file   Path to the file inside the theme.

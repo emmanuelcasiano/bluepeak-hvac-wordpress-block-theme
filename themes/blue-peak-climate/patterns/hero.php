@@ -29,7 +29,7 @@ $bpch_call_attributes = bpch_theme_call_button_attributes( array( 'className' =>
 			<!-- /wp:heading -->
 
 			<!-- wp:paragraph {"fontSize":"large"} -->
-			<p class="has-large-font-size"><?php esc_html_e( 'BluePeak Climate repairs, replaces, and maintains central air, furnaces, heat pumps, and boilers. Call at 2 a.m. in August and a real technician answers.', 'blue-peak-climate' ); ?></p>
+			<p class="has-large-font-size"><?php esc_html_e( 'BluePeak Climate repairs, replaces, and maintains central air, furnaces, heat pumps, and boilers. Call any hour, any season, and a real technician answers.', 'blue-peak-climate' ); ?></p>
 			<!-- /wp:paragraph -->
 
 			<!-- wp:buttons {"className":"bpch-cta-row"} -->

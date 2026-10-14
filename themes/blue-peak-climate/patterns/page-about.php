@@ -169,10 +169,6 @@ $bpch_expect = array(
 		<!-- /wp:buttons -->
 	</div>
 	<!-- /wp:group -->
-
-	<!-- wp:paragraph {"className":"bpch-placeholder-note","fontSize":"small"} -->
-	<p class="bpch-placeholder-note has-small-font-size"><?php esc_html_e( '[Placeholder] License numbers and certifications (for example the state license and NATE) are added here before launch.', 'blue-peak-climate' ); ?></p>
-	<!-- /wp:paragraph -->
 </div>
 <!-- /wp:group -->
 
